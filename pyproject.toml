@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mlproject"
+version = "0.0.1"
+description = "Utilities for Machine learning including Bonding descriptors"
+authors = [{ name = "Janine George", email = "janine.george@bam.de" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+dependencies = [
+  "scikit-learn>=1.0",
+  "mlflow>=2.0",
+  "gradio>=4.0",
+  "pyyaml",
+  "modnet",   # if not on pip, list in requirements.txt instead
+  "sisso",    # same here
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "black",
+  "isort",
+  "flake8",
+  "jupyter"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
