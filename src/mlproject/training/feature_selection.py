@@ -305,16 +305,12 @@ class GAFeatureSelector:
                 # json.dumps(inputs, indent=4)
                 df.to_csv("data.csv")
 
-                cmd = (
-                    f"OMP_NUM_THREADS=64 OMP_PLACES=cores mpirun -n {self.mpi_tasks} "
-                    + self.sissopp_binary_path
-                )
-                # cmd = ["mpirun", "-n", f"{self.mpi_tasks}", self.sissopp_binary_path]
 
-                # _ = subprocess.run(cmd, capture_output=True, text=True)
-                _ = subprocess.run(
-                    cmd, shell=True, check=True, capture_output=True, text=True
-                )
+                cmd = f"OMP_NUM_THREADS=64 OMP_PLACES=cores mpirun -n {self.mpi_tasks} " + self.sissopp_binary_path
+                #cmd = ["mpirun", "-n", f"{self.mpi_tasks}", self.sissopp_binary_path]
+
+                #_ = subprocess.run(cmd, capture_output=True, text=True)
+                _ = subprocess.run(cmd, shell=True, check=True, capture_output=True, text=True)
                 max_dim = inputs_cv["desc_dim"]
 
                 # Handle inf prediction models with nan scores

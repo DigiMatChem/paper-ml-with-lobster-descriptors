@@ -19,18 +19,15 @@ from mlproject.training.utils import mean_absolute_percentage_error
 warnings.filterwarnings("ignore")
 
 
-def _train_modnet(
-    X_train,
-    X_test,
-    y_train,
-    y_test,
-    target_name,
-    n_jobs,
-    save_model,
-    fold_ind,
-    **kwargs,
-):
 
+def train_modnet(X_train, X_test, y_train, y_test, target_name, n_jobs, save_model, fold_ind, **kwargs):
+    
+    os.environ['OPENBLAS_NUM_THREADS'] = '1'
+    os.environ['MKL_NUM_THREADS'] = '1'
+    os.environ["OMP_NUM_THREADS"] = "1"
+    os.environ["TF_NUM_INTRAOP_THREADS"] = "1"
+    os.environ["TF_NUM_INTEROP_THREADS"] = "1"
+    os.environ["CUDA_VISIBLE_DEVICES"] = ""
     os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
     y_train = y_train.values.flatten()
@@ -63,19 +60,15 @@ def _train_modnet(
     model = ga.run(nested=True, n_jobs=n_jobs, **ga_settings)
 
     if save_model:
-        model.save(f"model_{fold_ind}")
+        model.save(f"model_{fold_ind+1}")
 
     y_hat_train = model.predict(moddata_train).values.flatten()
     y_hat_test = model.predict(moddata_test).values.flatten()
 
     return y_hat_train, y_hat_test, model, y_train, y_test
 
-
-def _train_sisso(
-    X_train, X_test, y_train, y_test, n_jobs, save_model, fold_ind, **kwargs
-):
-    # y_train, y_test remain as DataFrames for SISSO
-
+def train_sisso_ga(X_train, X_test, y_train, y_test, n_jobs, save_model, fold_ind, **kwargs):
+    
     default_ga_kwargs = {
         "num_features": 15,
         "generations": 100,
@@ -84,7 +77,7 @@ def _train_sisso(
         "cv": 5,
         "mpi_tasks": kwargs.get("mpi_tasks", 1),
         "sissopp_binary_path": kwargs.get("sissopp_binary_path"),
-        "sissopp_inputs": kwargs.get("sissopp_inputs"),
+        "sissopp_inputs" : kwargs.get("sissopp_inputs"),
         **kwargs,
     }
 
@@ -107,7 +100,7 @@ def _train_sisso(
 
     selected_features = selector.run(strategy="de")
 
-    with open(f"feature_usage_counts.json", "w") as f:
+    with open(f"feature_usage_counts.json", "w") as f: 
         json.dump(selector.feature_usage_counts, f)
 
     X_train_fil = X_train.loc[:, selected_features]
@@ -120,7 +113,7 @@ def _train_sisso(
 
     inputs = Inputs("sisso.json")
     _, model = get_fs_solver(inputs, allow_overwrite=False)
-
+    
     model.fit()
 
     model_file_name = Path("models") / f"train_dim_{model.n_dim}_model_0.dat"
@@ -134,8 +127,7 @@ def _train_sisso(
 
     return y_hat_train, y_hat_test, model, y_train, y_test
 
-
-def _train_rf(X_train, X_test, y_train, y_test, n_jobs, save_model, fold_ind, **kwargs):
+def train_rf(X_train, X_test, y_train, y_test, n_jobs, save_model, fold_ind, **kwargs):
     y_train = y_train.values.flatten()
     y_test = y_test.values.flatten()
 
@@ -156,7 +148,6 @@ def _train_rf(X_train, X_test, y_train, y_test, n_jobs, save_model, fold_ind, **
 
     return y_hat_train, y_hat_test, model, y_train, y_test
 
-
 def train_eval_fold(
     model_type: str,
     fold_ind: int,
@@ -174,23 +165,15 @@ def train_eval_fold(
     """
 
     if model_type.lower() == "modnet":
-        y_hat_train, y_hat_test, _, y_train_true, y_test_true = _train_modnet(
-            X_train,
-            X_test,
-            y_train,
-            y_test,
-            target_name,
-            n_jobs,
-            save_model,
-            fold_ind,
-            **kwargs,
+        y_hat_train, y_hat_test, _, y_train_true, y_test_true = train_modnet(
+            X_train, X_test, y_train, y_test, target_name, n_jobs, save_model, fold_ind, **kwargs
         )
     elif model_type.lower() == "sisso":
-        y_hat_train, y_hat_test, _, y_train_true, y_test_true = _train_sisso(
+        y_hat_train, y_hat_test, _, y_train_true, y_test_true = train_sisso(
             X_train, X_test, y_train, y_test, n_jobs, save_model, fold_ind, **kwargs
         )
     elif model_type.lower() == "rf":
-        y_hat_train, y_hat_test, _, y_train_true, y_test_true = _train_rf(
+        y_hat_train, y_hat_test, _, y_train_true, y_test_true = train_rf(
             X_train, X_test, y_train, y_test, n_jobs, save_model, fold_ind, **kwargs
         )
     else:
@@ -201,16 +184,8 @@ def train_eval_fold(
     test_rmse = root_mean_squared_error(y_test_true, y_hat_test)
     train_r2 = r2_score(y_train_true, y_hat_train)
     test_r2 = r2_score(y_test_true, y_hat_test)
-    train_errors = (
-        abs(y_train_true - y_hat_train).values
-        if isinstance(abs(y_train_true - y_hat_train), pd.DataFrame)
-        else abs(y_train_true - y_hat_train)
-    )
-    test_errors = (
-        abs(y_test_true - y_hat_test).values
-        if isinstance(abs(y_test_true - y_hat_test), pd.DataFrame)
-        else abs(y_test_true - y_hat_test)
-    )
+    train_errors = abs(y_train_true - y_hat_train).values if isinstance(abs(y_train_true - y_hat_train), pd.DataFrame) else abs(y_train_true - y_hat_train)
+    test_errors = abs(y_test_true - y_hat_test).values if isinstance(abs(y_test_true - y_hat_test), pd.DataFrame) else abs(y_test_true - y_hat_test)
     train_mape = mean_absolute_percentage_error(y_true=y_train_true, y_pred=y_hat_train)
     test_mape = mean_absolute_percentage_error(y_true=y_test_true, y_pred=y_hat_test)
 
