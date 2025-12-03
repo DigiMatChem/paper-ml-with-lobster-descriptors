@@ -19,9 +19,22 @@ UNIT_RULES = [
     (False, ("AverageBondAngle",), " (rad)"),
     (True, ("DensityFeatures", "vpa"), " (A^3/atom)"),
     (True, ("DensityFeatures", "density"), " (g/cm^3)"),
+    (True, ("site", "FirstIonizationEnergy"), " (eV)"),
+    (True, ("site", "ElectronAffinity"), " (kJ/mol)"),
+    (True, ("site", "CovalentRadius"), " (pm)"),
+    (True, ("site", "AtomicRadius"), " (A)"),
+    (True, ("site", "MeltingT"), " (K)"),
+    (True, ("site", "BoilingT"), " (K)"),
+    (True, ("site", "Density"), " (g/L)"),
+    (True, ("site", "MolarVolume"), " (cm^3)"),
+    (True, ("site", "HeatFusion"), " (kJ/mol)"),
+    (True, ("site", "HeatVaporization"), " (kJ/mol)"),
+    (True, ("Average bond length",), " (A)"),
+    (True, ("Voro", "dist"), " (A)"),
+    (True, ("Average bond angle",), " (rad)"),
     # --- LOBSTER ---
     (False, ("w_ICOHP",), " (eV)"),
-    (False, ("ICOHP_", "asi_"), " (eV)"),
+    (False, ("ICOHP_", "asi_", "_asi"), " (eV)"),
     (
         False,
         ("bwdf_", "Icohp_", "center_COHP", "width_COHP", "edge_COHP", "Madelung_"),
@@ -46,7 +59,6 @@ def apply_unit_rule(col: str, new_name: str) -> str:
 
     return new_name
 
-
 def build_rename_dict(columns: list[str], clean_names: bool = False) -> dict:
     """Return rename mapping for given columns."""
     renamed = {}
@@ -55,11 +67,11 @@ def build_rename_dict(columns: list[str], clean_names: bool = False) -> dict:
         if clean_names:
             new_name = (
                 new_name.replace("[", "_")
-                .replace("]", "_")
-                .replace(" ", "_")
-                .replace("|", "_")
-                .replace("<", "less")
-                .replace("=", "_")
+                        .replace("]", "_")
+                        .replace(" ", "_")
+                        .replace("|", "_")
+                        .replace("<", "less")
+                        .replace("=", "_")
             )
         renamed[col] = apply_unit_rule(str(col), new_name)
     return renamed
@@ -68,9 +80,7 @@ def build_rename_dict(columns: list[str], clean_names: bool = False) -> dict:
 def get_dataset(
     target_name: str = "last_phdos_peak",
     feat_type: Literal["matminer", "matminer_lob"] = "matminer",
-    data_parent_dir: (
-        str | Path
-    ) = "/home/anaik/Work/Dev_Codes/paper-ml-with-bondng-descriptors/data",
+    data_parent_dir: str | Path = "/home/anaik/Work/Dev_Codes/paper-ml-with-bondng-descriptors/data",
     rename_features: bool = True,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
@@ -104,15 +114,11 @@ def get_dataset(
     # Validate feat_type
     allowed_types = {"matminer", "matminer_lob"}
     if feat_type not in allowed_types:
-        raise ValueError(
-            f"Invalid feat_type: {feat_type}. Must be one of {allowed_types}."
-        )
+        raise ValueError(f"Invalid feat_type: {feat_type}. Must be one of {allowed_types}.")
 
     # Paths
     target_path = data_parent_dir / "targets" / f"{target_name}.json"
-    feature_path_matminer = (
-        data_parent_dir / "features" / "matminer" / f"{target_name}.json.gz"
-    )
+    feature_path_matminer = data_parent_dir / "features" / "matminer" / f"{target_name}.json.gz"
 
     # Load targets + features
     target_df = pd.read_json(target_path)
@@ -120,18 +126,12 @@ def get_dataset(
 
     if feat_type == "matminer_lob":
         # Merge lobster features
-        feature_path_lobster = (
-            data_parent_dir / "features" / "lobster" / f"{target_name}.json.gz"
-        )
+        feature_path_lobster = data_parent_dir / "features" / "lobster" / f"{target_name}.json.gz"
         feature_df_lob = pd.read_json(feature_path_lobster)
-        feature_df = feature_df.merge(
-            feature_df_lob, left_index=True, right_index=True, how="inner"
-        )
+        feature_df = feature_df.merge(feature_df_lob, left_index=True, right_index=True, how="inner")
 
     # Optionally rename + add units
     if rename_features:
-        feature_df = feature_df.rename(
-            columns=build_rename_dict(feature_df.columns, clean_names=True)
-        )
+        feature_df = feature_df.rename(columns=build_rename_dict(feature_df.columns, clean_names=True))
 
     return target_df.loc[feature_df.index, :], feature_df
