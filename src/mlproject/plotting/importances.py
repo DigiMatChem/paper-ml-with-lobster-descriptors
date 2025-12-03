@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from mlproject.plotting.utils import split_features
+from mlproject.utils.misc import split_features
 
 
 matplotlib.rcParams['pdf.fonttype'] = 42
