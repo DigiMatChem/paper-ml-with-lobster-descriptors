@@ -1,10 +1,15 @@
 import itertools
 import numpy as np
 import pandas as pd
-import random
 import dcor
 
-def compute_distance_correlation_matrix_bootstrap(sets, num_resamples=1000, num_bootstrap=200, random_state=42):
+
+def evaluate_distance_correlation_matrix_bootstrap(
+    sets: dict[str, np.ndarray],
+    num_resamples: int = 1000,
+    num_bootstrap: int = 200,
+    random_state: int = 42,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """
     Compute pairwise distance correlation (and p-values) using bootstrap resampling
     to estimate mean and standard deviation of dCor.

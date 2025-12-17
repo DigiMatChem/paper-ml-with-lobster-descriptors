@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import warnings
 from monty.serialization import MontyDecoder
@@ -7,7 +6,7 @@ from modnet.preprocessing import MODData
 warnings.filterwarnings("ignore")
 
 
-def get_matminer_feats(structures_df: pd.DataFrame, n_jobs=8):
+def get_matminer_feats(structures_df: pd.DataFrame, n_jobs: int = 8) -> pd.DataFrame:
     """
     Get featurized dataframe using pymatgen structure object.
 

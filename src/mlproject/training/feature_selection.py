@@ -14,7 +14,6 @@ from sklearn.base import clone
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold, cross_validate
 from deap import base, creator, tools, algorithms
-from sissopp.sklearn import SISSORegressor, cross_validate_from_splitter, timestamp
 from sissopp.postprocess.load_models import load_model
 from tqdm.autonotebook import tqdm
 from feature_engine.selection import SmartCorrelatedSelection, DropConstantFeatures
@@ -30,15 +29,15 @@ logging.basicConfig(
 
 
 def get_relevant_features(
-    X_train,
-    y_train,
+    X_train: pd.DataFrame,
+    y_train: np.ndarray,
     const_feat_tol: float = 0.95,
     collinearity_tol: float = 0.9,
     grootcv_nfolds: int = 5,
     grootcv_n_iter: int = 20,
     grootcv_lgbm_objective: str = "mae",
     **pipeline_kwargs,
-) -> pd.DataFrame | np.ndarray:
+) -> tuple[Pipeline, pd.DataFrame]:
     """
     Build and apply a feature selection pipeline to remove correlated and irrelevant features.
 
@@ -69,7 +68,7 @@ def get_relevant_features(
 
     Returns
     -------
-    pipeline, pd.DataFrame | np.ndarray
+    pipeline, pd.DataFrame
         Pipeline instance and a transformed training set with only the relevant features retained.
 
     """
@@ -109,7 +108,20 @@ def get_relevant_features(
 # ----------SISSO_GAFeatureSelector----------
 
 
-def init_valid_individual(icls, n_features, num_selected_features):
+def init_valid_individual(icls, n_features: int, num_selected_features: int):
+    """
+    Initialize an individual with a fixed number of selected features.
+    Ensures that exactly `num_selected_features` in a binary vector are switched to 1.
+
+    Parameters
+    ----------
+    icls : Individual creator class
+        The individual class to instantiate.
+    n_features : int
+        Total number of features.
+    num_selected_features : int
+        Number of features to select (element of binary vector set to 1).
+    """
     individual = [0] * n_features
     selected_indices = np.random.choice(
         range(n_features), num_selected_features, replace=False
@@ -119,7 +131,19 @@ def init_valid_individual(icls, n_features, num_selected_features):
     return icls(individual)
 
 
-def mutate_and_fix(individual, indpb, num_selected_features):
+def mutate_and_fix(individual: np.ndarray, indpb: float, num_selected_features: int):
+    """
+    Mutate an individual and ensure it has exactly `num_selected_features` selected.
+
+    Parameters
+    ----------
+    individual : np.ndarray
+        The individual to mutate.
+    indpb : float
+        Probability for individual bits to be flipped.
+    num_selected_features : int
+        Number of features to select (element of binary vector set to 1).
+    """
     tools.mutFlipBit(individual, indpb)
     while sum(individual) > num_selected_features:
         ones_indices = [i for i, bit in enumerate(individual) if bit == 1]
@@ -130,17 +154,67 @@ def mutate_and_fix(individual, indpb, num_selected_features):
     return (individual,)
 
 
-def hamming_distance(ind1, ind2):
+def hamming_distance(ind1: np.ndarray, ind2: np.ndarray) -> int:
+    """
+    Calculate the Hamming distance between two individuals.
+
+    Parameters
+    ----------
+    ind1 : np.ndarray
+        First individual.
+    ind2 : np.ndarray
+        Second individual.
+
+    Returns
+    -------
+    int
+        Hamming distance between the two individuals.
+    """
     return sum(x != y for x, y in zip(ind1, ind2))
 
 
-def is_diverse(individual, population, min_distance=5):
+def is_diverse(
+    individual: np.ndarray,
+    population: list[np.ndarray],
+    min_distance: int = 5,
+) -> bool:
+    """
+    Check if an individual is diverse enough from a population based on Hamming distance.
+
+    Parameters
+    ----------
+    individual : np.ndarray
+        The individual to check.
+    population : list of np.ndarray
+        The population to compare against.
+    min_distance : int, default=5
+        Minimum Hamming distance required for diversity.
+
+    Returns
+    -------
+    bool
+        True if the individual is diverse enough, False otherwise.
+    """
     return all(
         hamming_distance(individual, other) >= min_distance for other in population
     )
 
 
-def population_entropy(population):
+def population_entropy(population: list[np.ndarray]) -> float:
+    """
+    Calculate the entropy of a population of binary individuals.
+
+    Parameters
+    ----------
+    population : list of np.ndarray
+        The population of individuals.
+
+    Returns
+    -------
+    float
+        Entropy of the population
+    """
+
     pop_array = np.array(population)
     p1 = np.mean(pop_array, axis=0)
     p1 = np.clip(p1, 1e-6, 1 - 1e-6)
@@ -148,7 +222,23 @@ def population_entropy(population):
     return entropy
 
 
-def mixed_selection(population, k):
+def mixed_selection(population: list[np.ndarray], k: int) -> list[np.ndarray]:
+    """
+    Mixed selection strategy: combines elitism and random selection.
+
+    Parameters
+    ----------
+    population : list of np.ndarray
+        The population of individuals.
+    k : int
+        Number of individuals to select.
+
+    Returns
+    -------
+    list of np.ndarray
+        Selected individuals.
+
+    """
     elite_count = int(0.2 * k)
     random_count = k - elite_count
     elites = tools.selBest(population, elite_count)
@@ -156,7 +246,28 @@ def mixed_selection(population, k):
     return elites + randoms
 
 
-def cxTwoPointAndFix(ind1, ind2, num_selected_features):
+def cxTwoPointAndFix(
+    ind1: np.ndarray,
+    ind2: np.ndarray,
+    num_selected_features: int,
+):
+    """
+    Crossover two individuals and fix them to have a specific number of selected features.
+
+    Parameters
+    ----------
+    ind1 : np.ndarray
+        First individual.
+    ind2 : np.ndarray
+        Second individual.
+    num_selected_features : int
+        Number of features to select (element of binary vector set to 1).
+
+    Returns
+    -------
+    tuple of np.ndarray
+        The two modified individuals after crossover and fixing.
+    """
     tools.cxTwoPoint(ind1, ind2)
     mutate_and_fix(ind1, indpb=0, num_selected_features=num_selected_features)
     mutate_and_fix(ind2, indpb=0, num_selected_features=num_selected_features)
@@ -164,33 +275,89 @@ def cxTwoPointAndFix(ind1, ind2, num_selected_features):
 
 
 class GAFeatureSelector:
+    """Genetic Algorithm Feature Selector using DEAP.
+
+    Parameters
+    ----------
+    X : pd.DataFrame or np.ndarray
+        Feature matrix.
+    y : pd.Series or np.ndarray
+        Target values.
+    model : sklearn-like estimator
+        Model to evaluate feature subsets.
+    num_features : int, default=25
+        Number of features to select.
+    population_size : int, default=50
+        Size of the GA population.
+    generations : int, default=100
+        Number of generations to run.
+    feature_names : list of str, optional
+        Names of the features. If None, indices will be used.
+    cxpb : float, default=0.5
+        Crossover probability.
+    mutpb : float, default=0.2
+        Mutation probability.
+    early_stop_patience : int, default=5
+        Generations to wait for improvement before stopping.
+    mutation_boost_threshold : int, default=3
+        Generations without improvement to trigger mutation boost.
+    mutation_boost_factor : float, default=2.0
+        Factor to increase mutation probability when boosting.
+    cv : int, default=5
+        Number of cross-validation folds.
+    scoring : str, default="r2"
+        Scoring metric for evaluation.
+    min_diversity : int, default=5
+        Minimum Hamming distance for diversity.
+    entropy_threshold : float, default=0.3
+        Entropy threshold to trigger mutation boost.
+    X_test : pd.DataFrame or np.ndarray, optional
+        Test feature matrix for diagnostic evaluation.
+    y_test : pd.Series or np.ndarray, optional
+        Test target values for diagnostic evaluation.
+    test_scoring : str or callable, optional
+        Scoring metric for test evaluation. Defaults to `scoring`.
+    n_jobs : int, default=1
+        Number of parallel jobs for evaluation.
+    return_train_score : bool, default=True
+        Whether to return training scores in cross-validation.
+    error_score : float, default=np.nan
+        Value to assign to failed evaluations.
+    sissopp_binary_path : str, optional
+        Path to SISSO++ binary for model evaluation.
+    mpi_tasks : int, default=8
+        Number of MPI tasks for SISSO++.
+    sissopp_inputs : dict, optional
+        Additional inputs for SISSO++.
+    """
+
     def __init__(
         self,
-        X,
-        y,
-        model,
-        num_features=25,
-        population_size=50,
-        generations=100,
-        feature_names=None,
-        cxpb=0.5,
-        mutpb=0.2,
-        early_stop_patience=5,
-        mutation_boost_threshold=3,
-        mutation_boost_factor=2.0,
-        cv=5,
-        scoring="r2",
-        min_diversity=5,
-        entropy_threshold=0.3,
-        X_test=None,
-        y_test=None,
-        test_scoring=None,
-        n_jobs=1,
-        return_train_score=True,
+        X: pd.DataFrame or np.ndarray,
+        y: pd.Series or np.ndarray,
+        model: any,
+        num_features: int = 25,
+        population_size: int = 50,
+        generations: int = 100,
+        feature_names: list[str] | None = None,
+        cxpb: float = 0.5,
+        mutpb: float = 0.2,
+        early_stop_patience: int = 5,
+        mutation_boost_threshold: int = 3,
+        mutation_boost_factor: float = 2.0,
+        cv: int = 5,
+        scoring: str = "r2",
+        min_diversity: int = 5,
+        entropy_threshold: float = 0.3,
+        X_test: pd.DataFrame | np.ndarray | None = None,
+        y_test: pd.DataFrame | np.ndarray | None = None,
+        test_scoring: str | None = None,
+        n_jobs: int = 1,
+        return_train_score: bool = True,
         error_score=np.nan,
-        sissopp_binary_path=None,
-        mpi_tasks=8,
-        sissopp_inputs=None,
+        sissopp_binary_path: str = None,
+        mpi_tasks: int = 8,
+        sissopp_inputs: dict | None = None,
     ):
         self.X = X
         self.y = y
@@ -234,6 +401,8 @@ class GAFeatureSelector:
         self._setup_deap()
 
     def _setup_deap(self):
+        """Setup DEAP toolbox and creator."""
+
         creator.create("FitnessMax", base.Fitness, weights=(1.0,))
         creator.create("Individual", list, fitness=creator.FitnessMax)
 
@@ -261,6 +430,7 @@ class GAFeatureSelector:
         self.toolbox.register("select", mixed_selection)
 
     def evaluate_individual(self, individual):
+        """Evaluate an individual using cross-validation."""
         selected_indices = [i for i, bit in enumerate(individual) if bit == 1]
         X_selected = (
             self.X.iloc[:, selected_indices]
@@ -305,12 +475,14 @@ class GAFeatureSelector:
                 # json.dumps(inputs, indent=4)
                 df.to_csv("data.csv")
 
+                cmd = (
+                    f"OMP_NUM_THREADS=64 OMP_PLACES=cores mpirun -n {self.mpi_tasks} "
+                    + self.sissopp_binary_path
+                )
 
-                cmd = f"OMP_NUM_THREADS=64 OMP_PLACES=cores mpirun -n {self.mpi_tasks} " + self.sissopp_binary_path
-                #cmd = ["mpirun", "-n", f"{self.mpi_tasks}", self.sissopp_binary_path]
-
-                #_ = subprocess.run(cmd, capture_output=True, text=True)
-                _ = subprocess.run(cmd, shell=True, check=True, capture_output=True, text=True)
+                _ = subprocess.run(
+                    cmd, shell=True, check=True, capture_output=True, text=True
+                )
                 max_dim = inputs_cv["desc_dim"]
 
                 # Handle inf prediction models with nan scores
@@ -326,7 +498,7 @@ class GAFeatureSelector:
                     score = getattr(metrics, self.scoring.split("neg_")[-1])(
                         y_test, y_pred
                     )
-                except:
+                except Exception:
                     score = np.nan
 
                 cv_scores.append(score * -1 if "neg_" in self.scoring else score)
@@ -368,6 +540,7 @@ class GAFeatureSelector:
             return (np.mean(val_scores),)
 
     def evaluate_on_test(self, individual):
+        """Evaluate the best individual on the test set."""
         if self.X_test is None or self.y_test is None:
             return None
 
@@ -407,7 +580,21 @@ class GAFeatureSelector:
         return score
 
     def differential_evolution_ga(self, pop, F=0.5, mutpb=0.1):
-        """Differential Evolution GA"""
+        """Differential Evolution GA offspring generation.
+
+        Parameters
+        ----------
+        pop : list of Individuals
+            Current population.
+        F : float, default=0.5
+            Differential weight.
+        mutpb : float, default=0.1
+            Mutation probability.
+        Returns
+        -------
+        list of np.ndarray
+            New list of population after DE operation.
+        """
         new_pop = []
         for target in pop:
             a, b, c = random.sample(pop, 3)
@@ -430,36 +617,17 @@ class GAFeatureSelector:
             )
         return new_pop
 
-    def memetic_ga_with_sa(
-        self, pop, cxpb, mutpb, num_elites=5, T_start=1.0, T_end=0.01, alpha=0.95
-    ):
-        """Memetic GA with simulated annealing strategy"""
-        offspring = algorithms.varAnd(pop, self.toolbox, cxpb, mutpb)
-        for ind in offspring:
-            ind.fitness.values = self.toolbox.evaluate(ind)
-        offspring.sort(key=lambda ind: ind.fitness.values[0], reverse=True)
-        T = T_start
-        for elite in offspring[:num_elites]:
-            for _ in range(5):
-                neighbor = creator.Individual(elite[:])
-                ones = [i for i, b in enumerate(neighbor) if b == 1]
-                zeros = [i for i, b in enumerate(neighbor) if b == 0]
-                if ones and zeros:
-                    neighbor[random.choice(ones)] = 0
-                    neighbor[random.choice(zeros)] = 1
-                (neighbor,) = mutate_and_fix(
-                    neighbor, indpb=0.0, num_selected_features=sum(elite)
-                )
-                neighbor.fitness.values = self.toolbox.evaluate(neighbor)
-                delta = neighbor.fitness.values[0] - elite.fitness.values[0]
-                if delta > 0 or random.random() < np.exp(delta / T):
-                    elite[:] = neighbor
-                    elite.fitness.values = neighbor.fitness.values
-            T *= alpha
-        return offspring
-
     def parse_postfix(self, model, selected_indices):
-        """Extracts features and operators from postfix expression string."""
+        """Extracts features and operators from postfix expression string.
+
+        Parameters
+        ----------
+        model : SISSO model object
+            The SISSO model containing features.
+        selected_indices : list of int
+            Indices of selected features.
+
+        """
         for feat in model.feats:
             expression = feat.postfix_expr.split("|")
             for exp in expression:
@@ -469,6 +637,20 @@ class GAFeatureSelector:
                     self.operator_usage_counts[exp] += 1
 
     def run(self, plot=True, strategy="standard"):
+        """Run the Genetic Algorithm for feature selection.
+
+        Parameters
+        ----------
+        plot : bool, default=True
+            Whether to plot the fitness history.
+        strategy : str, default="standard"
+            Offspring generation strategy: "standard" or "de" (differential evolution).
+
+        Returns
+        -------
+        list of str
+            Selected feature names.
+        """
         pop = self.toolbox.population(n=self.population_size)
         hall_of_fame = tools.HallOfFame(1)
         no_improvement_counter = 0
@@ -500,8 +682,6 @@ class GAFeatureSelector:
                 offspring = algorithms.varAnd(pop, self.toolbox, self.cxpb, mutpb)
             elif strategy == "de":
                 offspring = self.differential_evolution_ga(pop, F=0.7, mutpb=0.05)
-            elif strategy == "memetic":
-                offspring = self.memetic_ga_with_sa(pop, self.cxpb, mutpb, num_elites=5)
             else:
                 raise ValueError("Unknown strategy")
 
@@ -559,10 +739,17 @@ class GAFeatureSelector:
 
         return self.selected_features
 
-    def plot_fitness(self, strategy):
+    def plot_fitness(self, strategy) -> None:
+        """Plot the fitness history of the GA.
+
+        Parameters
+        ----------
+        strategy : str
+            Offspring generation strategy used.
+
+        """
         gens = range(len(self.fitness_history))
         best_fitness_vals = [f[0] for f in self.fitness_history]
-        avg_fitness_vals = [f[1] for f in self.fitness_history]
 
         plt.plot(gens, best_fitness_vals, label=f"Best Fitness ({self.scoring})")
 
@@ -582,5 +769,13 @@ class GAFeatureSelector:
         plt.show()
         plt.close()
 
-    def get_selected_feature_indices(self):
+    def get_selected_feature_indices(self) -> list[int]:
+        """
+        Get indices of selected features from the best individual.
+
+        Returns
+        -------
+        list of int
+            Indices of selected features.
+        """
         return [i for i, bit in enumerate(self.best_individual) if bit == 1]
