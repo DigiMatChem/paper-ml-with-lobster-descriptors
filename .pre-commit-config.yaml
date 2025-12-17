@@ -1,0 +1,58 @@
+exclude: ^(docs|tests|.github)
+
+ci:
+  autoupdate_schedule: monthly
+  autofix_commit_msg: pre-commit auto-fixes
+  autoupdate_commit_msg: pre-commit autoupdate
+
+default_language_version:
+  python: python3
+repos:
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.14.7
+  hooks:
+  - id: ruff
+    args: [--fix, --extend-ignore, FA102]
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0
+  hooks:
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+- repo: https://github.com/asottile/pyupgrade
+  rev: v3.21.2
+  hooks:
+  - id: pyupgrade
+- repo: https://github.com/psf/black-pre-commit-mirror
+  rev: 25.11.0
+  hooks:
+  - id: black
+- repo: https://github.com/asottile/blacken-docs
+  rev: 1.20.0
+  hooks:
+  - id: blacken-docs
+    additional_dependencies: [black]
+    exclude: README.md
+- repo: https://github.com/pre-commit/pygrep-hooks
+  rev: v1.10.0
+  hooks:
+  - id: python-use-type-annotations
+  - id: rst-backticks
+  - id: rst-directive-colons
+  - id: rst-inline-touching-normal
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.19.0
+  hooks:
+  - id: mypy
+    files: ^mlproject/.*\.py$
+    additional_dependencies:
+    - tokenize-rt==4.1.0
+    - types-pkg_resources==0.1.2
+    - types-paramiko
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.4.1
+  hooks:
+  - id: codespell
+    stages: [pre-commit, pre-commit, commit-msg]
+    args: [--ignore-words-list, 'titel,statics,ba,nd,te,atomate,Mater,Commun,MAPE']
+    types_or: [python, rst, markdown]
