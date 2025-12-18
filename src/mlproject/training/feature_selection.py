@@ -46,8 +46,11 @@ def get_relevant_features(
     Build and apply a feature selection pipeline to remove correlated and irrelevant features.
 
     The pipeline applies the following steps:
+
     1. **DropConstantFeatures**: Removes features with low variance (near-constant).
+
     2. **SmartCorrelatedSelection**: Removes highly correlated features based on Pearson correlation.
+
     3. **GrootCV**: Selects relevant features using cross-validation with a LightGBM-based model.
 
     Parameters
