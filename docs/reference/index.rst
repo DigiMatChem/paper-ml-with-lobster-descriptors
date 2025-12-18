@@ -1,7 +1,7 @@
 .. _api:
 
-API reference
--------------
+mlproject package
+------------------
 
 This section gives an overview of the API for mlproject.
 

@@ -1,4 +1,10 @@
 ```{toctree}
+:caption: Target Properties
+:hidden:
+results/index
+```
+
+```{toctree}
 :caption: Scripts
 :hidden:
 feature_selector/index
@@ -7,14 +13,9 @@ training/index
 explainer/index
 ```
 
-```{toctree}
-:caption: Target Properties
-:hidden:
-results/index
-```
 
 ```{toctree}
-:caption: Reference
+:caption: API reference
 :hidden:
 reference/index
 ```
