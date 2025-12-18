@@ -1,3 +1,7 @@
+"""
+Functions for evaluating dependencies between feature sets and target variables using RandomForestRegressor and K-Fold cross-validation.
+"""
+
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor

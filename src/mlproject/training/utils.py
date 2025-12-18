@@ -1,3 +1,7 @@
+"""
+Misc utility functions
+"""
+
 import numpy as np
 
 

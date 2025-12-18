@@ -1,3 +1,7 @@
+"""
+Functions for plotting dependency graphs and feature learnability
+"""
+
 import pandas as pd
 import numpy as np
 import networkx as nx
@@ -15,6 +19,30 @@ def plot_dependency_graph_from_df(
     title: str = "",
     save_path: str | None = None,
 ) -> None:
+    """
+    Plot a dependency graph between two feature sets and a target using a results DataFrame.
+
+    Parameters
+    ----------
+    results_df : pd.DataFrame
+        DataFrame containing 'From', 'To', and metric columns.
+    feature1_name : str
+        Name of the first feature node.
+    feature2_name : str
+        Name of the second feature node.
+    target_name : str
+        Name of the target node.
+    metric : str
+        Metric to visualize on edges (e.g., 'MAE Mean', 'R2 Mean').
+    figsize : tuple
+        Size of the figure.
+    node_colors : dict, optional
+        Colors for the nodes, e.g., {feature1_name: 'blue', feature2_name: 'green', target_name: 'orange'}.
+    title : str
+        Title of the plot.
+    save_path : str, optional
+        If provided, saves the figure to this path.
+    """
     if metric not in results_df.columns:
         raise ValueError(f"Metric '{metric}' not found in results_df.")
 

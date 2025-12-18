@@ -1,3 +1,7 @@
+"""
+Training/evaluation functions for RF/MODNet/SISSO models.
+"""
+
 import os
 import pickle
 import json

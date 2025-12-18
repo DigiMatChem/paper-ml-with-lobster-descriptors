@@ -1,3 +1,7 @@
+"""
+Functions for plotting feature importances
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -17,6 +21,39 @@ def plot_feature_importance(
     model_name: str = "MODNet",
     include_err_bars: bool = False,
 ) -> plt.Figure:
+    """
+    Plot feature importances from a DataFrame.
+
+    Parameters
+    ----------
+    feat_imp_df : pd.DataFrame
+        DataFrame with feature importances. Must contain 'mean' and 'std' columns.
+    target_name : str
+        Name of the target variable.
+    figsize : tuple
+        Figure size.
+    title_fontsize : int
+        Font size for the title.
+    tick_label_fontsize : int
+        Font size for the tick labels.
+    n_feats : int
+        Number of top features to plot.
+    lob_color : str
+        Color for lobster features.
+    default_color : str
+        Color for other features.
+    importance_type : str
+        Type of feature importance (e.g., "Permutation", "SHAP").
+    model_name : str
+        Name of the model.
+    include_err_bars : bool
+        Whether to include error bars.
+
+    Returns
+    -------
+    plt.Figure
+        The matplotlib figure object.
+    """
     # get top n feats
     top_feats = feat_imp_df.sort_values("mean", ascending=False).head(n_feats)
 

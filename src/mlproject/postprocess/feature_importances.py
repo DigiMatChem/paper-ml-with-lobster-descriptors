@@ -1,3 +1,7 @@
+"""
+Functions for getting feature importances data from ARFS, PFI and SHAP values from trained models
+"""
+
 import os
 import pickle
 import numpy as np

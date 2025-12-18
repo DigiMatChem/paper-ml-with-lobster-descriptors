@@ -1,3 +1,7 @@
+"""
+Feature selection utilities
+"""
+
 import os
 import json
 import shutil

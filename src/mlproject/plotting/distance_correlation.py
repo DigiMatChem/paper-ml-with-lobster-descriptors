@@ -1,3 +1,7 @@
+"""
+Functions for plotting distance correlation heatmaps
+"""
+
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -5,6 +9,18 @@ import matplotlib.pyplot as plt
 
 
 def significance_stars(p: float) -> str:
+    """
+    Return significance stars based on p-value
+
+    Parameters
+    ----------
+    p : float
+        P-value from statistical test.
+    Returns
+    -------
+    str
+        Significance stars: '***' for p<0.001, '**' for p<0.01, '*' for p<0.05, '' otherwise.
+    """
     if p < 0.001:
         return "***"
     elif p < 0.01:
@@ -25,7 +41,7 @@ def plot_distance_correlation_heatmap(
     show_values: bool = True,
 ) -> plt.Figure:
     """
-    Plot a heatmap of distance correlations with significance annotations.
+    Plot a heatmap of distance correlations with standard deviation and significance annotations.
 
     Parameters
     ----------

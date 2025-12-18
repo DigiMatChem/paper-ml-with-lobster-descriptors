@@ -1,3 +1,7 @@
+"""
+Functions for evaluating distance correlation between feature sets using bootstrap resampling.
+"""
+
 import itertools
 import numpy as np
 import pandas as pd
