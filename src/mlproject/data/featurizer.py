@@ -1,3 +1,7 @@
+"""
+Function to get matminer features from structures via preset from MODNet.
+"""
+
 import pandas as pd
 import warnings
 from monty.serialization import MontyDecoder
