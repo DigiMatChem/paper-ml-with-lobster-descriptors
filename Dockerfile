@@ -45,9 +45,8 @@ RUN micromamba create -n ml_env -f /tmp/environment.yml -y && \
     micromamba clean -a -y
 
 ENV PATH=/opt/conda/envs/ml_env/bin:$PATH
-SHELL ["micromamba", "run", "-n", "ml_env", "/bin/bash", "-c"]
 
-RUN echo "gcc path: $(which gcc)"
+SHELL ["micromamba", "run", "-n", "ml_env", "/bin/bash", "-c"]
 
 # --- Install SISSO++ in the user's home directory ---
 RUN git clone --recursive https://gitlab.com/sissopp_developers/sissopp.git ~/sissopp && \
