@@ -7,6 +7,8 @@ ENV MAMBA_DOCKERFILE_ACTIVATE=1 \
     MAMBA_ROOT_PREFIX=/opt/conda \
     MAMBA_NO_LOW_SPEED_LIMIT=1
 
+ENV DOCKER_BUILDKIT=1
+
 ARG PYTHON_VERSION
 
 # --- Switch to root to install system dependencies ---
