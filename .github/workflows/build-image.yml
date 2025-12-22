@@ -41,7 +41,7 @@ jobs:
     # Build Docker image with a custom Python version
     - name: Build Docker image (Python ${{ matrix.python-version }})
       run: |
-        DOCKER_BUILDKIT=1 docker build \
+        docker build \
         --build-arg PYTHON_VERSION=${{ matrix.python-version }} \
         -t ghcr.io/${{ env.IMAGE_NAME }}/mlproject-python-${{ matrix.python-version }}:${{ env.VERSION }} .
    # Push Docker image to GHCR
