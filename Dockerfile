@@ -57,10 +57,10 @@ RUN micromamba run -n ml_env bash -c "\
     cp cmake/toolchains/gnu_param_py.cmake build/ && \
     echo 'set(SISSO_BUILD_TESTS ON CACHE BOOL "")' >> build/gnu_param_py.cmake && \
     sed -i 's/\*"g++")/*"g++"*|*"x86_64-conda-linux-gnu-c++"*)/g' build_third_party.bash && \
-    ./build_third_party.bash -j 4 && \
+    ./build_third_party.bash -j4 && \
     cd build && \
     cmake -C gnu_param_py.cmake ../ && \
-    make -j 4 && \
+    make -j4 && \
     make install && \
     make test"
 
