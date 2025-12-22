@@ -1,4 +1,6 @@
 # Use an official micromamba image as the base image
+# syntax=docker/dockerfile:1.4
+
 ARG PYTHON_VERSION=3.10
 FROM mambaorg/micromamba:1.5.10
 
@@ -6,8 +8,6 @@ FROM mambaorg/micromamba:1.5.10
 ENV MAMBA_DOCKERFILE_ACTIVATE=1 \
     MAMBA_ROOT_PREFIX=/opt/conda \
     MAMBA_NO_LOW_SPEED_LIMIT=1
-
-ENV DOCKER_BUILDKIT=1
 
 ARG PYTHON_VERSION
 
