@@ -49,7 +49,8 @@ ENV PATH=/opt/conda/envs/ml_env/bin:$PATH
 SHELL ["micromamba", "run", "-n", "ml_env", "/bin/bash", "-c"]
 
 # --- Install SISSO++ in the user's home directory ---
-RUN git clone --recursive https://gitlab.com/sissopp_developers/sissopp.git ~/sissopp && \
+RUN micromamba run -n ml_env bash -c "\
+    git clone --recursive https://gitlab.com/sissopp_developers/sissopp.git ~/sissopp && \
     cd ~/sissopp && \
     git checkout v1.2.6 && \
     mkdir build && \
@@ -61,10 +62,13 @@ RUN git clone --recursive https://gitlab.com/sissopp_developers/sissopp.git ~/si
     cmake -C gnu_param_py.cmake ../ && \
     make -j 4 && \
     make install && \
-    make test
+    make test"
 
 # Copy project files into workspace
 COPY --chown=${USERNAME}:${USERNAME} . /workspace
 
-# Default command to run container with micromamba environment
+# Ensure the default shell uses micromamba and activates the ml_env environment
+SHELL ["micromamba", "run", "-n", "ml_env", "/bin/bash", "-c"]
+
+# Default command to start the container with the environment active
 CMD ["micromamba", "run", "-n", "ml_env", "/bin/bash"]
