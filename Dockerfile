@@ -48,21 +48,24 @@ ENV PATH=/opt/conda/envs/ml_env/bin:$PATH
 
 SHELL ["micromamba", "run", "-n", "ml_env", "/bin/bash", "-c"]
 
-# --- Install SISSO++ in the user's home directory ---
-RUN micromamba run -n ml_env bash -c "\
-    git clone --recursive https://gitlab.com/sissopp_developers/sissopp.git ~/sissopp && \
-    cd ~/sissopp && \
-    git checkout v1.2.6 && \
-    mkdir build && \
-    cp cmake/toolchains/gnu_param_py.cmake build/ && \
-    echo 'set(SISSO_BUILD_TESTS ON CACHE BOOL "")' >> build/gnu_param_py.cmake && \
-    sed -i 's/\*"g++")/*"g++"*|*"x86_64-conda-linux-gnu-c++"*)/g' build_third_party.bash && \
-    ./build_third_party.bash -j4 && \
-    cd build && \
-    cmake -C gnu_param_py.cmake ../ && \
-    make -j4 && \
-    make install && \
-    make test"
+# --- Install SISSO++ ml_env conda env and store it in the user's home directory ---
+RUN micromamba run -n ml_env bash << 'EOF'
+git clone --recursive https://gitlab.com/sissopp_developers/sissopp.git ~/sissopp
+cd ~/sissopp
+git checkout v1.2.6
+mkdir build
+cp cmake/toolchains/gnu_param_py.cmake build/
+
+echo 'set(SISSO_BUILD_TESTS ON CACHE BOOL "")' >> build/gnu_param_py.cmake
+./build_third_party.bash CXX=/opt/conda/envs/ml_env/bin/g++ CC=/opt/conda/envs/ml_env/bin/gcc -j4
+
+cd build
+cmake -C gnu_param_py.cmake ../
+make -j4
+make install
+make test
+EOF
+
 
 # Copy project files into workspace
 COPY --chown=${USERNAME}:${USERNAME} . /workspace
