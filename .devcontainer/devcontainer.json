@@ -14,5 +14,5 @@
         "ms-azuretools.vscode-docker"]
     },
   },
-  "postCreateCommand": "micromamba activate ml_env && pip install -e .",
+  "postCreateCommand": "micromamba run -n ml_env pip install .",
 }

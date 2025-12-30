@@ -65,12 +65,6 @@ make -j4 && \
 make install && \
 make test'
 
-# Install pending dependencies
-RUN micromamba run -n ml_env bash -c '\
-pip install arfs==3.0.0 mendeleev==1.1.0 feature-engine==1.9.3 && \
-pip install modnet==0.4.5 && \
-pip install git+https://github.com/JaGeo/LobsterPy.git'
-
 # Copy project files into workspace
 COPY --chown=${USERNAME}:${USERNAME} . /workspace
 
@@ -79,3 +73,10 @@ SHELL ["micromamba", "run", "-n", "ml_env", "/bin/bash", "-c"]
 
 # Default command to start the container with the environment active
 CMD ["micromamba", "run", "-n", "ml_env", "/bin/bash"]
+
+# Install pending dependencies
+RUN micromamba run -n ml_env bash -c '\
+pip install arfs==3.0.0 mendeleev==1.1.0 feature-engine==1.9.3 && \
+pip install modnet==0.4.5 && \
+pip install git+https://github.com/JaGeo/LobsterPy.git && \
+pip install .'
