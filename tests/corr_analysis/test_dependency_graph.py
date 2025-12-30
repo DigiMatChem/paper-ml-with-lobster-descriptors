@@ -40,7 +40,7 @@ def test_dependency_graph_data_generation(tmp_path, data_dir):
         y_train=y,
         grootcv_n_iter=1,
         grootcv_nfolds=2,
-        **{"all_rel_feats__n_jobs": 8},
+        **{"all_rel_feats__n_jobs": 4},
     )
     X_a_pip, X_all_fil = get_relevant_features(
         X_train=X_all,

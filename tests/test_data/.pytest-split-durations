@@ -1,0 +1,5 @@
+{
+    "tests/corr_analysis/test_dependency_graph.py::test_dependency_graph_data_generation": 298.52498130799995,
+    "tests/corr_analysis/test_distance_correlation.py::test_evaluate_distance_correlation_matrix_bootstrap": 29.650791098999434,
+    "tests/utils/test_misc.py::test_split_features": 0.00083693999931711
+}

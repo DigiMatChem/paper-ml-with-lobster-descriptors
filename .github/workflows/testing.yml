@@ -1,0 +1,42 @@
+# This uses docker image with required dependencies, run tests with Python 3.10
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Testing Linux
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10"]
+        split: [1]  #[1, 2, 3, 4, 5]
+
+    steps:
+
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch the entire Git history
+        
+    - name: Run tests using Docker image for Python ${{ matrix.python-version }}
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}:/workspace \
+          -w /workspace \
+          --user "$(id -u):$(id -g)" \
+          ghcr.io/digimatchem/paper-ml-with-lobster-descriptors/mlproject-python-${{ matrix.python-version }}:latest \
+          micromamba run -n ml_env \
+          pip install . && \
+          pytest --cache-clear --cov=mlproject --cov-report term-missing --cov-append --splits 1 --group ${{ matrix.split }} -vv --durations-path /workspace/tests/test_data/.pytest-split-durations --store-durations
