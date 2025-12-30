@@ -10,14 +10,15 @@ on:
   pull_request:
     branches: [ main ]
 
-permissions:
-  contents: write
-  pull-requests: write
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      packages: read
+
     strategy:
       fail-fast: false
       matrix:
@@ -25,7 +26,6 @@ jobs:
         split: [1]  #[1, 2, 3, 4, 5]
 
     steps:
-
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
@@ -44,7 +44,7 @@ jobs:
           -v ${{ github.workspace }}:/workspace \
           -w /workspace \
           --user "$(id -u):$(id -g)" \
-          ghcr.io/digimatchem/paper-ml-with-lobster-descriptors/mlproject-python-${{ matrix.python-version }}:latest \
+          ghcr.io/digimatchem/paper-ml-with-lobster-descriptors/mlproject-python-3.10:latest \
           micromamba run -n ml_env \
           pip install . && \
           pytest --cache-clear --cov=mlproject --cov-report term-missing --cov-append --splits 1 --group ${{ matrix.split }} -vv --durations-path /workspace/tests/test_data/.pytest-split-durations --store-durations
