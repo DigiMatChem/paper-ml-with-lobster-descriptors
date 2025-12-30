@@ -45,5 +45,7 @@ jobs:
           -w /workspace \
           --user "$(id -u):$(id -g)" \
           ghcr.io/digimatchem/paper-ml-with-lobster-descriptors/mlproject-python-3.10:latest \
+          bash -c "
           micromamba run -n ml_env pip install . && \
           micromamba run -n ml_env pytest --cache-clear --cov=mlproject --cov-report term-missing --cov-append --splits 1 --group ${{ matrix.split }} -vv --durations-path /workspace/tests/test_data/.pytest-split-durations --store-durations
+          "
