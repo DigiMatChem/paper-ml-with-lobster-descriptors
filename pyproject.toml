@@ -25,3 +25,14 @@ where = ["src"]
 [tool.setuptools_scm]
 
 lint.pydocstyle.convention = "numpy"
+
+[tool.coverage.paths]
+source = [
+    "src/mlproject/",
+    "/workspace/src/mlproject",
+    "/opt/conda/lib/python3.10/site-packages/mlproject/",
+    "/opt/conda/lib/python3.11/site-packages/mlproject/",
+]
+
+[tool.coverage.run]
+include = ["src/"]
