@@ -10,7 +10,7 @@ from mlproject.corr_analysis.dependency_graph import (
 from mlproject.utils.misc import split_features
 
 
-def test_dependency_graph_data_generation(tmp_path, data_dir):
+def test_dependency_graph_data_generation(tmp_path, data_dir, num_jobs):
     data_parent_dir = data_dir
 
     target_name = "max_pfc"
@@ -33,21 +33,21 @@ def test_dependency_graph_data_generation(tmp_path, data_dir):
         y_train=y,
         grootcv_n_iter=1,
         grootcv_nfolds=2,
-        **{"all_rel_feats__n_jobs": 4},
+        **{"all_rel_feats__n_jobs": num_jobs},
     )
     X_m_pipe, X_matminer = get_relevant_features(
         X_train=X_matminer_all,
         y_train=y,
         grootcv_n_iter=1,
         grootcv_nfolds=2,
-        **{"all_rel_feats__n_jobs": 4},
+        **{"all_rel_feats__n_jobs": num_jobs},
     )
     X_a_pip, X_all_fil = get_relevant_features(
         X_train=X_all,
         y_train=y,
         grootcv_n_iter=1,
         grootcv_nfolds=2,
-        **{"all_rel_feats__n_jobs": 4},
+        **{"all_rel_feats__n_jobs": num_jobs},
     )
 
     os.makedirs(f"{tmp_path}/{target_name}", exist_ok=True)
