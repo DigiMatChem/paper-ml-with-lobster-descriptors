@@ -6,5 +6,6 @@
     "tests/data/test_featurizer.py::test_get_matminer_feats": 6.627281005000441,
     "tests/data/test_featurizer.py::test_get_matminer_site_feats": 2.8477173970004515,
     "tests/data/test_preprocessing.py::test_get_dataset": 5.500465933999294,
+    "tests/training/test_feature_selection.py::test_ga_feature_selector": 94.76049265500296,
     "tests/utils/test_misc.py::test_split_features": 0.00083693999931711
 }
