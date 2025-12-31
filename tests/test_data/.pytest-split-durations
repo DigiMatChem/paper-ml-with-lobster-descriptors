@@ -7,5 +7,8 @@
     "tests/data/test_featurizer.py::test_get_matminer_site_feats": 2.8477173970004515,
     "tests/data/test_preprocessing.py::test_get_dataset": 5.500465933999294,
     "tests/training/test_feature_selection.py::test_ga_feature_selector": 94.76049265500296,
+    "tests/training/test_fold_trainer.py::test_train_eval_fold_modnet": 308.81694642599905,
+    "tests/training/test_fold_trainer.py::test_train_eval_fold_rf": 32.11480548200416,
+    "tests/training/test_fold_trainer.py::test_train_eval_fold_sisso": 199.71522018900214,
     "tests/utils/test_misc.py::test_split_features": 0.00083693999931711
 }
