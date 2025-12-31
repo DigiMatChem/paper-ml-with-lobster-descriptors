@@ -1,6 +1,4 @@
-# paper-ml-with-lobster-descriptors
-
-## General
+# General
 This repository contains code and data used for of the publication
 *Assessment of quantum-chemical bonding descriptors predictive ability*
 
