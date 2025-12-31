@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.10"]
-        split: [1]  #[1, 2, 3, 4, 5]
+        split: [1, 2, 3]  #[1, 2, 3, 4, 5]
 
     steps:
     - name: Checkout repository
@@ -47,5 +47,5 @@ jobs:
           ghcr.io/digimatchem/paper-ml-with-lobster-descriptors/mlproject-python-3.10:latest \
           bash -c "
           micromamba run -n ml_env pip install . && \
-          micromamba run -n ml_env pytest --cache-clear --cov=mlproject --cov-report term-missing --cov-append --splits 1 --group ${{ matrix.split }} -vv --durations-path /workspace/tests/test_data/.pytest-split-durations --store-durations
+          micromamba run -n ml_env pytest --cache-clear --cov=mlproject --cov-report term-missing --cov-append --splits 3 --group ${{ matrix.split }} -vv --durations-path /workspace/tests/test_data/.pytest-split-durations --store-durations
           "
