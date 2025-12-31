@@ -1,5 +1,10 @@
 {
     "tests/corr_analysis/test_dependency_graph.py::test_dependency_graph_data_generation": 298.52498130799995,
     "tests/corr_analysis/test_distance_correlation.py::test_evaluate_distance_correlation_matrix_bootstrap": 29.650791098999434,
+    "tests/data/test_featurizer.py::test_get_lobster_feats": 22.487116510000305,
+    "tests/data/test_featurizer.py::test_get_lobster_site_feat": 0.020197834999635234,
+    "tests/data/test_featurizer.py::test_get_matminer_feats": 6.627281005000441,
+    "tests/data/test_featurizer.py::test_get_matminer_site_feats": 2.8477173970004515,
+    "tests/data/test_preprocessing.py::test_get_dataset": 5.500465933999294,
     "tests/utils/test_misc.py::test_split_features": 0.00083693999931711
 }
