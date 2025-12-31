@@ -36,3 +36,8 @@ source = [
 
 [tool.coverage.run]
 include = ["src/"]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore",
+]
