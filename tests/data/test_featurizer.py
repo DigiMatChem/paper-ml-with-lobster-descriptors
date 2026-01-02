@@ -24,11 +24,10 @@ def test_get_matminer_feats(data_dir, num_jobs):
 def test_get_matminer_site_feats(data_dir, num_jobs):
     data_parent_dir = data_dir
 
-    structures_file = data_parent_dir / "structures" / "structures.json.gz"
+    structures_file = data_parent_dir / "structures" / "structures_w_site_index_msd.json.gz"
 
     structures_df = pd.read_json(structures_file).head(5)
-    structures_df["site_index"] = 0
-
+    
     matminer_site_feats = get_matminer_site_feats(
         structures_df=structures_df, n_jobs=num_jobs
     )

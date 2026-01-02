@@ -105,11 +105,13 @@ def get_matminer_site_feats(
         structures_df, col_id=["structure", "site_index"], ignore_errors=True
     )
 
-    matminer_feat_df.dropna(axis=1).drop(
-        columns=["structure", "site_index"], inplace=True
-    )
+    matminer_feat_df.drop(columns=["structure", "site_index"], inplace=True)
 
-    return matminer_feat_df.loc[:, ~matminer_feat_df.columns.duplicated()]
+    matminer_feat_cleaned_df = matminer_feat_df.loc[
+        :, ~matminer_feat_df.columns.duplicated()
+    ]
+
+    return matminer_feat_cleaned_df.dropna(axis=1)
 
 
 def get_lobster_feats(path_to_lobster_calcs: str, n_jobs: int = 8) -> pd.DataFrame:
