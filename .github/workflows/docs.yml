@@ -32,8 +32,10 @@ jobs:
             -w /docs \
             --user "$(id -u):$(id -g)" \
             ghcr.io/digimatchem/paper-ml-with-lobster-descriptors/mlproject-python-3.10:latest \
-            micromamba run -n ml_env \
-            sphinx-build -W docs _build
+            bash -c "
+            micromamba run -n ml_env pip install . && \
+            micromamba run -n ml_env sphinx-build -W docs _build
+            "
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
