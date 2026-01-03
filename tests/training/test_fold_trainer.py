@@ -226,9 +226,6 @@ def test_train_eval_fold_sisso(tmp_path, data_dir, num_jobs):
 
     feat.dropna(axis=1, inplace=True)
 
-    # Get smaller dataset for faster testing
-    feat = feat.head(100)
-    target = target.head(100)
 
     cv_outer = KFold(n_splits=2, shuffle=True, random_state=18012019)
 
