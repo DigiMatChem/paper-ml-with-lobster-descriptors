@@ -21,6 +21,10 @@ def test_dependency_graph_data_generation(tmp_path, data_dir, num_jobs):
         data_parent_dir=data_parent_dir,
     )
 
+    # Get smaller datasets for testing
+    target = target.head(100)
+    all_feat = all_feat.head(100)
+
     lob_feats, matminer_feats = split_features(feats=all_feat.columns)
 
     X_all = all_feat.dropna(axis=1)

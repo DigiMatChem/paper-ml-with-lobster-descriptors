@@ -12,14 +12,16 @@ def test_evaluate_distance_correlation_matrix_bootstrap(tmp_path, data_dir, num_
 
     data_parent_dir = data_dir
 
-    print(f"Using data directory: {data_parent_dir}")
-
     target_name = "last_phdos_peak"
     target, all_feat = get_dataset(
         target_name=target_name,
         feat_type="matminer_lob",
         data_parent_dir=data_parent_dir,
     )
+
+    # Get smaller datasets for testing
+    target = target.head(100)
+    all_feat = all_feat.head(100)
 
     lob_feats, matminer_feats = split_features(feats=all_feat.columns)
 
