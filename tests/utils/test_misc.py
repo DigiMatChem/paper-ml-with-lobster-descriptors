@@ -9,7 +9,7 @@ def test_split_features():
         "AGNIFingerPrint_std_dev_AGNI_dir_y_eta_8.00e-01",
         "site_bwdf_sum_std (eV)",
         "BondOrientationParameter_mean_BOOP_Q_l_2",
-        "Icohp_mean_std (eV)",
+        "ICOHP_mean_std (eV)",
         "ValenceOrbital_avg_s_valence_electrons",
         "bwdf_sum (eV)",
         "StructuralHeterogeneity_range_neighbor_distance_variation",
@@ -35,12 +35,15 @@ def test_split_features():
         "MaximumPackingEfficiency_max_packing_efficiency",
         "AGNIFingerPrint_std_dev_AGNI_dir_x_eta_8.00e-01",
         "AGNIFingerPrint_mean_AGNI_eta_8.00e-01",
+        "Loewdin_mean",
+        "Mulliken_min",
+
     ]
 
     expected_lob_feats = [
         "asi_sum (eV)",
         "site_bwdf_sum_std (eV)",
-        "Icohp_mean_std (eV)",
+        "ICOHP_mean_std (eV)",
         "bwdf_sum (eV)",
         "pair_bwdf_sum_mean (eV)",
         "EIN_ICOHP",
@@ -48,6 +51,8 @@ def test_split_features():
         "asi_max (eV)",
         "bwdf_at_dist0 (eV)",
         "pair_bwdf_min_mean (eV)",
+        "Loewdin_mean",
+        "Mulliken_min",
     ]
     expected_matminer_feats = [
         "AtomicOrbitals_LUMO_energy (eV)",
