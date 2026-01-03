@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.10"]
-        split: [1, 2, 3]  #[1, 2, 3, 4, 5]
+        split: [1, 2, 3, 4]  #[1, 2, 3, 4, 5]
 
     steps:
     - name: Checkout repository
@@ -43,8 +43,40 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}:/workspace \
           -w /workspace \
+          --user "$(id -u):$(id -g)" \
           ghcr.io/digimatchem/paper-ml-with-lobster-descriptors/mlproject-python-3.10:latest \
           bash -c "
           micromamba run -n ml_env pip install . && \
-          micromamba run -n ml_env pytest --cache-clear --cov=mlproject --cov-report term-missing --cov-append --splits 3 --group ${{ matrix.split }} -vv --durations-path /workspace/tests/test_data/.pytest-split-durations --store-durations
+          micromamba run -n ml_env pytest --cache-clear --cov=mlproject --cov-report term-missing --cov-append --splits 4 --group ${{ matrix.split }} -vv --durations-path /workspace/tests/test_data/.pytest-split-durations --store-durations
           "
+
+    - name: Upload coverage
+      if: matrix.python-version == '3.10'
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-${{ matrix.python-version }}-${{ matrix.split }}
+        include-hidden-files: true
+        path: ./.coverage
+
+  coverage:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: Set up Python 3.10
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.10'
+        - name: Install Coverage
+          run: |
+           python -m pip install coverage[toml]
+        - name: Download coverage artifacts
+          continue-on-error: true
+          uses: actions/download-artifact@v4
+          with:
+            pattern: coverage-*
+        - name: Run coverage
+          continue-on-error: true
+          run: |
+            coverage combine coverage*/.coverage*
+            coverage report --show-missing
