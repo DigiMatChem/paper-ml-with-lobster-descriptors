@@ -43,7 +43,6 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}:/workspace \
           -w /workspace \
-          --user "$(id -u):$(id -g)" \
           ghcr.io/digimatchem/paper-ml-with-lobster-descriptors/mlproject-python-3.10:latest \
           bash -c "
           micromamba run -n ml_env pip install . && \
