@@ -27,6 +27,8 @@ def split_features(feats: list[str], lob_keywords: list[str] | None = None):
             "_asi",
             "charge_mull",
             "charge_loew",
+            "Mulliken_",
+            "Loewdin_",
         ]
 
     lob_feats = [
