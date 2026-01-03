@@ -36,12 +36,12 @@ def test_get_dataset(data_dir):
     )
     assert any(col.startswith("asi_") for col in feature_df_lob.columns)
     assert any(col.startswith("bwdf_") for col in feature_df_lob.columns)
-    assert any(col.startswith("Icohp_") for col in feature_df_lob.columns)
+    assert any(col.startswith("ICOHP_") for col in feature_df_lob.columns)
 
     # check if units are correctly applied for lobster features
     assert any("w_ICOHP (eV)" in c for c in feature_df_lob.columns)
     assert any("asi_std (eV)" in c for c in feature_df_lob.columns)
-    assert any("Icohp_mean_min (eV)" in c for c in feature_df_lob.columns)
+    assert any("ICOHP_mean_min (eV)" in c for c in feature_df_lob.columns)
     assert any("bwdf_sum (eV)" in c for c in feature_df_lob.columns)
     assert any("w_ICOHP (eV)" in c for c in feature_df_lob.columns)
     assert any("Madelung_Mull (eV)" in c for c in feature_df_lob.columns)
