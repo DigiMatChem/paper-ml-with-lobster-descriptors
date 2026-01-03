@@ -16,7 +16,7 @@ UNIT_RULES = [
     (True, ("AtomicOrbitals", "LUMO_energy"), " (eV)"),
     (True, ("AtomicOrbitals", "gap_AO"), " (eV)"),
     (True, ("AtomicOrbitals", "HOMO_energy"), " (eV)"),
-    (True, ("AtomicOrbitals", "band center"), " (eV)"),
+    (True, ("BandCenter", "band_center"), " (eV)"),
     (True, ("Miedema", "deltaH_amor"), " (eV/atom)"),
     (True, ("Miedema", "deltaH_ss_min"), " (eV/atom)"),
     (True, ("Miedema", "deltaH_inter"), " (eV/atom)"),
