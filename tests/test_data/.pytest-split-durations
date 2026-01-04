@@ -13,7 +13,7 @@
     "tests/postprocess/test_feature_importance.py::test_get_arfs_mean_feature_importances": 2.031491313000515,
     "tests/postprocess/test_feature_importance.py::test_get_modnet_pfi_shap_summary": 88.11047873999996,
     "tests/postprocess/test_feature_importance.py::test_get_rf_pfi_shap_summary": 7.804298560000461,
-    "tests/training/test_feature_selection.py::test_ga_feature_selector": 142.0864773180001,
+    "tests/training/test_feature_selection.py::test_ga_feature_selector": 156.8284392720002,
     "tests/training/test_fold_trainer.py::test_train_eval_fold_modnet": 207.91166970099766,
     "tests/training/test_fold_trainer.py::test_train_eval_fold_rf": 8.628675823998492,
     "tests/training/test_fold_trainer.py::test_train_eval_fold_sisso": 198.25351408200004,
