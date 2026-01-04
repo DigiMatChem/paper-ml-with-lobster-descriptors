@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mlproject"
-version = "0.0.5"
+dynamic = ["version"]
 description = "Utilities for Machine learning including Bonding descriptors"
 authors = [{ name = "Aakash Naik", email = "aakash.naik@bam.de" }]
 readme = "README.md"
@@ -24,6 +24,7 @@ where = ["src"]
 
 [tool.setuptools_scm]
 
+[tool.ruff]
 lint.pydocstyle.convention = "numpy"
 
 [tool.coverage.paths]
