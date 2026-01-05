@@ -27,21 +27,21 @@ Please follow the steps listed below to be able to successfully create a conda e
     make install && \
     make test
     ```
-- Open the `.bashrc` and set `LD_LIBRARY_PATH` environment variable
+- Open the `.bashrc` and set `LD_LIBRARY_PATH` environment variable. Do not forget to adjust the path of conda env as per your system.
     ```bash
     export LD_LIBRARY_PATH="/opt/conda/envs/ml_env/lib:$LD_LIBRARY_PATH"
     ```
-- Install the rest of python dependencies
+- Install the rest of python dependencies in the same conda environment.
     ```bash
     pip install arfs==3.0.0 mendeleev==1.1.0 feature-engine==1.9.3 && \
     pip install --upgrade emmet-core --force-reinstall --no-deps && \
     pip install modnet==0.4.5 && \
-    pip install git+https://github.com/JaGeo/LobsterPy.git && \
+    pip install lobsterpy==0.5.8 && \
     pip install . && \
     pip cache purge
     ```
 
-Alternatively, one can simply use the [docker image](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/pkgs/container/paper-ml-with-lobster-descriptors%2Fmlproject-python-3.10) associated with this repository to have an working environment setup directly with all required dependencies. For this one can simply open the repository in github codespaces or with vscode.
+Alternatively, one can simply use the [docker image](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/pkgs/container/paper-ml-with-lobster-descriptors%2Fmlproject-python-3.10) associated with this repository to have an working environment setup directly with all required dependencies. For this one can simply open the repository in github codespaces or with vscode. Note for using devcontainer with vscode, one needs docker installed on the system.
 
 ## Documentation
 Refer the [documentation](https://digimatchem.github.io/paper-ml-with-lobster-descriptors/) for accessing all the results of manuscript. It also consists of scripts to reproduce all the results of the publication and API reference for the codes used.
