@@ -15,8 +15,8 @@ def plot_feature_importance(
     title_fontsize: int = 18,
     tick_label_fontsize: int = 14,
     n_feats: int = 20,
-    lob_color: str = "#cfedfc",
-    default_color: str = "#e7e8e9",
+    lob_color: str = "#a6cee3",
+    default_color: str = "#fdbf6f",
     importance_type: str = "Permutation",
     model_name: str = "MODNet",
     include_err_bars: bool = False,
@@ -73,6 +73,7 @@ def plot_feature_importance(
         color=colors,
         ecolor="black",
         edgecolor="black",
+        linewidth=0.1,
     )
     ax.invert_yaxis()
     ax.set_xlabel(
@@ -86,12 +87,12 @@ def plot_feature_importance(
     plt.tight_layout()
     # legend handles
     lob_patch = mpatches.Patch(
-        facecolor=lob_color, edgecolor="black", linewidth=0.5, label="Lobster Features"
+        facecolor=lob_color, edgecolor="black", linewidth=0.1, label="Lobster Features"
     )
     mat_patch = mpatches.Patch(
         facecolor=default_color,
         edgecolor="black",
-        linewidth=0.5,
+        linewidth=0.1,
         label="Matminer Features",
     )
     ax.legend(
