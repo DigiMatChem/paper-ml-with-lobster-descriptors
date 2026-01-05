@@ -45,8 +45,8 @@ Please follow the steps listed below to be able to successfully create a conda e
 
 Alternatively, one can simply use the [docker image](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/pkgs/container/paper-ml-with-lobster-descriptors%2Fmlproject-python-3.10) associated with this repository to have an working environment setup directly with all required dependencies. For this one can simply open the repository in github codespaces or with vscode. Note for using devcontainer with vscode, one needs docker installed on the system.
 
-## Documentation
-Refer the [documentation](https://digimatchem.github.io/paper-ml-with-lobster-descriptors/) for accessing all the results of manuscript. It also consists of scripts to reproduce all the results of the publication and API reference for the codes used.
+## Results and API reference
+Refer the [static website](https://digimatchem.github.io/paper-ml-with-lobster-descriptors/) for accessing all the results of manuscript. It also consists of scripts to reproduce all the results of the publication and API reference for the codes used.
 
 ## Notebooks
 
