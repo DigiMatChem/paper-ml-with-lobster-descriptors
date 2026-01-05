@@ -15,7 +15,7 @@
  For more information, see https://www.abinit.org .
 
 .Starting date : Mon  5 Jan 2026.
-- ( at 16h43 )
+- ( at 20h45 )
   
 - The starting date is more than 2 years after the initial release
 - of this version of ABINIT, namely Apr 2023.
@@ -80,7 +80,7 @@
 
  Calculation of the interatomic forces 
 
--begin at tcpu      0.046  and twall      0.048 sec
+-begin at tcpu      0.038  and twall      0.042 sec
        Homogeneous q point set in the B.Z.
  Grid q points  :      729
  greater than 80, so only write 20 of them
@@ -59836,6 +59836,6 @@
 
 ================================================================================
 
-+Total cpu time      1.324  and wall time      1.405 sec
++Total cpu time      1.124  and wall time      1.157 sec
 
  anaddb : the run completed succesfully.
