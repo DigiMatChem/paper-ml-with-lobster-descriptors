@@ -79,6 +79,6 @@ RUN micromamba run -n ml_env bash -c '\
 pip install arfs==3.0.0 mendeleev==1.1.0 feature-engine==1.9.3 && \
 pip install --upgrade emmet-core --force-reinstall --no-deps && \
 pip install modnet==0.4.5 && \
-pip install git+https://github.com/JaGeo/LobsterPy.git && \
+pip install lobsterpy==0.5.8 && \
 pip install . && \
 pip cache purge'
