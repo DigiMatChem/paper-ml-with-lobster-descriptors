@@ -1,3 +1,5 @@
+[![Testing Linux](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/actions/workflows/testing.yml/badge.svg?branch=main)](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/actions/workflows/testing.yml) [![Build Docs](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/actions/workflows/docs.yml)
+
 # General
 This repository contains code and data used for of the publication
 *Assessment of quantum-chemical bonding descriptors predictive ability*
@@ -47,3 +49,11 @@ Alternatively, one can simply use the [docker image](https://github.com/DigiMatC
 Refer the [documentation](https://digimatchem.github.io/paper-ml-with-lobster-descriptors/) for accessing all the results of manuscript. It also consists of scripts to reproduce all the results of the publication and API reference for the codes used.
 
 ## Notebooks
+
+### Target data extraction
+
+The scripts in `notebooks/targets` are used to extract the target datasets. The provided notebooks includes comments where need and should self explanatory. Please refer the `notebooks/targets/*/README.md` therein if it exists first before executing the scripts.
+
+### ML scripts
+
+The scripts in `notebooks/ml_scripts` can be used to reproduce the results of the manuscripts. Each subdirectory is named as per sections in the manuscript and includes comments to make it self explanotory and easy to follow.
