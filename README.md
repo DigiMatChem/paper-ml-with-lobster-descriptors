@@ -57,3 +57,28 @@ The scripts in `notebooks/targets` are used to extract the target datasets. The 
 ### ML scripts
 
 The scripts in `notebooks/ml_scripts` can be used to reproduce the results of the manuscripts. Each subdirectory is named as per sections in the manuscript and includes comments to make it self explanotory and easy to follow.
+
+
+## Other important citations
+
+### Code
+- Projected force constant
+   - https://github.com/JanHempelmann/projectionscript.git (Currently a Private repository)
+- Lattice thermal conductivity
+   - [clean_data](https://github.com/masato1122/phonon_e3nn/blob/799c0f65e9b8cc01afbe7647fceb8ba07da3058b/tools/run_prediction.py#L37C1-L70C1) function
+
+### Data
+
+- Vibration and thermodynamic properties
+  - [High-throughput density-functional perturbation theory phonons for inorganic materials](http://www.nature.com/articles/sdata201865)
+  - Data available for download [here](https://springernature.figshare.com/collections/High-throughput_Density-Functional_Perturbation_Theory_phonons_for_inorganic_materials/3938023)
+- Lattice thermal conductivity
+  - [Database and deep-learning scalability of anharmonic phonon properties by automated brute-force first-principles calculations](https://doi.org/10.48550/arXiv.2504.21245)
+  - Data available for download [here](https://github.com/masato1122/phonon_e3nn/tree/799c0f65e9b8cc01afbe7647fceb8ba07da3058b)
+- Elasticity
+  - [Commentary: The Materials Project: A materials genome approach to accelerating materials innovation](https://doi.org/10.1063/1.4812323)
+
+### Other related works
+- Projected force constant
+   - [Vibrational properties and bonding nature of Sb2Se3 and their implications for chalcogenide materials](https://doi.org/10.1039/C5SC00825E)
+   - [Long-Range Forces in Rock-Salt-Type Tellurides and How they Mirror the Underlying Chemical Bonding](https://doi.org/10.1002/adma.202100163)
