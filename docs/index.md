@@ -46,6 +46,7 @@ about/license
 `mlproject` is a package that hosts all the utility scripts to reproduce the results from our publication *Assessment of quantum-chemical bonding descriptors predictive ability*. 
 For the sake of brevitiy, some results are not included in the publication, this repository also presents all those results.
 
+(readme-page)=
 
 ```{include} ../README.md
 ---
