@@ -46,24 +46,24 @@ Please follow the steps listed below to be able to successfully create a conda e
 Alternatively, one can simply use the [docker image](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/pkgs/container/paper-ml-with-lobster-descriptors%2Fmlproject-python-3.10) associated with this repository to have an working environment setup directly with all required dependencies. For this one can simply open the repository in github codespaces or with vscode. Note for using devcontainer with vscode, one needs docker installed on the system.
 
 ## Results and API reference
-Refer the [static website](https://digimatchem.github.io/paper-ml-with-lobster-descriptors/) for accessing all the results of manuscript. It also consists of scripts to reproduce all the results of the publication and API reference for the codes used.
+Refer the [rendered website](https://digimatchem.github.io/paper-ml-with-lobster-descriptors/) for accessing all the results of manuscript. It also consists of scripts to reproduce all the results of the publication and API reference for the codes used.
 
 ## Notebooks
 
 ### Target data extraction
 
-The scripts in `notebooks/targets` are used to extract the target datasets. The provided notebooks includes comments where need and should self explanatory. Please refer the `notebooks/targets/*/README.md` therein if it exists first before executing the scripts.
+The scripts in [notebooks/targets](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/tree/main/notebooks/targets) are used to extract the target datasets. The provided notebooks includes comments where need and should self explanatory. Please refer the `notebooks/targets/*/README.md` therein if it exists first before executing the scripts.
 
 ### ML scripts
 
-The scripts in `notebooks/ml_scripts` can be used to reproduce the results of the manuscripts. Each subdirectory is named as per sections in the manuscript and includes comments to make it self explanotory and easy to follow.
+The scripts in [notebooks/ml_scripts](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/tree/main/notebooks/ml_scripts) can be used to reproduce the results of the manuscripts. Each subdirectory is named as per sections in the manuscript and includes comments to make it self explanotory and easy to follow.
 
 
 ## Other important citations
 
 ### Code
 - Projected force constant
-   - https://github.com/JanHempelmann/projectionscript.git (Currently a Private repository)
+   - [JanHempelmann/projectionscript](https://github.com/JanHempelmann/projectionscript.git) (reference code repository, currently private)
 - Lattice thermal conductivity
    - [clean_data](https://github.com/masato1122/phonon_e3nn/blob/799c0f65e9b8cc01afbe7647fceb8ba07da3058b/tools/run_prediction.py#L37C1-L70C1) function
 
