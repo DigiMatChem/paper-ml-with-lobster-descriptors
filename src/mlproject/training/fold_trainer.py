@@ -91,11 +91,12 @@ def train_modnet(
         "num_generations": 20,
         "early_stopping": 4,
         "refit": False,
+        "nested": True,
         **kwargs,
     }
 
     ga = FitGenetic(moddata_train, targets=[[[target_name]]])
-    model = ga.run(nested=True, n_jobs=n_jobs, **ga_settings)
+    model = ga.run(n_jobs=n_jobs, **ga_settings)
 
     if save_model:
         model.save(f"model_{fold_ind+1}")
