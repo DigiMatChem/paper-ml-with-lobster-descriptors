@@ -163,3 +163,4 @@ cython_debug/
 # documentation building
 _build/
 jupyter_execute/
+mlproject*.rst
