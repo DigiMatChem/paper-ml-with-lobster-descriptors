@@ -17,53 +17,67 @@
 
 ### Dependency graphs
 
-![Dependency graph](../_static/log_g_vrh/log_g_vrh_m2l_learnability.png)
+![Dependency graph](../_static/log_g_vrh/log_g_vrh_feat_metrics.png)
 
 ### Feature learnability
 
-![Feature learnability](../_static/log_g_vrh/log_g_vrh_feat_metrics.png)
+![Feature learnability](../_static/log_g_vrh/log_g_vrh_m2l_learnability.png)
 
 ---
 
 ## Model performance
 
-### Metrics overview
+### 5-Fold CV Metrics overview
 
-RF - MATMINER
-
-|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
-|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
-| mean |    0.11378   |    0.28652  |     0.04046    |     0.11038   |  0.95118   |  0.6903   |
-| min  |    0.0709    |    0.1753   |     0.0371     |     0.0997    |  0.9431    |  0.411    |
-| max  |    0.1274    |    0.5354   |     0.0421     |     0.1294    |  0.9763    |  0.8482   |
-| std  |    0.0215666 |    0.127987 |     0.00177606 |     0.0107449 |  0.0127327 |  0.147157 |
-
-RF - MATMINER+LOBSTER
+**RF - MATMINER**
 
 |      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
 |:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
-| mean |    0.11396   |    0.29708  |     0.03866    |    0.10748    |  0.95092   |  0.66802  |
-| min  |    0.0682    |    0.209    |     0.0349     |    0.0973     |  0.94      |  0.4287   |
-| max  |    0.1276    |    0.5273   |     0.0407     |    0.1198     |  0.9781    |  0.7842   |
-| std  |    0.0229419 |    0.116995 |     0.00198151 |    0.00827367 |  0.0137822 |  0.124065 |
+| mean |   0.05998    |   0.16438   |    0.03464     |    0.09632    | 0.98278    |  0.869    |
+| min  |   0.0521     |   0.1349    |    0.0338      |    0.0917     | 0.9804     |  0.7852   |
+| max  |   0.0644     |   0.2225    |    0.0364      |    0.1036     | 0.9867     |  0.8986   |
+| std  |   0.00414072 |   0.0315851 |    0.000939361 |    0.00429017 | 0.00212735 |  0.043152 |
 
-MODNet - MATMINER
-
-|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
-|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
-| mean |    0.23352   |    0.22002  |     0.036      |    0.07684    |  0.78882   |  0.80578  |
-| min  |    0.1029    |    0.1105   |     0.0227     |    0.0704     |  0.7349    |  0.4465   |
-| max  |    0.2761    |    0.519    |     0.0459     |    0.0849     |  0.9501    |  0.9397   |
-| std  |    0.0657517 |    0.156096 |     0.00895053 |    0.00621501 |  0.0813263 |  0.188142 |
-
-MODNet - MATMINER+LOBSTER
+**RF - MATMINER+LOBSTER**
 
 |      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
 |:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
-| mean |    0.23408   |    0.21784  |     0.03968    |    0.07512    |  0.78876   |  0.8077   |
-| min  |    0.111     |    0.1013   |     0.033      |    0.0644     |  0.727     |  0.4436   |
-| max  |    0.2785    |    0.5204   |     0.0492     |    0.0848     |  0.942     |  0.9456   |
-| std  |    0.0636781 |    0.158745 |     0.00587244 |    0.00799885 |  0.0807652 |  0.191683 |
+| mean |   0.05944    |   0.15536   |     0.03328    |    0.09108    | 0.98304    | 0.88182   |
+| min  |   0.0491     |   0.1206    |     0.0322     |    0.0847     | 0.9803     | 0.7944    |
+| max  |   0.0646     |   0.2177    |     0.0352     |    0.0994     | 0.9882     | 0.9267    |
+| std  |   0.00536865 |   0.0369465 |     0.00101666 |    0.00569048 | 0.00277604 | 0.0483531 |
+
+**MODNet - MATMINER**
+
+|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
+|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
+| mean |    0.08042   |   0.12398   |     0.02318    |    0.06704    |  0.96684   | 0.9215    |
+| min  |    0.0348    |   0.0925    |     0.0202     |    0.062      |  0.9577    | 0.8215    |
+| max  |    0.0947    |   0.2028    |     0.0274     |    0.0718     |  0.9941    | 0.9574    |
+| std  |    0.0228767 |   0.0403218 |     0.00243343 |    0.00397522 |  0.0137634 | 0.0503536 |
+
+**MODNet - MATMINER+LOBSTER**
+
+|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
+|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
+| mean |    0.08218   |   0.1216    |     0.02634    |    0.06566    |   0.96568  | 0.92412   |
+| min  |    0.0388    |   0.0897    |     0.0222     |    0.0607     |   0.9557   | 0.824     |
+| max  |    0.0984    |   0.2014    |     0.0338     |    0.0707     |   0.9926   | 0.96      |
+| std  |    0.0219141 |   0.0410796 |     0.00424292 |    0.00427018 |   0.013602 | 0.0505217 |
+
+### Paired 5x2 CV F-test
+
+**RF F-tests metrics comparsion**
+![RF F-test](../_static/log_g_vrh/rf_f_test.png)
+
+**MODNet F-tests metrics comparsion**
+![MODNet F-test](../_static/log_g_vrh/modnet_f_test.png)
+
+**Summary**
+|        |   F-statistic |   p-value |     d_av |   % Relative MAE improvement | Improved folds   |
+|:-------|--------------:|----------:|---------:|-----------------------------:|:-----------------|
+| RF     |       6.55159 | 0.0255521 | 2.85031  |                      4.9329  | 10/10            |
+| MODNet |       1.02041 | 0.52487   | 0.724786 |                      2.55524 | 7/10             |
 
 ---
 
@@ -76,24 +90,6 @@ MODNet - MATMINER+LOBSTER
 ### SHAP
 ![RF shap](../_static/log_g_vrh/rf_shap_log_g_vrh.png)
 ![MODNet Shap](../_static/log_g_vrh/modnet_shap_log_g_vrh.png)
-
----
-
-## SISSO Models
-
-### Rung 1
-\begin{align*}
-& log\_g\_vrh = c_0 \\
-    & + a_0\left(MaximumPackingEfficiency_{max\_ packing\_ efficiency} \\ \cdot ElementProperty_{MagpieData\_ mean\_ NsValence}\right) \\
-    & + a_1\left(AverageBondLength_{mean\_ Average\_ bond\_ length} \\ \cdot ElementProperty_{MagpieData\_ maximum\_ MendeleevNumber}\right)
-\end{align*}
-
-### Rung 2
-\begin{align*}
-& log\_g\_vrh = c_0 \\
-    & + a_0\left(\left(bonding_{perc\_ max} \cdot ElementProperty_{MagpieData\_ mean\_ NsValence}\right) \\ - \left(AGNIFingerPrint_{std\_ dev\_ AGNI\_ dir\_ y\_ eta\_ 2.89e+00} + MaximumPackingEfficiency_{max\_ packing\_ efficiency}\right)\right) \\
-    & + a_1\left(\frac{ \left(AverageBondLength_{mean\_ Average\_ bond\_ length} ElementProperty_{MagpieData\_ maximum\_ MendeleevNumber}\right) }{ \left(\sqrt[3]{ MaximumPackingEfficiency_{max\_ packing\_ efficiency} }\right) } \right)
-\end{align*}
 
 ---
 

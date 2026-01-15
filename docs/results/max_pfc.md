@@ -17,53 +17,67 @@
 
 ### Dependency graphs
 
-![Dependency graph](../_static/max_pfc/max_pfc_m2l_learnability.png)
+![Dependency graph](../_static/max_pfc/max_pfc_feat_metrics.png)
 
 ### Feature learnability
 
-![Feature learnability](../_static/max_pfc/max_pfc_feat_metrics.png)
+![Feature learnability](../_static/max_pfc/max_pfc_m2l_learnability.png)
 
 ---
 
 ## Model performance
 
-### Metrics overview
+### 5-Fold CV Metrics overview
 
-RF - MATMINER
-
-|      |   train_rmse |   test_rmse |   train_errors |   test_errors |    train_r2 |   test_r2 |
-|:-----|-------------:|------------:|---------------:|--------------:|------------:|----------:|
-| mean |    1.2681    |     3.27856 |       0.6098   |      1.58038  | 0.98746     | 0.91502   |
-| min  |    1.2202    |     2.7068  |       0.5841   |      1.398    | 0.986       | 0.893     |
-| max  |    1.3047    |     3.8461  |       0.6404   |      1.8821   | 0.9884      | 0.9344    |
-| std  |    0.0345084 |     0.40731 |       0.021375 |      0.167934 | 0.000877724 | 0.0163886 |
-
-RF - MATMINER+LOBSTER
+**RF - MATMINER**
 
 |      |   train_rmse |   test_rmse |   train_errors |   test_errors |    train_r2 |   test_r2 |
 |:-----|-------------:|------------:|---------------:|--------------:|------------:|----------:|
-| mean |    1.0706    |    2.88512  |      0.52972   |      1.41622  | 0.99104     | 0.93462   |
-| min  |    1.0324    |    2.1043   |      0.5039    |      1.1474   | 0.9897      | 0.9098    |
-| max  |    1.1141    |    3.8749   |      0.5558    |      1.6568   | 0.9917      | 0.9596    |
-| std  |    0.0331545 |    0.598448 |      0.0189623 |      0.177869 | 0.000757892 | 0.0176389 |
+| mean |    1.26746   |    3.2235   |      0.60954   |      1.5819   | 0.98748     | 0.91782   |
+| min  |    1.2147    |    2.5683   |      0.5769    |      1.3875   | 0.9863      | 0.8895    |
+| max  |    1.3115    |    3.8209   |      0.6353    |      1.8937   | 0.9888      | 0.9398    |
+| std  |    0.0341855 |    0.448041 |      0.0211138 |      0.177118 | 0.000823165 | 0.0177324 |
 
-MODNet - MATMINER
-
-|      |   train_rmse |   test_rmse |   train_errors |   test_errors |    train_r2 |   test_r2 |
-|:-----|-------------:|------------:|---------------:|--------------:|------------:|----------:|
-| mean |    0.80204   |    2.69718  |      0.37978   |      1.21098  | 0.99496     |  0.94278  |
-| min  |    0.7185    |    1.9492   |      0.3462    |      0.9539   | 0.9938      |  0.9344   |
-| max  |    0.8622    |    3.2805   |      0.4232    |      1.3552   | 0.9961      |  0.9653   |
-| std  |    0.0674837 |    0.429928 |      0.0267723 |      0.144313 | 0.000958332 |  0.011443 |
-
-MODNet - MATMINER+LOBSTER
+**RF - MATMINER+LOBSTER**
 
 |      |   train_rmse |   test_rmse |   train_errors |   test_errors |    train_r2 |   test_r2 |
 |:-----|-------------:|------------:|---------------:|--------------:|------------:|----------:|
-| mean |    0.61622   |    2.27172  |      0.33      |      1.07056  | 0.997       | 0.95922   |
-| min  |    0.5156    |    1.5601   |      0.2776    |      0.8488   | 0.996       | 0.9455    |
-| max  |    0.6918    |    3.0118   |      0.3801    |      1.2497   | 0.998       | 0.9778    |
-| std  |    0.0684287 |    0.501724 |      0.0360137 |      0.164953 | 0.000723878 | 0.0125001 |
+| mean |    1.04222   |    2.81932  |      0.517     |      1.38458  | 0.99152     | 0.93766   |
+| min  |    1.0028    |    2.1238   |      0.4945    |      1.1337   | 0.9898      | 0.9102    |
+| max  |    1.0993    |    3.8678   |      0.5415    |      1.6556   | 0.9924      | 0.9589    |
+| std  |    0.0365495 |    0.610617 |      0.0176691 |      0.186017 | 0.000919565 | 0.0176187 |
+
+**MODNet - MATMINER**
+
+|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
+|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
+| mean |     0.83262  |    2.77926  |       0.39168  |      1.24292  | 0.99446    | 0.93942   |
+| min  |     0.6971   |    2.0483   |       0.3352   |      0.9425   | 0.9924     | 0.9259    |
+| max  |     0.9503   |    3.411    |       0.4439   |      1.4445   | 0.9963     | 0.9617    |
+| std  |     0.098408 |    0.469912 |       0.035818 |      0.184412 | 0.00149613 | 0.0124796 |
+
+**MODNet - MATMINER+LOBSTER**
+
+|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
+|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
+| mean |    0.67196   |    2.35222  |      0.35394   |      1.05676  | 0.99644    | 0.95566   |
+| min  |    0.5659    |    1.4829   |      0.3105    |      0.7896   | 0.9953     | 0.935     |
+| max  |    0.7489    |    3.1745   |      0.4012    |      1.2709   | 0.9976     | 0.9799    |
+| std  |    0.0676659 |    0.610906 |      0.0328327 |      0.188289 | 0.00081388 | 0.0171926 |
+
+### Paired 5x2 CV F-test
+
+**RF F-tests metrics comparsion**
+![RF F-test](../_static/max_pfc/rf_f_test.png)
+
+**MODNet F-tests metrics comparsion**
+![MODNet F-test](../_static/max_pfc/modnet_f_test.png)
+
+**Summary**
+|        |   F-statistic |   p-value |    d_av |   % Relative MAE improvement | Improved folds   |
+|:-------|--------------:|----------:|--------:|-----------------------------:|:-----------------|
+| RF     |       1.58089 |  0.320026 | 1.24497 |                      7.93077 | 9/10             |
+| MODNet |       2.06871 |  0.218559 | 1.34495 |                     11.9196  | 9/10             |
 
 ---
 
@@ -76,25 +90,6 @@ MODNet - MATMINER+LOBSTER
 ### SHAP
 ![RF shap](../_static/max_pfc/rf_shap_max_pfc.png)
 ![MODNet Shap](../_static/max_pfc/modnet_shap_max_pfc.png)
-
-
----
-
-## SISSO Models
-
-### Rung 1
-\begin{align*}
-& max\_pfc = c_0 \\
-    & + a_0\left(\frac{ bwdf_{at\_ dist0} }{ dist_{at\_ neg\_ bwdf0} } \right) \\
-    & + a_1\left(BondOrientationParameter_{std\_ dev\_ BOOP\_ Q\_ l\_ 2}  \cdot asi_{max}\right)
-\end{align*}
-
-### Rung 2
-\begin{align*}
-& max\_pfc = c_0 \\
-    & + a_0\left(\left(\left|OxidationStates_{range\_ oxidation\_ state} - ElementProperty_{MagpieData\_ range\_ NpUnfilled}\right|\right) \\ \cdot \left(BondOrientationParameter_{std\_ dev\_ BOOP\_ Q\_ l\_ 2} + OPSiteFingerprint_{mean\_ sgl\_ bd\_ CN\_ 1}\right)\right) \\
-    & + a_1\left(\frac{ \left(\frac{ bwdf_{at\_ dist0} }{ dist_{at\_ neg\_ bwdf0} } \right) }{ \left(CrystalNNFingerprint_{std\_ dev\_ wt\_ CN\_ 2} - ElementProperty_{MagpieData\_ mean\_ NsValence}\right) } \right)
-\end{align*}
 
 ---
 

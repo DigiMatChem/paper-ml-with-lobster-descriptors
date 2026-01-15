@@ -17,53 +17,67 @@
 
 ### Dependency graphs
 
-![Dependency graph](../_static/log_kp_300/log_kp_300_m2l_learnability.png)
+![Dependency graph](../_static/log_kp_300/log_kp_300_feat_metrics.png)
 
 ### Feature learnability
 
-![Feature learnability](../_static/log_kp_300/log_kp_300_feat_metrics.png)
+![Feature learnability](../_static/log_kp_300/log_kp_300_m2l_learnability.png)
 
 ---
 
 ## Model performance
 
-### Metrics overview
+### 5-Fold CV Metrics overview
 
-RF - MATMINER
+**RF - MATMINER**
 
-|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
-|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
-| mean |    0.12314   |   0.33442   |     0.08226    |    0.22446    | 0.97192    | 0.79256   |
-| min  |    0.1196    |   0.3116    |     0.0805     |    0.2153     | 0.9704     | 0.7776    |
-| max  |    0.1264    |   0.3585    |     0.0839     |    0.2345     | 0.9734     | 0.8166    |
-| std  |    0.0022905 |   0.0182519 |     0.00123386 |    0.00781245 | 0.00095373 | 0.0155551 |
+|      |   train_rmse |   test_rmse |   train_errors |   test_errors |    train_r2 |   test_r2 |
+|:-----|-------------:|------------:|---------------:|--------------:|------------:|----------:|
+| mean |   0.1241     |    0.33168  |    0.0824      |    0.22416    | 0.9715      | 0.7953    |
+| min  |   0.1209     |    0.3133   |    0.0817      |    0.2221     | 0.9705      | 0.7712    |
+| max  |   0.1278     |    0.3486   |    0.0838      |    0.2264     | 0.9725      | 0.817     |
+| std  |   0.00268403 |    0.013485 |    0.000782304 |    0.00149211 | 0.000809938 | 0.0164542 |
 
-RF - MATMINER+LOBSTER
+**RF - MATMINER+LOBSTER**
 
-|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
-|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
-| mean |   0.12088    |   0.32832   |     0.08078    |    0.21938    | 0.97294    | 0.80012   |
-| min  |   0.1185     |   0.3089    |     0.0788     |    0.2058     | 0.9717     | 0.7809    |
-| max  |   0.1236     |   0.3558    |     0.082      |    0.2277     | 0.9736     | 0.8217    |
-| std  |   0.00191458 |   0.0177316 |     0.00116688 |    0.00781419 | 0.00069455 | 0.0140242 |
+|      |   train_rmse |   test_rmse |   train_errors |   test_errors |    train_r2 |   test_r2 |
+|:-----|-------------:|------------:|---------------:|--------------:|------------:|----------:|
+| mean |   0.12104    |   0.32204   |    0.08036     |    0.21636    | 0.9729      |  0.8072   |
+| min  |   0.1177     |   0.3055    |    0.0791      |    0.2128     | 0.972       |  0.7918   |
+| max  |   0.1249     |   0.3426    |    0.0817      |    0.2194     | 0.9739      |  0.826    |
+| std  |   0.00264469 |   0.0148668 |    0.000847585 |    0.00234657 | 0.000766812 |  0.014333 |
 
-MODNet - MATMINER
-
-|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
-|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
-| mean |    0.11622   |   0.30574   |      0.0635    |    0.192      |  0.97316   |  0.82628  |
-| min  |    0.0864    |   0.2755    |      0.0506    |    0.1827     |  0.9416    |  0.7999   |
-| max  |    0.1779    |   0.3292    |      0.0954    |    0.2062     |  0.9859    |  0.855    |
-| std  |    0.0317698 |   0.0233441 |      0.0161813 |    0.00895321 |  0.0159871 |  0.021248 |
-
-MODNet - MATMINER+LOBSTER
+**MODNet - MATMINER**
 
 |      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
 |:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
-| mean |    0.10094   |   0.30428   |      0.0572    |    0.19034    |  0.97994   | 0.82824   |
-| min  |    0.0782    |   0.2749    |      0.0471    |    0.1807     |  0.9591    | 0.8101    |
-| max  |    0.1488    |   0.3244    |      0.0815    |    0.2003     |  0.9887    | 0.8482    |
-| std  |    0.0251375 |   0.0189124 |      0.0128984 |    0.00762669 |  0.0107781 | 0.0153183 |
+| mean |    0.12716   |   0.30212   |     0.0682     |    0.19196    | 0.96948    | 0.83018   |
+| min  |    0.0989    |   0.2791    |     0.0565     |    0.1847     | 0.959      | 0.8074    |
+| max  |    0.1513    |   0.3342    |     0.0805     |    0.2069     | 0.9818     | 0.8547    |
+| std  |    0.0193366 |   0.0211013 |     0.00810136 |    0.00803059 | 0.00854199 | 0.0188838 |
+
+**MODNet - MATMINER+LOBSTER**
+
+|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
+|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
+| mean |    0.08798   |   0.2931    |     0.04974    |     0.18454   | 0.98552    | 0.8402    |
+| min  |    0.0782    |   0.2672    |     0.0439     |     0.1713    | 0.9792     | 0.8242    |
+| max  |    0.1061    |   0.3153    |     0.0564     |     0.1944    | 0.9885     | 0.8669    |
+| std  |    0.0107293 |   0.0191406 |     0.00436742 |     0.0078081 | 0.00354028 | 0.0163417 |
+
+### Paired 5x2 CV F-test
+
+**RF F-tests metrics comparsion**
+![RF F-test](../_static/log_kp_300/rf_f_test.png)
+
+**MODNet F-tests metrics comparsion**
+![MODNet F-test](../_static/log_kp_300/modnet_f_test.png)
+
+**Summary**
+|        |   F-statistic |   p-value |    d_av |   % Relative MAE improvement | Improved folds   |
+|:-------|--------------:|----------:|--------:|-----------------------------:|:-----------------|
+| RF     |       5.6842  | 0.0344431 | 2.55892 |                      2.50294 | 10/10            |
+| MODNet |       2.42112 | 0.170578  | 1.46746 |                      4.45887 | 9/10             |
 
 ---
 
@@ -76,24 +90,6 @@ MODNet - MATMINER+LOBSTER
 ### SHAP
 ![RF shap](../_static/log_kp_300/rf_shap_log_kp_300.png)
 ![MODNet Shap](../_static/log_kp_300/modnet_shap_log_kp_300.png)
-
----
-
-## SISSO Models
-
-### Rung 1
-\begin{align*}
-& log\_kp\_300 = c_0 \\
-    & + a_0\left(\sqrt[3]{ asi_{sum} }\right) \\
-    & + a_1\left(\frac{ OxidationStates_{std\_ dev\_ oxidation\_ state} }{ DensityFeatures_{vpa} } \right)
-\end{align*}
-
-### Rung 2
-\begin{align*}
-& log\_kp\_300 = c_0 \\
-    & + a_0\left(\left(ElementProperty_{MagpieData\_ minimum\_ Electronegativity} - CrystalNNFingerprint_{mean\_ wt\_ CN\_ 1}\right) \\ \left(\left|OxidationStates_{std\_ dev\_ oxidation\_ state} - ElementProperty_{MagpieData\_ minimum\_ Electronegativity}\right|\right)\right) \\
-    & + a_1\left(\sqrt[3]{ \left(\frac{ asi_{sum} }{ GaussianSymmFunc_{mean\_ G4\_ 0.005\_ 1.0\_ 1.0} } \right) }\right)
-\end{align*}
 
 ---
 

@@ -1,5 +1,5 @@
 
-# Last phonon dos peak - last_phdos_peak
+# Last phonon dos peak - cm-1 - last_phdos_peak
 
 ## ARFS Top features
 
@@ -17,19 +17,19 @@
 
 ### Dependency graphs
 
-![Dependency graph](../_static/last_phdos_peak/last_phdos_peak_m2l_learnability.png)
+![Dependency graph](../_static/last_phdos_peak/last_phdos_peak_feat_metrics.png)
 
 ### Feature learnability
 
-![Feature learnability](../_static/last_phdos_peak/last_phdos_peak_feat_metrics.png)
+![Feature learnability](../_static/last_phdos_peak/last_phdos_peak_m2l_learnability.png)
 
 ---
 
 ## Model performance
 
-### Metrics overview
+### 5-Fold CV Metrics overview
 
-RF - MATMINER
+**RF - MATMINER**
 
 |      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
 |:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
@@ -38,32 +38,46 @@ RF - MATMINER
 | max  |     34.5876  |    106.683  |      14.9702   |      44.2828  | 0.9961     | 0.9853    |
 | std  |      1.47065 |     18.1411 |       0.251989 |       4.91545 | 0.00032249 | 0.0127694 |
 
-RF - MATMINER+LOBSTER
-
-|      |   train_rmse |   test_rmse |   train_errors |   test_errors |   train_r2 |   test_r2 |
-|:-----|-------------:|------------:|---------------:|--------------:|-----------:|----------:|
-| mean |      32.7851 |     80.6867 |      14.5877   |      39.2469  | 0.99558    | 0.97228   |
-| min  |      26.3867 |     62.7826 |      13.6297   |      33.7883  | 0.9947     | 0.9513    |
-| max  |      36.0886 |    112.842  |      15.1984   |      44.6627  | 0.9971     | 0.9815    |
-| std  |       3.4597 |     16.8804 |       0.520001 |       3.88335 | 0.00082801 | 0.0110778 |
-
-MODNet - MATMINER
+**RF - MATMINER+LOBSTER**
 
 |      |   train_rmse |   test_rmse |   train_errors |   test_errors |    train_r2 |   test_r2 |
 |:-----|-------------:|------------:|---------------:|--------------:|------------:|----------:|
-| mean |     21.0344  |     67.8693 |      11.2568   |      33.7528  | 0.99816     | 0.97826   |
-| min  |     18.1914  |     39.8363 |      10.0124   |      26.0072  | 0.9975      | 0.9431    |
-| max  |     25.2585  |    121.977  |      12.2069   |      45.7835  | 0.9986      | 0.9925    |
-| std  |      2.36596 |     28.2644 |       0.717572 |       6.52812 | 0.000382623 | 0.0180929 |
+| mean |     32.5001  |     80.4644 |      14.6361   |      39.1976  | 0.99564     |  0.97226  |
+| min  |     26.9725  |     61.1432 |      13.7767   |      33.5999  | 0.9949      |  0.9492   |
+| max  |     35.1927  |    115.35   |      15.3407   |      45.2728  | 0.997       |  0.9824   |
+| std  |      2.91981 |     18.3066 |       0.512474 |       4.11005 | 0.000728286 |  0.012148 |
 
-MODNet - MATMINER+LOBSTER
+**MODNet - MATMINER**
 
 |      |   train_rmse |   test_rmse |   train_errors |   test_errors |    train_r2 |   test_r2 |
 |:-----|-------------:|------------:|---------------:|--------------:|------------:|----------:|
-| mean |     20.9232  |     63.1663 |       10.818   |      31.226   | 0.99814     | 0.98238   |
-| min  |     16.1711  |     44.3115 |        9.5887  |      26.501   | 0.9971      | 0.9608    |
-| max  |     26.7804  |    101.344  |       12.588   |      36.2288  | 0.9989      | 0.9908    |
-| std  |      4.35961 |     20.2705 |        1.22546 |       3.51789 | 0.000739189 | 0.0111151 |
+| mean |     20.4586  |     67.3629 |      11.1928   |      33.3479  | 0.99828     |  0.97842  |
+| min  |     18.6992  |     37.2775 |      10.5934   |      24.3813  | 0.998       |  0.9416   |
+| max  |     22.5584  |    123.586  |      11.9387   |      46.2481  | 0.9985      |  0.9935   |
+| std  |      1.38787 |     29.3642 |       0.475595 |       7.19291 | 0.000203961 |  0.018805 |
+
+**MODNet - MATMINER+LOBSTER**
+
+|      |   train_rmse |   test_rmse |   train_errors |   test_errors |    train_r2 |   test_r2 |
+|:-----|-------------:|------------:|---------------:|--------------:|------------:|----------:|
+| mean |     22.174   |     62.5857 |       10.7228  |       30.6388 | 0.99792     | 0.982     |
+| min  |     17.8546  |     43.5458 |        9.5286  |       27.3127 | 0.9972      | 0.9533    |
+| max  |     26.3936  |    110.553  |       12.5559  |       36.6207 | 0.9986      | 0.9911    |
+| std  |      3.52212 |     24.3505 |        1.23771 |        3.4089 | 0.000577581 | 0.0143975 |
+
+### Paired 5x2 CV F-test
+
+**RF F-tests metrics comparsion**
+![RF F-test](../_static/last_phdos_peak/rf_f_test.png)
+
+**MODNet F-tests metrics comparsion**
+![MODNet F-test](../_static/last_phdos_peak/modnet_f_test.png)
+
+**Summary**
+|        |   F-statistic |   p-value |     d_av |   % Relative MAE improvement | Improved folds   |
+|:-------|--------------:|----------:|---------:|-----------------------------:|:-----------------|
+| RF     |      1.5528   |  0.327604 | 1.21577  |                      4.54806 | 9/10             |
+| MODNet |      0.935486 |  0.567883 | 0.315458 |                      2.57913 | 8/10             |
 
 ---
 
@@ -76,25 +90,6 @@ MODNet - MATMINER+LOBSTER
 ### SHAP
 ![RF shap](../_static/last_phdos_peak/rf_shap_last_phdos_peak.png)
 ![MODNet Shap](../_static/last_phdos_peak/modnet_shap_last_phdos_peak.png)
-
----
-
-## SISSO Models
-
-### Rung 1
-\begin{align*}
-& last\_phdos\_peak = c_0 \\
-    & + a_0\left(\frac{1.0}{ dist_{at\_ neg\_ bwdf0} }\right) \\ 
-    & + a_1\left(\frac{ BandCenter_{band\_ center} }{ ElementProperty_{MagpieData\_ minimum\_ AtomicWeight} } \right)
-\end{align*}
-
-### Rung 2
-\begin{align*}
-& last\_phdos\_peak = c_0 \\
-    & + a_0\left(\left(\exp{ \left(-ElementProperty_{MagpieData\_ minimum\_ AtomicWeight} \right) } \right) \\ 
-    + \left(\sqrt[3]{ AGNIFingerPrint_{mean\_ AGNI\_ eta\_ 8.00e-01} }\right)\right) \\
-    & + a_1\left(\frac{ \left(bnd_{wICOHP} - ElementProperty_{MagpieData\_ minimum\_ AtomicWeight}\right) }{ \left(dist_{at\_ neg\_ bwdf0}^3\right) } \right)
-\end{align*}
 
 ---
 
