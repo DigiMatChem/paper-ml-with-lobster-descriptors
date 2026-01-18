@@ -1,4 +1,4 @@
-Elasticitiy
+Elasticity
 =============
 
 Scripts to query and save elasticity datasets 
