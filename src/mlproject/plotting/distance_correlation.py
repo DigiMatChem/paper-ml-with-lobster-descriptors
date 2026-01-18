@@ -48,7 +48,6 @@ def summarize_pvalue_significance(
         Matrix of p-values.
     significance_func : callable, optional
         Function mapping a p-value to a significance string
-        (e.g., '', '*', '**', '***').
 
     Returns
     -------
