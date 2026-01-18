@@ -30,7 +30,7 @@ def test_plot_distance_correlation_heatmap(test_data_dir):
     assert isinstance(fig, plt.Figure)
     assert (
         fig.axes[0].get_title()
-        == f"Distance correlation: {target_name}, ± = std across bootstrapped runs\n(Distance covariance independence test: * p<0.05, ** p<0.01, *** p<0.001)"
+        == f"Distance correlation: {target_name}, ± = std across bootstrapped runs\n(Distance covariance independence test for all cells: p < 0.01)"
     )
     assert fig.axes[0].get_xticklabels()[0].get_text() == mean_mat.columns[0]
     assert fig.axes[0].get_yticklabels()[0].get_text() == mean_mat.index[0]
