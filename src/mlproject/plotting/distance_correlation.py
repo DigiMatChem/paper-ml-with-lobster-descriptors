@@ -31,6 +31,48 @@ def significance_stars(p: float) -> str:
         return ""
 
 
+def summarize_pvalue_significance(
+    pvals: pd.DataFrame,
+    significance_func=significance_stars,
+) -> str:
+    """
+    Summarize p-value significance across a matrix for plot title.
+
+    If all cells have the same significance level, returns a summary
+    like 'all cells: p < 0.01'. Otherwise, returns the legend mapping
+    for significance stars.
+
+    Parameters
+    ----------
+    pvals : pd.DataFrame
+        Matrix of p-values.
+    significance_func : callable, optional
+        Function mapping a p-value to a significance string
+        (e.g., '', '*', '**', '***').
+
+    Returns
+    -------
+    str
+        A summary of p-value significance.
+    """
+    star_matrix = pvals.applymap(significance_func)
+    unique_stars = star_matrix.stack().unique()
+
+    if len(unique_stars) == 1:
+        uniform_star = unique_stars[0]
+
+        if uniform_star == "***":
+            return "all cells: p < 0.001"
+        elif uniform_star == "**":
+            return "all cells: p < 0.01"
+        elif uniform_star == "*":
+            return "all cells: p < 0.05"
+        else:
+            return "all cells: p ≥ 0.05 (not significant)"
+
+    return "all cells: * p<0.05, ** p<0.01, *** p<0.001"
+
+
 def plot_distance_correlation_heatmap(
     mat: pd.DataFrame,
     pvals: pd.DataFrame,
@@ -62,9 +104,15 @@ def plot_distance_correlation_heatmap(
     # Build annotated matrix for display
     annot = mat.copy().astype(str)
     for i in mat.index:
+        # get star strings for this row
+        row_stars = pvals.loc[i].apply(significance_stars)
+
+        # check if all star strings are identical
+        row_has_variation = row_stars.nunique() > 1
+
         for j in mat.columns:
             if pd.notnull(mat.loc[i, j]):
-                star = significance_stars(pvals.loc[i, j])
+                star = row_stars.loc[j] if row_has_variation else ""
                 if std_mat is not None:
                     annot.loc[i, j] = (
                         f"{mat.loc[i, j]:.2f}±{std_mat.loc[i, j]:.2f}{star}"
@@ -85,7 +133,7 @@ def plot_distance_correlation_heatmap(
         annot=annot if show_values else False,
         fmt="",
         cmap=cmap,
-        vmin=0,
+        vmin=round(mat.min(axis=None), 1) - 0.1,
         vmax=1,
         square=True,
         cbar_kws={"label": "Distance correlation"},
@@ -102,8 +150,11 @@ def plot_distance_correlation_heatmap(
     cbar.ax.tick_params(labelsize=14)
     cbar.set_label("Distance correlation", fontsize=14)
 
+    # get p-value significance summary for title
+    significance_summary = summarize_pvalue_significance(pvals)
+
     ax.set_title(
-        f"{title}, ± = std across bootstrapped runs\n(Distance covariance independence test: * p<0.05, ** p<0.01, *** p<0.001)",
+        f"{title}, ± = std across bootstrapped runs\n(Distance covariance independence test for {significance_summary})",
         fontsize=14,
     )
     fig.tight_layout()
