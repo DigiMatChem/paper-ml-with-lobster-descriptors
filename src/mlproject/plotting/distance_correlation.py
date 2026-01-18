@@ -47,7 +47,7 @@ def summarize_pvalue_significance(
     pvals : pd.DataFrame
         Matrix of p-values.
     significance_func : callable, optional
-        Function mapping a p-value to a significance string
+        Function mapping a p-value to a significance start string.
 
     Returns
     -------
