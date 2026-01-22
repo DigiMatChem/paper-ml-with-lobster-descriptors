@@ -1,5 +1,5 @@
 """
-Module implementing adapted paired F-test to compare two feature sets using 5x2cv.
+Function implementing adapted paired F-test to compare two feature sets using 5x2cv.
 """
 
 import pandas as pd

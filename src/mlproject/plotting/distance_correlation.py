@@ -6,29 +6,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-
-
-def significance_stars(p: float) -> str:
-    """
-    Return significance stars based on p-value
-
-    Parameters
-    ----------
-    p : float
-        P-value from statistical test.
-    Returns
-    -------
-    str
-        Significance stars: '***' for p<0.001, '**' for p<0.01, '*' for p<0.05, '' otherwise.
-    """
-    if p < 0.001:
-        return "***"
-    elif p < 0.01:
-        return "**"
-    elif p < 0.05:
-        return "*"
-    else:
-        return ""
+from mlproject.postprocess.utils import significance_stars
 
 
 def summarize_pvalue_significance(
@@ -80,6 +58,7 @@ def plot_distance_correlation_heatmap(
     cmap: str = "Blues",
     figsize: tuple = (12, 11),
     show_values: bool = True,
+    min_corr: float = None,
 ) -> plt.Figure:
     """
     Plot a heatmap of distance correlations with standard deviation and significance annotations.
@@ -98,6 +77,8 @@ def plot_distance_correlation_heatmap(
         Colormap for heatmap.
     show_values : bool, optional
         If True, annotates each cell with correlation + significance stars.
+    min_corr : float, optional
+        Minimum correlation value for color scale (if None, uses min of mat).
     """
 
     # Build annotated matrix for display
@@ -132,7 +113,7 @@ def plot_distance_correlation_heatmap(
         annot=annot if show_values else False,
         fmt="",
         cmap=cmap,
-        vmin=round(mat.min(axis=None), 1) - 0.1,
+        vmin=min_corr if min_corr is not None else round(mat.min(axis=None), 1) - 0.1,
         vmax=1,
         square=True,
         cbar_kws={"label": "Distance correlation"},

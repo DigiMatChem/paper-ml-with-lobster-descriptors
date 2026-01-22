@@ -1,5 +1,5 @@
 """
-Feature selection utilities
+Functions for feature reduction and selection.
 """
 
 import os

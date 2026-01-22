@@ -1,5 +1,5 @@
 """
-Module to retrieve the version of the mlproject package
+Function to retrieve the version of the mlproject package
 """
 
 from importlib.metadata import version

@@ -1,5 +1,5 @@
 """
-Training/evaluation functions for RF/MODNet/SISSO models.
+Training/evaluation functions for RF/MODNet/GA-SISSO models.
 """
 
 import os
@@ -19,7 +19,7 @@ from modnet.hyper_opt.fit_genetic import FitGenetic
 from modnet.preprocessing import MODData
 from modnet.models import EnsembleMODNetModel
 from mlproject.training.feature_selection import GAFeatureSelector
-from mlproject.training.utils import mean_absolute_percentage_error
+from mlproject.postprocess.utils import mean_absolute_percentage_error
 
 warnings.filterwarnings("ignore")
 
