@@ -65,19 +65,17 @@
 | max  |     26.3936  |    110.553  |       12.5559  |       36.6207 | 0.9986      | 0.9911    |
 | std  |      3.52212 |     24.3505 |        1.23771 |        3.4089 | 0.000577581 | 0.0143975 |
 
-### Paired 5x2 CV F-test
-
-**RF F-tests metrics comparsion**
-![RF F-test](../_static/last_phdos_peak/rf_f_test.png)
-
-**MODNet F-tests metrics comparsion**
-![MODNet F-test](../_static/last_phdos_peak/modnet_f_test.png)
+### Corrected resampled t-test on 10-fold CV 
 
 **Summary**
-|        |   F-statistic |   p-value |     d_av |   % Relative MAE improvement | Improved folds   |
-|:-------|--------------:|----------:|---------:|-----------------------------:|:-----------------|
-| RF     |      1.5528   |  0.327604 | 1.21577  |                      4.54806 | 9/10             |
-| MODNet |      0.935486 |  0.567883 | 0.315458 |                      2.57913 | 8/10             |
+|        |   t_stat |   p_value | significance_stars   |      d_av |   rel_improvement |   percent_folds_improved |
+|:-------|---------:|----------:|:---------------------|----------:|------------------:|-------------------------:|
+| RF     | 0.123344 |  0.452273 |                      | 0.0150349 |          0.317817 |                       50 |
+| MODNet | 1.02389  |  0.166309 |                      | 0.26788   |          5.40627  |                       70 |
+
+![RF t-test](../_static/last_phdos_peak/rf_t_test.png)
+
+![MODNet t-test](../_static/last_phdos_peak/modnet_t_test.png)
 
 ---
 
@@ -98,4 +96,12 @@
 ### ARFS n-iter convergence checks
 
 ![Convergence](../_static/last_phdos_peak/last_phdos_peak_matminer_lob_n_iter_convergence.png)
+
+### MAE/ fold from 10-fold CV
+
+Alternative visual summary of input data for t-test 
+
+![RF per fold MAEs](../_static/last_phdos_peak/rf_fold_comparison.png)
+
+![MODNet per fold MAEs](../_static/last_phdos_peak/modnet_fold_comparison.png)
 

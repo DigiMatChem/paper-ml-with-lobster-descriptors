@@ -1,4 +1,9 @@
 ```{toctree}
+:hidden:
+essentials/index
+```
+
+```{toctree}
 :caption: Target Properties
 :hidden:
 results/index
@@ -20,6 +25,7 @@ feature_selector/index
 correlation_analysis/index
 training/index
 explainer/index
+t_test/index
 ```
 
 

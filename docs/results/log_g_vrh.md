@@ -65,19 +65,17 @@
 | max  |    0.0984    |   0.2014    |     0.0338     |    0.0707     |   0.9926   | 0.96      |
 | std  |    0.0219141 |   0.0410796 |     0.00424292 |    0.00427018 |   0.013602 | 0.0505217 |
 
-### Paired 5x2 CV F-test
-
-**RF F-tests metrics comparsion**
-![RF F-test](../_static/log_g_vrh/rf_f_test.png)
-
-**MODNet F-tests metrics comparsion**
-![MODNet F-test](../_static/log_g_vrh/modnet_f_test.png)
+### Corrected resampled t-test on 10-fold CV 
 
 **Summary**
-|        |   F-statistic |   p-value |     d_av |   % Relative MAE improvement | Improved folds   |
-|:-------|--------------:|----------:|---------:|-----------------------------:|:-----------------|
-| RF     |       6.55159 | 0.0255521 | 2.85031  |                      4.9329  | 10/10            |
-| MODNet |       1.02041 | 0.52487   | 0.724786 |                      2.55524 | 7/10             |
+|        |   t_stat |     p_value | significance_stars   |     d_av |   rel_improvement |   percent_folds_improved |
+|:-------|---------:|------------:|:---------------------|---------:|------------------:|-------------------------:|
+| RF     |  7.56265 | 1.72926e-05 | ***                  | 0.583957 |           4.31678 |                      100 |
+| MODNet |  1.01519 | 0.168263    |                      | 0.211847 |           2.51596 |                       80 |
+
+![RF t-test](../_static/log_g_vrh/rf_t_test.png)
+
+![MODNet t-test](../_static/log_g_vrh/modnet_t_test.png)
 
 ---
 
@@ -98,4 +96,12 @@
 ### ARFS n-iter convergence checks
 
 ![Convergence](../_static/log_g_vrh/log_g_vrh_matminer_lob_n_iter_convergence.png)
+
+### MAE/ fold from 10-fold CV
+
+Alternative visual summary of input data for t-test 
+
+![RF per fold MAEs](../_static/log_g_vrh/rf_fold_comparison.png)
+
+![MODNet per fold MAEs](../_static/log_g_vrh/modnet_fold_comparison.png)
 
