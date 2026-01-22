@@ -1,0 +1,1 @@
+Please ensure you follow the terms of `LICENSE` incase you use data from `log_klat_300.json` or `log_kp_300.json` files.
