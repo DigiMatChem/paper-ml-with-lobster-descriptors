@@ -49,7 +49,7 @@ about/license
 **Useful links**:
 [Github Repository](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors) 
 
-`mlproject` is a package that hosts all the utility scripts to reproduce the results from our publication *Assessment of quantum-chemical bonding descriptors predictive ability*. 
+`mlproject` is a package that hosts all the utility scripts to reproduce the results from our publication: **A critical assessment of bonding descriptors for predicting materials properties**. 
 For the sake of brevitiy, some results are not included in the publication, this repository also presents all those results.
 
 (readme-page)=
