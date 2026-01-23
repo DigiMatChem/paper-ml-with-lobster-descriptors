@@ -91,6 +91,46 @@
 
 ---
 
+## SISSO Models
+
+### Rung 1
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_k\_vrh = 3.326 \\
+    & -0.007\left(ElementProperty_{MagpieData\_maximum\_MendeleevNumber} \\ * AverageBondLength_{mean\_Average\_bond\_length}\right)
+\end{align*}
+
+
+#### 2D descriptor
+
+\begin{align*}
+& log\_k\_vrh = 4.432 \\
+    & + 0.663\left(\ln{ MaximumPackingEfficiency_{max\_packing\_efficiency} }\right) \\
+    & -0.009\left(ElementProperty_{MagpieData\_maximum\_MendeleevNumber} \\ * AverageBondLength_{mean\_Average\_bond\_length}\right)
+\end{align*}
+
+### Rung 2
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_k\_vrh = 3.7 \\
+    & -0.006\left(\frac{ \left(ElementProperty_{MagpieData\_maximum\_MendeleevNumber} * AverageBondLength_{mean\_Average\_bond\_length}\right) }{ \left(\sqrt[3]{ MaximumPackingEfficiency_{max\_packing\_efficiency} }\right) } \right)
+\end{align*}
+
+
+#### 2D descriptor
+
+\begin{align*}
+& log\_k\_vrh = 2.389 \\
+    & + 0.099\left(\left(ElementProperty_{MagpieData\_mean\_NUnfilled} + \color{#cc3366}{Mulliken_{std}}\right) \\ - \left(\frac{ AGNIFingerPrint_{std\_dev\_AGNI\_dir\_y\_eta\_2.89e+00} }{ MaximumPackingEfficiency_{max\_packing\_efficiency} } \right)\right) \\
+    & - 0.079\left(\frac{ \left(AverageBondLength_{mean\_Average\_bond\_length}^2\right) }{ \left(\sqrt{ MaximumPackingEfficiency_{max\_packing\_efficiency} }\right) } \right)
+\end{align*}
+
+---
+
 ## Misc
 
 ### ARFS n-iter convergence checks

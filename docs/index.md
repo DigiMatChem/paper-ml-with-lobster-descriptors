@@ -28,6 +28,11 @@ explainer/index
 t_test/index
 ```
 
+```{toctree}
+:caption: Misc Visualization
+:hidden:
+misc/index
+```
 
 ```{toctree}
 :caption: API reference
@@ -50,12 +55,13 @@ about/license
 [Github Repository](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors) 
 
 `mlproject` is a package that hosts all the utility scripts to reproduce the results from our publication: **A critical assessment of bonding descriptors for predicting materials properties**. 
-For the sake of brevitiy, some results are not included in the publication, this repository also presents all those results.
+
+To keep the publication concise, not all results are included. This repository provides a one-stop access point to all results, along with all code and data required to reproduce them. Results are organized as static HTML pages for easy navigation.
 
 (readme-page)=
 
 ```{include} ../README.md
 ---
-start-line: 8
+start-line: 11
 ---
 ```

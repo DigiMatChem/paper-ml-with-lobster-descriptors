@@ -91,6 +91,44 @@
 
 ---
 
+## SISSO Models
+
+### Rung 1
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_klat\_300 = -0.413 \\
+    & -2.899\left(\frac{ \color{#cc3366}{pair_{bwdf\_skew\_mean}} }{ DensityFeatures_{vpa} } \right)
+\end{align*}
+
+#### 2D descriptor
+
+\begin{align*}
+& log\_klat\_300 = 0.489 \\
+    & + 3.477\left(\frac{ OxidationStates_{std\_dev\_oxidation\_state} }{ DensityFeatures_{vpa} } \right) \\
+    & -0.609\left(\sqrt[3]{ \color{#cc3366}{asi_{sum}} }\right)
+\end{align*}
+
+### Rung 2
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_klat\_300 = -0.42 \\
+    & -1.728\left(\left(\frac{ \color{#cc3366}{pair_{bwdf\_skew\_mean}} }{ DensityFeatures_{vpa} } \right) \left(\sqrt[3]{ \color{#cc3366}{EIN_{ICOHP}} }\right)\right)
+\end{align*}
+
+#### 2D descriptor
+
+\begin{align*}
+& log\_klat\_300 = 0.017 \\
+    & -3.842\left(\sqrt[3]{ \left(\frac{ \color{#cc3366}{asi_{sum}} }{ ElementProperty_{MagpieData\_mean\_MeltingT} } \right) }\right) \\
+    & + 0.04\left(\left(\left|\color{#cc3366}{pair_{bwdf\_skew\_mean}} - OxidationStates_{std\_dev\_oxidation\_state}\right|\right) \\ \left(\ln{ GaussianSymmFunc_{mean\_G4\_0.005\_1.0\_1.0} }\right)\right)
+\end{align*}
+
+---
+
 ## Misc
 
 ### ARFS n-iter convergence checks

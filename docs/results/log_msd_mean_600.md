@@ -91,6 +91,44 @@
 
 ---
 
+## SISSO Models
+
+### Rung 1
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_msd\_mean\_600 = -1.27 \\
+    & -6.386\left(\frac{ ElementProperty_{MagpieData\_mean\_NUnfilled} }{ VoronoiFingerprint_{mean\_Voro\_area\_sum} } \right)
+\end{align*}
+
+#### 2D descriptor
+
+\begin{align*}
+& log\_msd\_mean\_600 = -3.573 \\
+    & + 0.854\left(\exp{ \left(-ElementProperty_{MagpieData\_minimum\_NValence} \right) } \right) \\
+    & + 0.014\left(VoronoiFingerprint_{mean\_Voro\_area\_sum} \\ + ElementProperty_{MagpieData\_maximum\_MendeleevNumber}\right)
+\end{align*}
+
+### Rung 2
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_msd\_all\_600 = -0.74 \\
+    & -0.158\left(\left(ElementProperty_{MagpieData\_mean\_NUnfilled} + \color{#cc3366}{Loewdin_{std}}\right) \\ + \left(\sqrt[3]{ GaussianSymmFunc_{mean\_G4\_0.005\_1.0\_1.0} }\right)\right)
+\end{align*}
+
+#### 2D descriptor
+
+\begin{align*}
+& log\_msd\_mean\_600 = -0.759 \\
+    & -0.271\left(\frac{ \left(\left|ElementProperty_{MagpieData\_minimum\_NUnfilled} - {\color{#cc3366}{Loewdin_{std}}}\right|\right) }{ \left(OPSiteFingerprint_{mean\_sgl\_bd\_CN\_1} + ElementProperty_{MagpieData\_mean\_NUnfilled}\right) } \right) \\
+    & -0.163\left(\left(ElementProperty_{MagpieData\_mean\_NUnfilled} \\ - AtomicPackingEfficiency_{dist\_from\_1\_clusters\_\_APE\_\_less\_0.010}\right) \\ + \left(\sqrt[3]{ GaussianSymmFunc_{mean\_G4\_0.005\_1.0\_1.0} }\right)\right)
+\end{align*}
+
+---
+
 ## Misc
 
 ### ARFS n-iter convergence checks

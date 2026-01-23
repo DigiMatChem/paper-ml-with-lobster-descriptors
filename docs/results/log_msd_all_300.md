@@ -91,6 +91,44 @@
 
 ---
 
+## SISSO Models
+
+### Rung 1
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_msd\_all\_300 = -1.423 \\
+    & -0.187\left(\ln{ G4_{0.005\_1.0\_1.0} }\right)
+\end{align*}
+
+#### 2D descriptor
+
+\begin{align*}
+& log\_msd\_all\_300 = -1.578 \\
+    & -0.173\left(\ln{ G4_{0.005\_1.0\_1.0} }\right) \\
+    & + 0.007\left(\frac{ site_{ElectronAffinity} }{ site_{Column} } \right)
+\end{align*}
+
+### Rung 2
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_msd\_all\_300 = -1.527 \\
+    & -5.07\left(\left(\ln{ site_{AtomicWeight} }\right) \left(\frac{ Gaussian_{center\_3.0\_width\_1.0} }{ Average_{bond\_length} } \right)\right)
+\end{align*}
+
+#### 2D descriptor
+
+\begin{align*}
+& log\_msd\_all\_300 = -1.762 \\
+    & + 0.005\left(\left(\frac{ site_{ElectronAffinity} }{ site_{Column} } \right) + \left(site_{ElectronAffinity} BOOP_{Q\_l\_2}\right)\right) \\
+    & + 0.191\left(\left(\sqrt{ local_{difference\_in\_Electronegativity} }\right) - \left(\ln{ G4_{0.005\_1.0\_1.0} }\right)\right)
+\end{align*}
+
+---
+
 ## Misc
 
 ### ARFS n-iter convergence checks

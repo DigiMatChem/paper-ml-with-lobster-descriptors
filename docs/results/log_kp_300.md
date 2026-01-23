@@ -91,6 +91,44 @@
 
 ---
 
+## SISSO Models
+
+### Rung 1
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_kp\_300 = -0.552 \\
+    & -3.111\left(\frac{ \color{#cc3366}{pair_{bwdf\_skew\_mean}} }{ DensityFeatures_{vpa} } \right)
+\end{align*}
+
+#### 2D descriptor
+\begin{align*}
+& log\_kp\_300 = 0.482 \\
+    & -0.709\left(\sqrt[3]{ \color{#cc3366}{asi_{sum}} }\right) \\
+    & + 3.659\left(\frac{ OxidationStates_{std\_dev\_oxidation\_state} }{ DensityFeatures_{vpa} } \right)
+\end{align*}
+
+### Rung 2
+
+#### 1D descriptor
+
+\begin{align*}
+& log\_kp\_300 = -1.079 \\
+    & + 0.16\left(\left(\sqrt{ GaussianSymmFunc_{mean\_G4\_0.005\_1.0\_1.0} }\right) \\
+    - \left(\ln{ OPSiteFingerprint_{mean\_sgl\_bd\_CN\_1} }\right)\right)
+\end{align*}
+
+#### 2D descriptor
+
+\begin{align*}
+& log\_kp\_300 = -1.88 \\
+    & + 0.179\left(\left(\sqrt{ \color{#cc3366}{asi_{sum} }}\right) \left(\frac{ \color{#cc3366}{pair_{bwdf\_skew\_mean}} }{ \color{#cc3366}{EIN_{ICOHP}} } \right)\right) \\
+    & + 0.238\left(\left(\left|\color{#cc3366}{pair_{bwdf\_skew\_mean}} - OxidationStates_{std\_dev\_oxidation\_state}\right|\right) \\ + \left(\ln{ GaussianSymmFunc_{mean\_G4\_0.005\_1.0\_1.0} }\right)\right)
+\end{align*}
+
+---
+
 ## Misc
 
 ### ARFS n-iter convergence checks

@@ -2,24 +2,24 @@ Results
 ==========
 
 Overview of RF and MODNet model metrics for all targets from 5-Fold CV runs. For detailed results from each of the methods applied for each target please click on the target name.
-The entries highlighted in bold indicate the target where meaningful improvement in models predictive performance is observed on inclusion of quantum-chemical bonding descriptors.
+The target entries marked with `*` indicate siginificant improvement in models predictive performance is observed on inclusion of quantum-chemical bonding descriptors.
 
  
 
 | **Target** | **RF<br>(Matminer)** | **RF<br>(Matminer+LOB)** | **MODNet<br>(Matminer)** | **MODNet<br>(Matminer+LOB)** |
 |-------|---------------|-------------------|-------------------|-----------------------|
-| {doc}`last_ph_peak <last_phdos_peak>` (cm⁻¹) | 39.509 ± 4.915 | **39.198 ± 4.110** | 33.348 ± 7.193 | **30.639 ± 3.409** |
-| {doc}`max_pfc <max_pfc>` (eV/Å²) | 1.582 ± 0.177 | **1.385 ± 0.186** | 1.243 ± 0.184 | **1.057 ± 0.188** |
-| {doc}`log_g_vrh <log_g_vrh>` | 0.096 ± 0.004 | 0.091 ± 0.006 | 0.067 ± 0.004 | 0.066 ± 0.004 |
-| {doc}`log_k_vrh <log_k_vrh>` | 0.085 ± 0.006 | 0.079 ± 0.005 | 0.055 ± 0.005 | 0.053 ± 0.005 |
-| {doc}`log_msd_all_300 <log_msd_all_300>` | 0.076 ± 0.001 | 0.075 ± 0.001 | 0.059 ± 0.001 | 0.059 ± 0.003 |
-| {doc}`log_msd_all_600 <log_msd_all_600>` | 0.079 ± 0.001 | 0.078 ± 0.001 | 0.062 ± 0.001 | 0.059 ± 0.001 |
+| {doc}`last_ph_peak <last_phdos_peak>` (cm⁻¹) | 39.509 ± 4.915 | 39.198 ± 4.110 | 33.348 ± 7.193 | 30.639 ± 3.409 |
+| {doc}`max_pfc <max_pfc>`* (eV/Å²) | 1.582 ± 0.177 | 1.385 ± 0.186 | 1.243 ± 0.184 | 1.057 ± 0.188 |
+| {doc}`log_g_vrh <log_g_vrh>`* | 0.096 ± 0.004 | 0.091 ± 0.006 | 0.067 ± 0.004 | 0.066 ± 0.004 |
+| {doc}`log_k_vrh <log_k_vrh>`* | 0.085 ± 0.006 | 0.079 ± 0.005 | 0.055 ± 0.005 | 0.053 ± 0.005 |
+| {doc}`log_klat_300 <log_klat_300>`*| 0.190 ± 0.003 | 0.185 ± 0.002 | 0.159 ± 0.006 | 0.154 ± 0.009 |
+| {doc}`log_kp_300 <log_kp_300>`* | 0.224 ± 0.001 | 0.216 ± 0.002 | 0.192 ± 0.008 | 0.185 ± 0.008** |
+| {doc}`log_msd_all_300 <log_msd_all_300>`* | 0.076 ± 0.001 | 0.075 ± 0.001 | 0.059 ± 0.001 | 0.059 ± 0.003 |
+| {doc}`log_msd_all_600 <log_msd_all_600>`* | 0.079 ± 0.001 | 0.078 ± 0.001 | 0.062 ± 0.001 | 0.059 ± 0.001 |
 | {doc}`log_msd_mean_300 <log_msd_mean_300>` | 0.069 ± 0.001 | 0.067 ± 0.002 | 0.051 ± 0.002 | 0.053 ± 0.004 |
-| {doc}`log_msd_mean_600 <log_msd_mean_600>` | 0.072 ± 0.002 | 0.072 ± 0.002 | 0.053 ± 0.004 | 0.055 ± 0.004 |
+| {doc}`log_msd_mean_600 <log_msd_mean_600>`* | 0.072 ± 0.002 | 0.072 ± 0.002 | 0.053 ± 0.004 | 0.055 ± 0.004 |
 | {doc}`log_msd_max_300 <log_msd_max_300>` | 0.084 ± 0.004 | 0.083 ± 0.003 | 0.069 ± 0.004 | 0.071 ± 0.006 |
 | {doc}`log_msd_max_600 <log_msd_max_600>` | 0.086 ± 0.003 | 0.086 ± 0.003 | 0.073 ± 0.003 | 0.073 ± 0.003 |
-| {doc}`log_klat_300 <log_klat_300>`| 0.190 ± 0.003 | **0.185 ± 0.002** | 0.159 ± 0.006 | **0.154 ± 0.009** |
-| {doc}`log_kp_300 <log_kp_300>` | 0.224 ± 0.001 | **0.216 ± 0.002** | 0.192 ± 0.008 | **0.185 ± 0.008** |
 | {doc}`Cv_25  <Cv_25>` (meV/atom)| 0.005 ± 0.000 | 0.005 ± 0.000 | 0.004 ± 0.000 | 0.004 ± 0.000 |
 | {doc}`Cv_305 <Cv_305>` (meV/atom)| 0.003 ± 0.000 | 0.003 ± 0.000 | 0.002 ± 0.000 | 0.003 ± 0.000 |
 | {doc}`Cv_705 <Cv_705>` (meV/atom)| 0.001 ± 0.000 | 0.001 ± 0.000 | 0.001 ± 0.000 | 0.001 ± 0.000 |
@@ -37,8 +37,8 @@ The entries highlighted in bold indicate the target where meaningful improvement
 ```{toctree}
 :maxdepth: 1
 :hidden:
-max_pfc
 last_phdos_peak
+max_pfc
 log_g_vrh
 log_k_vrh
 log_klat_300

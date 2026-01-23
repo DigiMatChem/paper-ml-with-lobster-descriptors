@@ -91,6 +91,44 @@
 
 ---
 
+## SISSO Models
+
+### Rung 1
+
+#### 1D descriptor
+
+\begin{align*}
+& max\_pfc = 1.769 \\
+    & -4.25\left(\frac{ \color{#cc3366}{bwdf_{at\_dist0}} }{ \color{#cc3366}{dist_{at\_neg\_bwdf0}} } \right)
+\end{align*}
+
+#### 2D descriptor
+
+\begin{align*}
+& max\_pfc = -13.216 \\
+    & -4.304\left(\color{#cc3366}{bwdf_{at\_dist0} * asi_{max}}\right) \\
+    & + 43.472\left(\frac{1.0}{ \color{#cc3366}{dist_{at\_neg\_bwdf0}} }\right)
+\end{align*}
+
+### Rung 2
+
+#### 1D descriptor
+
+\begin{align*}
+& max\_pfc = 2.476 \\
+    & + 171.665\left(\left(\sqrt{ \color{#cc3366}{asi_{max}} }\right) \left(\sqrt[3]{ AGNIFingerPrint_{mean\_AGNI\_eta\_8.00e-01} }\right)\right)
+\end{align*}
+
+#### 2D descriptor
+
+\begin{align*}
+& max\_pfc = 9.574 \\
+    & -17.356\left(\left|\left(\sqrt[3]{ AGNIFingerPrint_{mean\_AGNI\_eta\_8.00e-01} }\right) - \\ \left(MaximumPackingEfficiency_{max\_packing\_efficiency} \\ + AGNIFingerPrint_{mean\_AGNI\_eta\_8.00e-01}\right)\right|\right) \\
+    & -5.022\left(\left(\sqrt[3]{ \color{#cc3366}{asi_{max}} }\right) \left(\frac{ \color{#cc3366}{bwdf_{at\_dist0}} }{ \color{#cc3366}{dist_{at\_neg\_bwdf0}} } \right)\right)
+\end{align*}
+
+---
+
 ## Misc
 
 ### ARFS n-iter convergence checks
