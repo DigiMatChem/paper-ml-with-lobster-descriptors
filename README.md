@@ -1,13 +1,13 @@
 [![Testing Linux](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/actions/workflows/testing.yml/badge.svg?branch=main)](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/actions/workflows/testing.yml) [![Build Docs](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/actions/workflows/docs.yml)
 
 # General
-This repository contains codes and data used for of the publication:
-**A critical assessment of bonding descriptors for predicting materials properties**
+To keep the publication concise, not all results are included. This repository provides a one-stop access point to all results, along with all code and data required to reproduce them. Results are organized as static HTML pages for easy navigation.
 
 
 Preprint available at ...
 
 The code has been written by A. Naik with contributions from Dr. Philipp Benner and ....
+
 
 ## Installation
 
@@ -60,7 +60,9 @@ The scripts in [notebooks/ml_scripts](https://github.com/DigiMatChem/paper-ml-wi
 
 ### ML models
 
-The trained ML models and postprocessed data to recreate the figures in publication are available for download here:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18329982.svg)](https://doi.org/10.5281/zenodo.18329982)
+To support reproducibility, the trained machine learning models and post-processed data used to generate the figures in the publication are made available via Zenodo at the following DOI:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18329982.svg)](https://doi.org/10.5281/zenodo.18329982)
 
 
 ## Other important citations
