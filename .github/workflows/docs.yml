@@ -33,6 +33,7 @@ jobs:
             --user "$(id -u):$(id -g)" \
             ghcr.io/digimatchem/paper-ml-with-lobster-descriptors/mlproject-python-3.10:latest \
             bash -c "
+            cp -r notebooks/misc/*.ipynb docs/misc/ && \
             cp -r notebooks/ml_scripts/training/*.ipynb docs/training/ && \
             cp -r notebooks/ml_scripts/correlation_analysis/*.ipynb docs/correlation_analysis/ && \
             cp -r notebooks/ml_scripts/explainer/*.ipynb docs/explainer/ && \
