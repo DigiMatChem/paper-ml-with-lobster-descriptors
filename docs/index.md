@@ -56,12 +56,12 @@ about/license
 
 `mlproject` is a package that hosts all the utility scripts to reproduce the results from our publication: **A critical assessment of bonding descriptors for predicting materials properties**. 
 
-To keep the publication concise, not all results are included. This repository provides a one-stop access point to all results, along with all code and data required to reproduce them. Results are organized as static HTML pages for easy navigation.
+To keep the publication concise, not all results are included. This repository provides a one-stop access point to all results, along with all code and data required to reproduce them. Results are organized as static HTML pages for easy navigation and are deployed on github pages.
 
 (readme-page)=
 
 ```{include} ../README.md
 ---
-start-line: 11
+start-line: 9
 ---
 ```
