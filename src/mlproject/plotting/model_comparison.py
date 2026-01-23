@@ -131,7 +131,7 @@ def plot_errors(
         name1, name2 = labels
 
         fig, axes = plt.subplots(2, 1, figsize=figsize, sharex=True)
-        x = [f"fold_{i}" for i in range(1, len(a1) + 1)]
+        x = [f"{i}" for i in range(1, len(a1) + 1)]
 
         axes[0].plot(x, a1, marker="o", label=name1, color="#fdbf6f")
         axes[0].plot(x, a2, marker="o", label=name2, color="#a6cee3")

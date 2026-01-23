@@ -86,6 +86,6 @@ def test_plot_errors_fold_comparison():
     assert any("mean diff=" in text for text in legend_texts_ax2)
     # assert tick labels
     tick_labels = [tick.get_text() for tick in ax2.get_xticklabels()]
-    assert tick_labels == ["fold_1", "fold_2", "fold_3", "fold_4", "fold_5"]
+    assert tick_labels == ["1", "2", "3", "4", "5"]
     # assert title contains correct info
     assert fig.axes[0].get_title() == " rf Fold-wise Comparison – test_property"
