@@ -59,9 +59,14 @@ The scripts in [notebooks/targets](https://github.com/DigiMatChem/paper-ml-with-
 
 ### ML scripts
 
-The scripts in [notebooks/ml_scripts](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/tree/main/notebooks/ml_scripts) can be used to reproduce the results of the manuscripts. Each subdirectory is named as per sections in the manuscript and includes comments to make it self explanotory and easy to follow.
+The scripts in [notebooks/ml_scripts](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/tree/main/notebooks/ml_scripts) can be used to reproduce the results of the manuscript. Each subdirectory is named as per sections in the manuscript and includes comments to make it self explanotory and easy to follow.
 
-### ML models
+### Misc
+
+The script in [notebooks/misc](https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/tree/main/notebooks/misc) can be used to generate the correlation plots shown in the manuscript.
+
+
+## ML models
 
 To support reproducibility, the trained machine learning models and post-processed data used to generate the figures in the publication are made available via Zenodo at the following DOI:
 
