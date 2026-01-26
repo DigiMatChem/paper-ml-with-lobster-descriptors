@@ -28,7 +28,7 @@ def test_plot_errors_boxplot():
     assert len(fig.axes) == 1
     ax = fig.axes[0]
     assert ax.get_xlabel() == "Descriptor set"
-    assert ax.get_ylabel() == r"mean MAE / fold [eV]"
+    assert ax.get_ylabel() == r"MAE / fold [eV]"
     print(ax.get_title())
     assert "RF – test_property" in ax.get_title()
     assert "Paired t-test" in ax.get_title()
@@ -54,7 +54,7 @@ def test_plot_errors_hist():
     assert fig is not None
     assert len(fig.axes) == 1
     ax = fig.axes[0]
-    assert ax.get_xlabel() == r"mean MAE / fold [eV]"
+    assert ax.get_xlabel() == r"MAE / fold [eV]"
     assert ax.get_ylabel() == "Frequency (log scale)"
     assert ax.get_yscale() == "log"
     legend_texts = [text.get_text() for text in ax.get_legend().get_texts()]
@@ -76,8 +76,8 @@ def test_plot_errors_fold_comparison():
     assert fig is not None
     assert len(fig.axes) == 2
     ax1, ax2 = fig.axes
-    assert ax1.get_ylabel() == r"mean MAE / fold [eV]"
-    assert ax2.get_ylabel() == "mean MAE diff / fold [eV]"
+    assert ax1.get_ylabel() == r"MAE / fold [eV]"
+    assert ax2.get_ylabel() == "MAE diff / fold [eV]"
     assert ax2.get_xlabel() == "Fold"
     legend_texts_ax1 = [text.get_text() for text in ax1.get_legend().get_texts()]
     assert "Feature Set 1" in legend_texts_ax1

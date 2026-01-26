@@ -50,7 +50,7 @@ def plot_errors(
 
         plt.xlabel("Descriptor set", fontsize=14)
         plt.ylabel(
-            rf"mean MAE / fold [{target_unit}]" if target_unit else "mean MAE / fold",
+            rf"MAE / fold [{target_unit}]" if target_unit else "MAE / fold",
             fontsize=14,
         )
         plt.xticks(fontsize=14)
@@ -106,7 +106,7 @@ def plot_errors(
             )
 
         plt.xlabel(
-            rf"mean MAE / fold [{target_unit}]" if target_unit else "mean MAE / fold",
+            rf"MAE / fold [{target_unit}]" if target_unit else "MAE / fold",
             fontsize=14,
         )
         plt.ylabel("Frequency (log scale)", fontsize=14)
@@ -136,7 +136,7 @@ def plot_errors(
         axes[0].plot(x, a1, marker="o", label=name1, color="#fdbf6f")
         axes[0].plot(x, a2, marker="o", label=name2, color="#a6cee3")
         axes[0].set_ylabel(
-            rf"mean MAE / fold [{target_unit}]" if target_unit else "mean MAE / fold",
+            rf"MAE / fold [{target_unit}]" if target_unit else "MAE / fold",
             fontsize=14,
         )
         axes[0].legend(fontsize=14)
@@ -162,11 +162,7 @@ def plot_errors(
         )
 
         axes[1].set_ylabel(
-            (
-                f"mean MAE diff / fold [{target_unit}]"
-                if target_unit
-                else "mean MAE diff / fold"
-            ),
+            (f"MAE diff / fold [{target_unit}]" if target_unit else "MAE diff / fold"),
             fontsize=14,
         )
         axes[1].set_xlabel("Fold", fontsize=14)
