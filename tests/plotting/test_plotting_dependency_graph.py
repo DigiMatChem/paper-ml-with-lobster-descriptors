@@ -30,11 +30,11 @@ def test_plot_dependency_graph_from_df(test_data_dir, tmp_path):
         target_name=f"{target_name}",
         metric="R2 Mean",  # or "MAE Mean", "RMSE Mean", etc.
         node_colors={
-            "Lobster Features": "#a6cee3",
-            "Matminer Features": "#fdbf6f",
+            "LOBSTER": "#a6cee3",
+            "MATMINER": "#fdbf6f",
             f"{target_name}": "#99d8c9",
         },
-        title=f"(Matminer+Lobster) Features = {r2_combined_feat}",
+        title=f"(MATMINER+LOBSTER) = {r2_combined_feat}",
         save_path=f"{tmp_path}/{target_name}_feat_metrics.png",
     )
 
@@ -51,7 +51,7 @@ def test_plot_feature_learnability(test_data_dir, tmp_path):
 
     plot_feature_learnability(
         results=summary_m2l,
-        title="Lobster Feature Learnability from Matminer Features",
+        title="LOBSTER Feature Learnability from MATMINER Features",
         save_path=f"{tmp_path}/{target_name}_m2l_learnability.png",
         n_feats=20,
     )

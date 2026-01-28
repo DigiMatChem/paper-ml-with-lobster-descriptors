@@ -87,13 +87,13 @@ def plot_feature_importance(
     plt.tight_layout()
     # legend handles
     lob_patch = mpatches.Patch(
-        facecolor=lob_color, edgecolor="black", linewidth=0.1, label="Lobster Features"
+        facecolor=lob_color, edgecolor="black", linewidth=0.1, label="LOBSTER"
     )
     mat_patch = mpatches.Patch(
         facecolor=default_color,
         edgecolor="black",
         linewidth=0.1,
-        label="Matminer Features",
+        label="MATMINER",
     )
     ax.legend(
         handles=[lob_patch, mat_patch], fontsize=tick_label_fontsize, loc="lower right"

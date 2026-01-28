@@ -57,50 +57,53 @@ def plot_dependency_graph_from_df(
     r_feature1_feature2 = get_metric_value(feature1_name, feature2_name)
     r_feature2_feature1 = get_metric_value(feature2_name, feature1_name)
 
+    graph_feat_name_1 = feature1_name.split(" ")[0].upper()
+    graph_feat_name_2 = feature2_name.split(" ")[0].upper()
+
     default_colors = {
-        feature1_name: "#7fc7ff",  # blue
-        feature2_name: "#a5d6a7",  # green
+        graph_feat_name_1: "#7fc7ff",  # blue
+        graph_feat_name_2: "#a5d6a7",  # green
         target_name: "#ffcc80",  # orange
     }
     colors = {**default_colors, **(node_colors or {})}
 
     G = nx.MultiDiGraph()
-    G.add_nodes_from([feature1_name, feature2_name, target_name])
+    G.add_nodes_from([graph_feat_name_1, graph_feat_name_2, target_name])
 
     G.add_edge(
-        feature1_name,
+        graph_feat_name_1,
         target_name,
         key="f1_target",
         value=r_feature1_target,
-        color=colors[feature1_name],
+        color=colors[graph_feat_name_1],
     )
     G.add_edge(
-        feature2_name,
+        graph_feat_name_2,
         target_name,
         key="f2_target",
         value=r_feature2_target,
-        color=colors[feature2_name],
+        color=colors[graph_feat_name_2],
     )
     G.add_edge(
-        feature1_name,
-        feature2_name,
+        graph_feat_name_1,
+        graph_feat_name_2,
         key="f1_f2",
         value=r_feature1_feature2,
         connectionstyle="arc3,rad=0.2",
-        color=colors[feature1_name],
+        color=colors[graph_feat_name_1],
     )
     G.add_edge(
-        feature2_name,
-        feature1_name,
+        graph_feat_name_2,
+        graph_feat_name_1,
         key="f2_f1",
         value=r_feature2_feature1,
         connectionstyle="arc3,rad=0.2",
-        color=colors[feature2_name],
+        color=colors[graph_feat_name_2],
     )
 
     pos = {
-        feature1_name: (0.3, 0.3),
-        feature2_name: (0.7, 0.3),
+        graph_feat_name_1: (0.3, 0.3),
+        graph_feat_name_2: (0.7, 0.3),
         target_name: (0.5, 0.5),
     }
 
@@ -157,8 +160,8 @@ def plot_dependency_graph_from_df(
         xm, ym = (x1 + x2) / 2, (y1 + y2) / 2
         offset = (
             -0.03
-            if (u, v) == (feature1_name, feature2_name)
-            else (0.03 if (u, v) == (feature2_name, feature1_name) else 0)
+            if (u, v) == (graph_feat_name_1, graph_feat_name_2)
+            else (0.03 if (u, v) == (graph_feat_name_2, graph_feat_name_1) else 0)
         )
 
         ax.text(

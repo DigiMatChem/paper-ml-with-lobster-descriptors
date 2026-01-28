@@ -39,3 +39,7 @@ def test_plot_feature_importance(test_data_dir):
     assert len(fig2.axes[0].patches) > 0
     assert fig1.axes[0].get_xlabel() == "PFI mean feature importance"
     assert fig2.axes[0].get_xlabel() == "SHAP mean feature importance"
+    # check for legend labels
+    legend_labels = [text.get_text() for text in fig1.axes[0].get_legend().get_texts()]
+    assert "LOBSTER" in legend_labels
+    assert "MATMINER" in legend_labels
