@@ -6,7 +6,7 @@ The target entries marked with `*` indicate siginificant improvement in models p
 
  
 
-| **Target** | **RF<br>(Matminer)** | **RF<br>(Matminer+LOB)** | **MODNet<br>(Matminer)** | **MODNet<br>(Matminer+LOB)** |
+| **Target** | **RF<br>(MATMINER)** | **RF<br>(MATMINER+LOBSTER)** | **MODNet<br>(MATMINER)** | **MODNet<br>(MATMINER+LOBSTER)** |
 |-------|---------------|-------------------|-------------------|-----------------------|
 | {doc}`last_ph_peak <last_phdos_peak>` (cm⁻¹) | 39.509 ± 4.915 | 39.198 ± 4.110 | 33.348 ± 7.193 | 30.639 ± 3.409 |
 | {doc}`max_pfc <max_pfc>`* (eV/Å²) | 1.582 ± 0.177 | 1.385 ± 0.186 | 1.243 ± 0.184 | 1.057 ± 0.188 |
