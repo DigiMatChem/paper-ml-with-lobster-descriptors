@@ -1,7 +1,7 @@
 Anharmonic properties
 ======================
 
-Scripts to extract and save lattice thermal conductitvity dataset
+Scripts to extract and save lattice thermal conductitvity dataset 
 
 .. toctree::
    :maxdepth: 2

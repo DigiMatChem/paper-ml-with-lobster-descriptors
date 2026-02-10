@@ -1,7 +1,7 @@
 Elasticity
 =============
 
-Scripts to query and save elasticity datasets
+Scripts to query and save elasticity datasets 
 
 .. toctree::
    :maxdepth: 2

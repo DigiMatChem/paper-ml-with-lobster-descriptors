@@ -65,7 +65,7 @@
 | max  |     26.3936  |    110.553  |       12.5559  |       36.6207 | 0.9986      | 0.9911    |
 | std  |      3.52212 |     24.3505 |        1.23771 |        3.4089 | 0.000577581 | 0.0143975 |
 
-### Corrected resampled t-test on 10-fold CV
+### Corrected resampled t-test on 10-fold CV 
 
 **Summary**
 |        |   t_stat |   p_value | significance_stars   |      d_av |   rel_improvement |   percent_folds_improved |
@@ -99,8 +99,9 @@
 
 ### MAE/ fold from 10-fold CV
 
-Alternative visual summary of input data for t-test
+Alternative visual summary of input data for t-test 
 
 ![RF per fold MAEs](../_static/last_phdos_peak/rf_fold_comparison.png)
 
 ![MODNet per fold MAEs](../_static/last_phdos_peak/modnet_fold_comparison.png)
+

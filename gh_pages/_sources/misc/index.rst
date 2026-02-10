@@ -1,7 +1,7 @@
 Save figures
 ===============
 
-Script to save correlation plots
+Script to save correlation plots 
 
 .. toctree::
    :maxdepth: 2

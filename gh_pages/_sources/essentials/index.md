@@ -26,11 +26,13 @@ Abbreviations
 Useful Links
 ------------
 
-- **Matminer featurizers**
-  [Matminer Featurizers Summary](https://hackingmaterials.lbl.gov/matminer/featurizer_summary.html)
+- **Matminer featurizers**  
+  [Matminer Featurizers Summary](https://hackingmaterials.lbl.gov/matminer/featurizer_summary.html)  
 
-- **LOBSTER descriptor formulations**
-  [LobsterPy Documentation](https://jageo.github.io/LobsterPy/fundamentals/index.html#features-curated-for-ml-via-featurizer)
+- **LOBSTER descriptor formulations**  
+  [LobsterPy Documentation](https://jageo.github.io/LobsterPy/fundamentals/index.html#features-curated-for-ml-via-featurizer)  
 
-- **Distance correlation**
-  [Theoretical overview from dcor Python Package Documentation](https://dcor.readthedocs.io/en/latest/theory.html)
+- **Distance correlation**  
+  [Theoretical overview from dcor Python Package Documentation](https://dcor.readthedocs.io/en/latest/theory.html)  
+
+

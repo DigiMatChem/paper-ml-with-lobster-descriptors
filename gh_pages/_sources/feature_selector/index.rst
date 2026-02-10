@@ -1,7 +1,7 @@
 Feature selector
 =====================
 
-Scripts related to All Relevant Feature selector (ARFS)
+Scripts related to All Relevant Feature selector (ARFS) 
 
 .. toctree::
    :maxdepth: 2

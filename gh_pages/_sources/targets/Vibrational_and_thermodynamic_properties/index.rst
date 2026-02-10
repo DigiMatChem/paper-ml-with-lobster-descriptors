@@ -1,16 +1,16 @@
 Vibrational and thermodynamic properties
 =========================================
 
-Scripts to compute, extract and save vibrational and thermodynamic properties datasets
+Scripts to compute, extract and save vibrational and thermodynamic properties datasets 
 
 .. important::
 
-   Numbers indicate the order in which the scripts should be executed.
-   The first two scripts should be executed in the conda environment obtained using ``abipy_env.yml``.
+   Numbers indicate the order in which the scripts should be executed. 
+   The first two scripts should be executed in the conda environment obtained using ``abipy_env.yml``. 
    These scripts will generate the necessary data needed to execute scripts numbered 3 and 4.
 
    1. :doc:`convert_ddb_to_phonopy`
-
+   
       - This script generates required phonopy FORCE_CONSTANTS, BORN, POSCAR and supercell_POSCAR file using input ddb file.
    2. :doc:`msd_convergence`
 

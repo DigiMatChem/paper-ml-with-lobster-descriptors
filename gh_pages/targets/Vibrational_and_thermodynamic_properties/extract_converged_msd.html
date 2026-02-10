@@ -9,20 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Extract converged MSD values for all(mean of unique sites), max and mean @ 300 and 600K &#8212; mlproject</title>
-
-
-
+  
+  
+  
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-
+  
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 <link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-
+  
   <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
@@ -54,30 +54,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
-
-
+  
+  
   <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-
-
+  
+  
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-
+  
   <div id="pst-scroll-pixel-helper"></div>
-
+  
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-
+  
   <input type="checkbox"
           class="sidebar-toggle"
           id="pst-primary-sidebar-checkbox"/>
   <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-
+  
   <input type="checkbox"
           class="sidebar-toggle"
           id="pst-secondary-sidebar-checkbox"/>
   <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-
+  
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
@@ -103,43 +103,43 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
-
+  
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
-
+  
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-
-
-
+      
+      
+      
       <div class="bd-sidebar-primary bd-sidebar">
+        
 
-
-
+  
   <div class="sidebar-header-items sidebar-primary__section">
-
-
-
-
+    
+    
+    
+    
   </div>
-
+  
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-
-
-
+  
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
     <p class="title logo__title">mlproject</p>
-
+  
 </a></div>
         <div class="sidebar-primary-item">
 
@@ -365,39 +365,39 @@
     </div>
 </nav></div>
     </div>
-
-
+  
+  
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-
+  
   <div id="rtd-footer-container"></div>
 
 
       </div>
-
+      
       <main id="main-content" class="bd-main" role="main">
-
-
+        
+        
 
 <div class="sbt-scroll-pixel-helper"></div>
 
           <div class="bd-content">
             <div class="bd-article-container">
-
+              
               <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
-
+  
     <div class="header-article-items__start">
-
+      
         <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
 </button></div>
-
+      
     </div>
-
-
+  
+  
     <div class="header-article-items__end">
-
+      
         <div class="header-article-item">
 
 <div class="article-header-buttons">
@@ -411,15 +411,15 @@
     <i class="fab fa-github"></i>
   </button>
   <ul class="dropdown-menu">
-
-
-
+      
+      
+      
       <li><a href="https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
   <i class="fab fa-github"></i>
@@ -427,16 +427,16 @@
 <span class="btn__text-container">Repository</span>
 </a>
 </li>
-
-
-
-
+      
+      
+      
+      
       <li><a href="https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/issues/new?title=Issue%20on%20page%20%2Ftargets/Vibrational_and_thermodynamic_properties/extract_converged_msd.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
@@ -444,7 +444,7 @@
 <span class="btn__text-container">Open issue</span>
 </a>
 </li>
-
+      
   </ul>
 </div>
 
@@ -458,15 +458,15 @@
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-
-
-
+      
+      
+      
       <li><a href="../../_sources/targets/Vibrational_and_thermodynamic_properties/extract_converged_msd.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
@@ -474,17 +474,17 @@
 <span class="btn__text-container">.ipynb</span>
 </a>
 </li>
-
-
-
-
+      
+      
+      
+      
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
   title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
@@ -492,7 +492,7 @@
 <span class="btn__text-container">.pdf</span>
 </button>
 </li>
-
+      
   </ul>
 </div>
 
@@ -504,7 +504,7 @@
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
   <i class="fas fa-expand"></i>
@@ -534,29 +534,29 @@ document.write(`
 </script>
 
 </div></div>
-
+      
     </div>
-
+  
 </div>
 </div>
-
-
+              
+              
 
 <div id="jb-print-docs-body" class="onlyprint">
     <h1>Extract converged MSD values for all(mean of unique sites), max and mean  @ 300 and 600K</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
-
+            
         </div>
     </div>
 </div>
 
-
-
+              
+                
 <div id="searchbox"></div>
                 <article class="bd-article">
-
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="extract-converged-msd-values-for-all-mean-of-unique-sites-max-and-mean-300-and-600k">
 <h1>Extract converged MSD values for all(mean of unique sites), max and mean  &#64; 300 and 600K<a class="headerlink" href="#extract-converged-msd-values-for-all-mean-of-unique-sites-max-and-mean-300-and-600k" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
@@ -598,13 +598,13 @@ document.write(`
          <span class="n">species</span><span class="o">=</span><span class="n">phonopy_primitive</span><span class="o">.</span><span class="n">species</span><span class="p">,</span>
          <span class="n">coords</span><span class="o">=</span><span class="n">phonopy_primitive</span><span class="o">.</span><span class="n">frac_coords</span><span class="p">,</span>
          <span class="n">to_unit_cell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
+    
     <span class="c1"># initialize structure matcher</span>
     <span class="n">default_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;primitive_cell&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;scale&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;attempt_supercell&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;ltol&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s2">&quot;stol&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;angle_tol&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
     <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
-        <span class="n">default_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">default_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> 
     <span class="n">sm</span> <span class="o">=</span> <span class="n">StructureMatcher</span><span class="p">(</span><span class="o">**</span><span class="n">default_kwargs</span><span class="p">)</span>
-
+    
     <span class="c1"># get sc matrix and translation</span>
     <span class="n">sc_mat</span><span class="p">,</span> <span class="n">shift</span> <span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">get_transformation</span><span class="p">(</span><span class="n">phonopy_primitive</span><span class="p">,</span> <span class="n">lob_st</span><span class="p">)</span>
     <span class="n">M_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">sc_mat</span><span class="p">)</span>
@@ -612,7 +612,7 @@ document.write(`
     <span class="c1"># check if values in shift are close to zero, if yes then set it explicitly to zero</span>
     <span class="n">shift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">i</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">shift</span><span class="p">])</span>
 
-
+    
     <span class="c1"># set a mapping dict of phonopy primitive atoms as keys and equivalent atoms in lobster primitive atoms as values</span>
     <span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">ix</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mapping</span><span class="p">)}</span>
 
@@ -620,12 +620,12 @@ document.write(`
     <span class="n">site_matches</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mapping</span><span class="p">):</span>
         <span class="n">new_basis_coord</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M_inv</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">lob_st</span><span class="o">.</span><span class="n">frac_coords</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="n">shift</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
+        
         <span class="n">site_match</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">phonopy_primitive</span><span class="o">.</span><span class="n">frac_coords</span><span class="p">[</span><span class="n">ix</span><span class="p">],</span> <span class="n">new_basis_coord</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
 
         <span class="n">site_matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">site_match</span><span class="p">)</span>
 
-
+        
     <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">site_matches</span><span class="p">),</span> <span class="n">mapping_dict</span>
 </pre></div>
 </div>
@@ -680,7 +680,7 @@ document.write(`
     <span class="n">sg_lob_struct</span> <span class="o">=</span> <span class="n">lob_struct</span><span class="o">.</span><span class="n">get_space_group_info</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="n">mapped_data</span><span class="o">=</span><span class="p">{</span><span class="n">mpid</span> <span class="p">:</span> <span class="p">{}}</span>
-
+    
     <span class="k">if</span> <span class="n">all_mapped</span> <span class="ow">and</span> <span class="n">sg_lob_struct</span> <span class="o">==</span> <span class="n">sg_ph_struct</span><span class="p">:</span>
         <span class="n">converged_at_mesh</span> <span class="o">=</span> <span class="n">tdisp_data</span><span class="p">[</span><span class="n">mpid</span><span class="p">][</span><span class="mf">0.1</span><span class="p">][</span><span class="s2">&quot;converged_at&quot;</span><span class="p">]</span>
         <span class="n">index_mesh</span> <span class="o">=</span> <span class="n">tdisp_data</span><span class="p">[</span><span class="n">mpid</span><span class="p">][</span><span class="mf">0.1</span><span class="p">][</span><span class="s2">&quot;mesh&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">converged_at_mesh</span><span class="p">)</span>
@@ -692,7 +692,7 @@ document.write(`
             <span class="k">for</span> <span class="n">ph_site</span><span class="p">,</span> <span class="n">lob_site</span> <span class="ow">in</span> <span class="n">mapping_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="n">equ_site</span> <span class="o">=</span> <span class="n">inequivalent_sites</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">lob_site</span><span class="p">)</span>
                 <span class="n">tdip_val</span> <span class="o">=</span> <span class="n">tdisp_temp</span><span class="p">[</span><span class="n">ph_struct</span><span class="o">.</span><span class="n">species</span><span class="p">[</span><span class="n">ph_site</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ph_site</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)][</span><span class="n">index_mesh</span><span class="p">]</span>
-
+                
                 <span class="k">if</span> <span class="n">equ_site</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mapped_data</span><span class="p">[</span><span class="n">mpid</span><span class="p">][</span><span class="n">temp</span><span class="p">]:</span>
                     <span class="n">mapped_data</span><span class="p">[</span><span class="n">mpid</span><span class="p">][</span><span class="n">temp</span><span class="p">][</span><span class="n">equ_site</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">tdip_val</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -780,7 +780,7 @@ document.write(`
                     <span class="n">site_msd_600</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">all_data</span><span class="p">[</span><span class="n">mpid</span><span class="p">][</span><span class="n">temp</span><span class="p">][</span><span class="n">site</span><span class="p">])</span>
                 <span class="n">msd_600_mean</span><span class="p">[</span><span class="n">mpid</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">site_msd_600</span><span class="p">))</span> <span class="c1"># mean of msd from all sites in a structure</span>
                 <span class="n">msd_600_max</span><span class="p">[</span><span class="n">mpid</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">site_msd_600</span><span class="p">))</span> <span class="c1"># max of msd from all sites in a structure</span>
-
+                    
 </pre></div>
 </div>
 </div>
@@ -814,14 +814,14 @@ document.write(`
 
 
                 </article>
+              
 
-
-
-
-
-
+              
+              
+              
+              
                 <footer class="prev-next-footer d-print-none">
-
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="extract_max_pfc.html"
@@ -843,53 +843,53 @@ document.write(`
     </a>
 </div>
                 </footer>
-
+              
             </div>
-
-
-
-
+            
+            
+              
+            
           </div>
           <footer class="bd-footer-content">
-
+            
 <div class="bd-footer-content__inner container">
-
+  
   <div class="footer-item">
-
+    
 <p class="component-author">
 By Aakash Naik, Janine George
 </p>
 
   </div>
-
+  
   <div class="footer-item">
-
+    
 
   <p class="copyright">
-
+    
       © Copyright 2025, DigiMatChem.
       <br/>
-
+    
   </p>
 
   </div>
-
+  
   <div class="footer-item">
-
+    
   </div>
-
+  
   <div class="footer-item">
-
+    
   </div>
-
+  
 </div>
           </footer>
-
+        
 
       </main>
     </div>
   </div>
-
+  
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>

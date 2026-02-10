@@ -1,7 +1,7 @@
 Model Comparison
 ================
 
-Script to perform corrected resampled t-test to compare model performance
+Script to perform corrected resampled t-test to compare model performance  
 
 .. toctree::
    :maxdepth: 2

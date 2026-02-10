@@ -1,7 +1,7 @@
 Model Training
 ================
 
-Scripts to train and evaluate RF, MODNET and SISSO models
+Scripts to train and evaluate RF, MODNET and SISSO models 
 
 .. toctree::
    :maxdepth: 2

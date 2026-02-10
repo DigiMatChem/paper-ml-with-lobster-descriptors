@@ -4,7 +4,7 @@ Results
 Overview of RF and MODNet model metrics for all targets from 5-Fold CV runs. For detailed results from each of the methods applied for each target please click on the target name.
 The target entries marked with `*` indicate significant improvement in models predictive performance is observed on inclusion of quantum-chemical bonding descriptors.
 
-
+ 
 
 | **Target** | **RF<br>(MATMINER)** | **RF<br>(MATMINER+LOBSTER)** | **MODNet<br>(MATMINER)** | **MODNet<br>(MATMINER+LOBSTER)** |
 |-------|---------------|-------------------|-------------------|-----------------------|
