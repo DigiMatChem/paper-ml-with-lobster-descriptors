@@ -9,7 +9,7 @@ To keep the publication concise, not all results are included. This repository p
 
 Preprint available at ...
 
-The code has been written by A. Naik with contributions from Dr. Philipp Benner and ....
+The code has been written by A. Naik with contributions from Dr. Philipp Benner.
 
 
 ## Installation
