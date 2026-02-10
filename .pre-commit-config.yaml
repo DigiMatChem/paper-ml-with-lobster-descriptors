@@ -1,4 +1,4 @@
-exclude: ^(docs|tests|notebooks|data|.github)
+exclude: ^(docs|tests|notebooks|data|gh_pages|.github)
 
 ci:
   autoupdate_schedule: monthly
