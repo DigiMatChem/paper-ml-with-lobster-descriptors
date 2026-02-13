@@ -7,7 +7,7 @@
 To keep the publication concise, not all results are included. This repository provides a one-stop access point to all results, along with all code and data required to reproduce them. Results are organized as static HTML pages for easy navigation and are deployed on github pages.
 
 
-Preprint available at ...
+Preprint available at [https://doi.org/10.48550/arXiv.2602.12109](https://doi.org/10.48550/arXiv.2602.12109).
 
 The code has been written by A. Naik with contributions from Dr. Philipp Benner.
 
