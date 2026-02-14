@@ -1,0 +1,1416 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mlproject.training.feature_selection &#8212; mlproject</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=c5dae2d3"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mlproject/training/feature_selection';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">mlproject</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../essentials/index.html">Essential Links &amp; Terms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Target Properties</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../results/index.html">Results</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/last_phdos_peak.html">Last phonon dos peak - cm-1 - last_phdos_peak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/max_pfc.html">Max projected force constant - eV/Å² - max_pfc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_g_vrh.html">Log10 (Shear modulus - GPa) - log_g_vrh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_k_vrh.html">Log10 (Bulk modulus - GPa) - log_k_vrh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_klat_300.html">Log10 (Lattice thermal conductivity @ 300K - W/m/K) - log_klat_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_kp_300.html">Log10 (Peierls lattice thermal conductivity ) @ 300K - W/m/K) - log_kp_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_all_300.html">Log10 (All unique sites mean squared displacements @ 300K - Å²) - log_msd_all_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_all_600.html">Log10 (All unique sites mean squared displacements @ 600K - Å²) - log_msd_all_600</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_mean_300.html">Log10 (Mean of mean squared displacements @ 300K - Å²) - log_msd_mean_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_mean_600.html">Log10 (Mean of mean squared displacements @ 600K - Å²) - log_msd_mean_600</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_max_300.html">Log10 (Max of mean squared displacements @ 300K - Å²) - log_msd_max_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_max_600.html">Log10 (Max of mean Squared displacements @ 600K - Å²) - log_msd_max_600</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/Cv_25.html">Heat capacity @ 25K - meV/atom - Cv_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/Cv_305.html">Heat capacity @ 305K - meV/atom - Cv_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/Cv_705.html">Heat capacity @ 705K - meV/atom - Cv_705</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/H_25.html">Helmholtz energy @ 25K - meV/atom - H_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/H_305.html">Helmholtz energy @ 305K - meV/atom - H_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/H_705.html">Helmholtz energy @ 705K - meV/atom - H_705</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/S_25.html">Vibrational entropy @ 25K - meV/atom - S_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/S_305.html">Vibrational entropy @ 305K - meV/atom - S_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/S_705.html">Vibrational entropy @ 705K - meV/atom - S_705</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/U_25.html">Internal energy @ 25K - meV/atom - U_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/U_305.html">Internal energy @ 305K - meV/atom - U_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/U_705.html">Internal energy @ 705K - meV/atom - U_705</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Target data extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/index.html">Vibrational and thermodynamic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/convert_ddb_to_phonopy.html">Convert abinit ddb file to phonopy format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/msd_convergence.html">Mean squared displacement data extraction and convergence tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/extract_max_pfc.html">Extract maximum project force constant - max_pfc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/extract_converged_msd.html">Extract converged MSD values for all(mean of unique sites), max and mean  @ 300 and 600K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/extract_H_S_U_Cv.html">Read and extract H, S, U, Cv @ 25, 305 and 705 K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/extract_last_ph_dos_peak.html">Read and extract last phonon dos peak frequency (<span class="math notranslate nohighlight">\(cm^{-1}\)</span>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../targets/Lattice_thermal_conductivity/index.html">Anharmonic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Lattice_thermal_conductivity/anharmonic_klat_kp.html">Lattice thermal conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../targets/Elasticity/index.html">Elasticity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Elasticity/query_elasticity_data_mp.html">Query elasticity data from Materials Project</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ML Scripts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../feature_selector/index.html">Feature selector</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature_selector/relevant_descriptors.html">ARFS Top Descriptors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature_selector/n_iter_arfs_convergence.html">ARFS convergence tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../correlation_analysis/index.html">Correlation analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../correlation_analysis/dcor_analysis.html">Distance correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../correlation_analysis/dependency_graphs.html">Dependency graphs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../training/index.html">Model Training</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../training/train_rf.html">Train RF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../training/train_modnet.html">Train MODNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../training/train_sisso.html">Train SISSO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../explainer/index.html">Model Explainer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../explainer/model_explainer.html">PFI + SHAP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../t_test/index.html">Model Comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../t_test/corrected_resampled_t_test.html">Corrected resampled t-test to compare model improvement significance</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Misc Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../misc/index.html">Save figures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../misc/misc.html">Correlation Plots</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../reference/index.html">mlproject package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.html">mlproject.corr_analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.html">mlproject.corr_analysis.dependency_graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.evaluate_feature_set_relationships.html">evaluate_feature_set_relationships</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.evaluate_feature_set_to_feature.html">evaluate_feature_set_to_feature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.evaluate_features_to_target.html">evaluate_features_to_target</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.DEFAULT_REGRESSION_METRICS.html">DEFAULT_REGRESSION_METRICS</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.distance_correlation.html">mlproject.corr_analysis.distance_correlation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.distance_correlation.evaluate_distance_correlation_matrix_bootstrap.html">evaluate_distance_correlation_matrix_bootstrap</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.data.html">mlproject.data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.html">mlproject.data.featurizer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.get_lobster_feats.html">get_lobster_feats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.get_lobster_site_feat.html">get_lobster_site_feat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.get_matminer_feats.html">get_matminer_feats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.get_matminer_site_feats.html">get_matminer_site_feats</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.html">mlproject.data.preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.apply_unit_rule.html">apply_unit_rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.build_rename_dict.html">build_rename_dict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.get_dataset.html">get_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.UNIT_RULES.html">UNIT_RULES</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.html">mlproject.plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.dependency_graph.html">mlproject.plotting.dependency_graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.dependency_graph.plot_dependency_graph_from_df.html">plot_dependency_graph_from_df</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.dependency_graph.plot_feature_learnability.html">plot_feature_learnability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.distance_correlation.html">mlproject.plotting.distance_correlation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.distance_correlation.plot_distance_correlation_heatmap.html">plot_distance_correlation_heatmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.distance_correlation.summarize_pvalue_significance.html">summarize_pvalue_significance</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.importances.html">mlproject.plotting.importances</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.importances.plot_feature_importance.html">plot_feature_importance</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.model_comparison.html">mlproject.plotting.model_comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.model_comparison.plot_errors.html">plot_errors</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.postprocess.html">mlproject.postprocess</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.html">mlproject.postprocess.feature_importances</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.aggregate_importances.html">aggregate_importances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.get_arfs_mean_feature_importances.html">get_arfs_mean_feature_importances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.get_modnet_pfi_shap_summary.html">get_modnet_pfi_shap_summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.get_rf_pfi_shap_summary.html">get_rf_pfi_shap_summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.process_dataset.html">process_dataset</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.postprocess.t_test.html">mlproject.postprocess.t_test</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.t_test.corrected_resampled_ttest.html">corrected_resampled_ttest</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.html">mlproject.postprocess.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.caclulate_percent_folds_improved.html">caclulate_percent_folds_improved</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.calculate_cohens_d_av.html">calculate_cohens_d_av</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.calculate_relative_percentage_improvement.html">calculate_relative_percentage_improvement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.get_ttest_summary_df.html">get_ttest_summary_df</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.load_cv_results.html">load_cv_results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.mean_absolute_percentage_error.html">mean_absolute_percentage_error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.significance_stars.html">significance_stars</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.training.html">mlproject.training</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.training.f_test.html">mlproject.training.f_test</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.f_test.paired_ftest_5x2cv_feat_sets.html">paired_ftest_5x2cv_feat_sets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.html">mlproject.training.feature_selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.cxTwoPointAndFix.html">cxTwoPointAndFix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.get_relevant_features.html">get_relevant_features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.hamming_distance.html">hamming_distance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.init_valid_individual.html">init_valid_individual</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.is_diverse.html">is_diverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.mixed_selection.html">mixed_selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.mutate_and_fix.html">mutate_and_fix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.population_entropy.html">population_entropy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html">GAFeatureSelector</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.html">mlproject.training.fold_trainer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.train_eval_fold.html">train_eval_fold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.train_modnet.html">train_modnet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.train_rf.html">train_rf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.train_sisso_ga.html">train_sisso_ga</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.utils.html">mlproject.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.utils.misc.html">mlproject.utils.misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.utils.misc.split_features.html">split_features</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../about/license.html">License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/issues/new?title=Issue%20on%20page%20%2F_modules/mlproject/training/feature_selection.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for mlproject.training.feature_selection</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions for feature reduction and selection.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_scorer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">clone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">cross_validate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">deap</span><span class="w"> </span><span class="kn">import</span> <span class="n">base</span><span class="p">,</span> <span class="n">creator</span><span class="p">,</span> <span class="n">tools</span><span class="p">,</span> <span class="n">algorithms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sissopp.postprocess.load_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.autonotebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">feature_engine.selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">SmartCorrelatedSelection</span><span class="p">,</span> <span class="n">DropConstantFeatures</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">arfs.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GrootCV</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_relevant_features">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.get_relevant_features.html#mlproject.training.feature_selection.get_relevant_features">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_relevant_features</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">y_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">const_feat_tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">collinearity_tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">grootcv_nfolds</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">grootcv_n_iter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">grootcv_lgbm_objective</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mae&quot;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">pipeline_kwargs</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Pipeline</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build and apply a feature selection pipeline to remove correlated and irrelevant features.</span>
+
+<span class="sd">    The pipeline applies the following steps:</span>
+
+<span class="sd">    1. **DropConstantFeatures**: Removes features with low variance (near-constant).</span>
+
+<span class="sd">    2. **SmartCorrelatedSelection**: Removes highly correlated features based on Pearson correlation.</span>
+
+<span class="sd">    3. **GrootCV**: Selects relevant features using cross-validation with a LightGBM-based model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X_train : pd.DataFrame | np.ndarray</span>
+<span class="sd">        Training feature matrix.</span>
+<span class="sd">    y_train : np.ndarray</span>
+<span class="sd">        Target values corresponding to `X_train`. 1D numpy array</span>
+<span class="sd">    const_feat_tol : float, default=0.95</span>
+<span class="sd">        Threshold for removing near-constant features. A feature is removed if</span>
+<span class="sd">        a single value accounts for at least this proportion of observations.</span>
+<span class="sd">    collinearity_tol : float, default=0.9</span>
+<span class="sd">        Correlation threshold for removing highly correlated features.</span>
+<span class="sd">    grootcv_nfolds : int, default=5</span>
+<span class="sd">        Number of folds for cross-validation in `GrootCV`.</span>
+<span class="sd">    grootcv_n_iter : int, default=20</span>
+<span class="sd">        Number of iterations for feature selection in `GrootCV`.</span>
+<span class="sd">    grootcv_lgbm_objective : str, default=&quot;mae&quot;</span>
+<span class="sd">        Objective function for the LightGBM model inside `GrootCV`.</span>
+<span class="sd">    **pipeline_kwargs : dict</span>
+<span class="sd">        Additional keyword arguments passed to the underlying `Pipeline`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pipeline, pd.DataFrame</span>
+<span class="sd">        Pipeline instance and a transformed training set with only the relevant features retained.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;zero_variance&quot;</span><span class="p">,</span> <span class="n">DropConstantFeatures</span><span class="p">(</span><span class="n">tol</span><span class="o">=</span><span class="n">const_feat_tol</span><span class="p">)),</span>
+            <span class="p">(</span>
+                <span class="s2">&quot;collinearity&quot;</span><span class="p">,</span>
+                <span class="n">SmartCorrelatedSelection</span><span class="p">(</span>
+                    <span class="n">threshold</span><span class="o">=</span><span class="n">collinearity_tol</span><span class="p">,</span>
+                    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pearson&quot;</span><span class="p">,</span>
+                    <span class="n">selection_method</span><span class="o">=</span><span class="s2">&quot;variance&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">),</span>
+            <span class="p">(</span>
+                <span class="s2">&quot;all_rel_feats&quot;</span><span class="p">,</span>
+                <span class="n">GrootCV</span><span class="p">(</span>
+                    <span class="n">objective</span><span class="o">=</span><span class="n">grootcv_lgbm_objective</span><span class="p">,</span>
+                    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                    <span class="n">n_iter</span><span class="o">=</span><span class="n">grootcv_n_iter</span><span class="p">,</span>
+                    <span class="n">n_folds</span><span class="o">=</span><span class="n">grootcv_nfolds</span><span class="p">,</span>
+                    <span class="n">rf</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">pipeline_kwargs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pipeline_kwargs</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">pipeline</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="o">**</span><span class="n">pipeline_kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pipeline</span><span class="p">,</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ----------SISSO_GAFeatureSelector----------</span>
+
+
+<div class="viewcode-block" id="init_valid_individual">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.init_valid_individual.html#mlproject.training.feature_selection.init_valid_individual">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">init_valid_individual</span><span class="p">(</span><span class="n">icls</span><span class="p">,</span> <span class="n">n_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_selected_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize an individual with a fixed number of selected features.</span>
+<span class="sd">    Ensures that exactly `num_selected_features` in a binary vector are switched to 1.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    icls : Individual creator class</span>
+<span class="sd">        The individual class to instantiate.</span>
+<span class="sd">    n_features : int</span>
+<span class="sd">        Total number of features.</span>
+<span class="sd">    num_selected_features : int</span>
+<span class="sd">        Number of features to select (element of binary vector set to 1).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">individual</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_features</span>
+    <span class="n">selected_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
+        <span class="nb">range</span><span class="p">(</span><span class="n">n_features</span><span class="p">),</span> <span class="n">num_selected_features</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">selected_indices</span><span class="p">:</span>
+        <span class="n">individual</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">icls</span><span class="p">(</span><span class="n">individual</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="mutate_and_fix">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.mutate_and_fix.html#mlproject.training.feature_selection.mutate_and_fix">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mutate_and_fix</span><span class="p">(</span><span class="n">individual</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">indpb</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">num_selected_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mutate an individual and ensure it has exactly `num_selected_features` selected.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    individual : np.ndarray</span>
+<span class="sd">        The individual to mutate.</span>
+<span class="sd">    indpb : float</span>
+<span class="sd">        Probability for individual bits to be flipped.</span>
+<span class="sd">    num_selected_features : int</span>
+<span class="sd">        Number of features to select (element of binary vector set to 1).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tools</span><span class="o">.</span><span class="n">mutFlipBit</span><span class="p">(</span><span class="n">individual</span><span class="p">,</span> <span class="n">indpb</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">sum</span><span class="p">(</span><span class="n">individual</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_selected_features</span><span class="p">:</span>
+        <span class="n">ones_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">individual</span><span class="p">)</span> <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">individual</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ones_indices</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="nb">sum</span><span class="p">(</span><span class="n">individual</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">num_selected_features</span><span class="p">:</span>
+        <span class="n">zeros_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">individual</span><span class="p">)</span> <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">individual</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">zeros_indices</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">individual</span><span class="p">,)</span></div>
+
+
+
+<div class="viewcode-block" id="hamming_distance">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.hamming_distance.html#mlproject.training.feature_selection.hamming_distance">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hamming_distance</span><span class="p">(</span><span class="n">ind1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ind2</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the Hamming distance between two individuals.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ind1 : np.ndarray</span>
+<span class="sd">        First individual.</span>
+<span class="sd">    ind2 : np.ndarray</span>
+<span class="sd">        Second individual.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int</span>
+<span class="sd">        Hamming distance between the two individuals.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ind1</span><span class="p">,</span> <span class="n">ind2</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="is_diverse">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.is_diverse.html#mlproject.training.feature_selection.is_diverse">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_diverse</span><span class="p">(</span>
+    <span class="n">individual</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">population</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+    <span class="n">min_distance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if an individual is diverse enough from a population based on Hamming distance.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    individual : np.ndarray</span>
+<span class="sd">        The individual to check.</span>
+<span class="sd">    population : list of np.ndarray</span>
+<span class="sd">        The population to compare against.</span>
+<span class="sd">    min_distance : int, default=5</span>
+<span class="sd">        Minimum Hamming distance required for diversity.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if the individual is diverse enough, False otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span>
+        <span class="n">hamming_distance</span><span class="p">(</span><span class="n">individual</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_distance</span> <span class="k">for</span> <span class="n">other</span> <span class="ow">in</span> <span class="n">population</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="population_entropy">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.population_entropy.html#mlproject.training.feature_selection.population_entropy">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">population_entropy</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the entropy of a population of binary individuals.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    population : list of np.ndarray</span>
+<span class="sd">        The population of individuals.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Entropy of the population</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">pop_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pop_array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">1e-6</span><span class="p">)</span>
+    <span class="n">entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">p1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">entropy</span></div>
+
+
+
+<div class="viewcode-block" id="mixed_selection">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.mixed_selection.html#mlproject.training.feature_selection.mixed_selection">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mixed_selection</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mixed selection strategy: combines elitism and random selection.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    population : list of np.ndarray</span>
+<span class="sd">        The population of individuals.</span>
+<span class="sd">    k : int</span>
+<span class="sd">        Number of individuals to select.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of np.ndarray</span>
+<span class="sd">        Selected individuals.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">elite_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">random_count</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="n">elite_count</span>
+    <span class="n">elites</span> <span class="o">=</span> <span class="n">tools</span><span class="o">.</span><span class="n">selBest</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">elite_count</span><span class="p">)</span>
+    <span class="n">randoms</span> <span class="o">=</span> <span class="n">tools</span><span class="o">.</span><span class="n">selRandom</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">random_count</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">elites</span> <span class="o">+</span> <span class="n">randoms</span></div>
+
+
+
+<div class="viewcode-block" id="cxTwoPointAndFix">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.cxTwoPointAndFix.html#mlproject.training.feature_selection.cxTwoPointAndFix">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cxTwoPointAndFix</span><span class="p">(</span>
+    <span class="n">ind1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">ind2</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">num_selected_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crossover two individuals and fix them to have a specific number of selected features.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ind1 : np.ndarray</span>
+<span class="sd">        First individual.</span>
+<span class="sd">    ind2 : np.ndarray</span>
+<span class="sd">        Second individual.</span>
+<span class="sd">    num_selected_features : int</span>
+<span class="sd">        Number of features to select (element of binary vector set to 1).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple of np.ndarray</span>
+<span class="sd">        The two modified individuals after crossover and fixing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tools</span><span class="o">.</span><span class="n">cxTwoPoint</span><span class="p">(</span><span class="n">ind1</span><span class="p">,</span> <span class="n">ind2</span><span class="p">)</span>
+    <span class="n">mutate_and_fix</span><span class="p">(</span><span class="n">ind1</span><span class="p">,</span> <span class="n">indpb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_selected_features</span><span class="o">=</span><span class="n">num_selected_features</span><span class="p">)</span>
+    <span class="n">mutate_and_fix</span><span class="p">(</span><span class="n">ind2</span><span class="p">,</span> <span class="n">indpb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_selected_features</span><span class="o">=</span><span class="n">num_selected_features</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ind1</span><span class="p">,</span> <span class="n">ind2</span></div>
+
+
+
+<div class="viewcode-block" id="GAFeatureSelector">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html#mlproject.training.feature_selection.GAFeatureSelector">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GAFeatureSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Genetic Algorithm Feature Selector using DEAP.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X : pd.DataFrame or np.ndarray</span>
+<span class="sd">        Feature matrix.</span>
+<span class="sd">    y : pd.Series or np.ndarray</span>
+<span class="sd">        Target values.</span>
+<span class="sd">    model : sklearn-like estimator</span>
+<span class="sd">        Model to evaluate feature subsets.</span>
+<span class="sd">    num_features : int, default=25</span>
+<span class="sd">        Number of features to select.</span>
+<span class="sd">    population_size : int, default=50</span>
+<span class="sd">        Size of the GA population.</span>
+<span class="sd">    generations : int, default=100</span>
+<span class="sd">        Number of generations to run.</span>
+<span class="sd">    feature_names : list of str, optional</span>
+<span class="sd">        Names of the features. If None, indices will be used.</span>
+<span class="sd">    cxpb : float, default=0.5</span>
+<span class="sd">        Crossover probability.</span>
+<span class="sd">    mutpb : float, default=0.2</span>
+<span class="sd">        Mutation probability.</span>
+<span class="sd">    early_stop_patience : int, default=5</span>
+<span class="sd">        Generations to wait for improvement before stopping.</span>
+<span class="sd">    mutation_boost_threshold : int, default=3</span>
+<span class="sd">        Generations without improvement to trigger mutation boost.</span>
+<span class="sd">    mutation_boost_factor : float, default=2.0</span>
+<span class="sd">        Factor to increase mutation probability when boosting.</span>
+<span class="sd">    cv : int, default=5</span>
+<span class="sd">        Number of cross-validation folds.</span>
+<span class="sd">    scoring : str, default=&quot;r2&quot;</span>
+<span class="sd">        Scoring metric for evaluation.</span>
+<span class="sd">    min_diversity : int, default=5</span>
+<span class="sd">        Minimum Hamming distance for diversity.</span>
+<span class="sd">    entropy_threshold : float, default=0.3</span>
+<span class="sd">        Entropy threshold to trigger mutation boost.</span>
+<span class="sd">    X_test : pd.DataFrame or np.ndarray, optional</span>
+<span class="sd">        Test feature matrix for diagnostic evaluation.</span>
+<span class="sd">    y_test : pd.Series or np.ndarray, optional</span>
+<span class="sd">        Test target values for diagnostic evaluation.</span>
+<span class="sd">    test_scoring : str or callable, optional</span>
+<span class="sd">        Scoring metric for test evaluation. Defaults to `scoring`.</span>
+<span class="sd">    n_jobs : int, default=1</span>
+<span class="sd">        Number of parallel jobs for evaluation.</span>
+<span class="sd">    return_train_score : bool, default=True</span>
+<span class="sd">        Whether to return training scores in cross-validation.</span>
+<span class="sd">    error_score : float, default=np.nan</span>
+<span class="sd">        Value to assign to failed evaluations.</span>
+<span class="sd">    sissopp_binary_path : str, optional</span>
+<span class="sd">        Path to SISSO++ binary for model evaluation.</span>
+<span class="sd">    mpi_tasks : int, default=8</span>
+<span class="sd">        Number of MPI tasks for SISSO++.</span>
+<span class="sd">    sissopp_inputs : dict, optional</span>
+<span class="sd">        Additional inputs for SISSO++.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="nb">any</span><span class="p">,</span>
+        <span class="n">num_features</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="n">population_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="n">generations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">feature_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cxpb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">mutpb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">early_stop_patience</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">mutation_boost_threshold</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="n">mutation_boost_factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span>
+        <span class="n">cv</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">scoring</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;r2&quot;</span><span class="p">,</span>
+        <span class="n">min_diversity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">entropy_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="n">X_test</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y_test</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">test_scoring</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">return_train_score</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">error_score</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+        <span class="n">sissopp_binary_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mpi_tasks</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">sissopp_inputs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span> <span class="o">=</span> <span class="n">num_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">population_size</span> <span class="o">=</span> <span class="n">population_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generations</span> <span class="o">=</span> <span class="n">generations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cxpb</span> <span class="o">=</span> <span class="n">cxpb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_mutpb</span> <span class="o">=</span> <span class="n">mutpb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">early_stop_patience</span> <span class="o">=</span> <span class="n">early_stop_patience</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mutation_boost_threshold</span> <span class="o">=</span> <span class="n">mutation_boost_threshold</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mutation_boost_factor</span> <span class="o">=</span> <span class="n">mutation_boost_factor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cv</span> <span class="o">=</span> <span class="n">cv</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scoring</span> <span class="o">=</span> <span class="n">scoring</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_diversity</span> <span class="o">=</span> <span class="n">min_diversity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entropy_threshold</span> <span class="o">=</span> <span class="n">entropy_threshold</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_score</span> <span class="o">=</span> <span class="n">error_score</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">return_train_score</span> <span class="o">=</span> <span class="n">return_train_score</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sissopp_binary_path</span> <span class="o">=</span> <span class="n">sissopp_binary_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mpi_tasks</span> <span class="o">=</span> <span class="n">mpi_tasks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fitness_history</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sissopp_inputs</span> <span class="o">=</span> <span class="n">sissopp_inputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">operator_usage_counts</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_usage_counts</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_score_history</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_scoring</span> <span class="o">=</span> <span class="n">test_scoring</span> <span class="ow">or</span> <span class="n">scoring</span>
+
+        <span class="k">if</span> <span class="n">feature_names</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span> <span class="o">=</span> <span class="n">feature_names</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;feat_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_features</span><span class="p">)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setup_deap</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_deap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Setup DEAP toolbox and creator.&quot;&quot;&quot;</span>
+
+        <span class="n">creator</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;FitnessMax&quot;</span><span class="p">,</span> <span class="n">base</span><span class="o">.</span><span class="n">Fitness</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,))</span>
+        <span class="n">creator</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;Individual&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">fitness</span><span class="o">=</span><span class="n">creator</span><span class="o">.</span><span class="n">FitnessMax</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">Toolbox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+            <span class="s2">&quot;individual&quot;</span><span class="p">,</span>
+            <span class="n">init_valid_individual</span><span class="p">,</span>
+            <span class="n">creator</span><span class="o">.</span><span class="n">Individual</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_features</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+            <span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">tools</span><span class="o">.</span><span class="n">initRepeat</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">individual</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;evaluate&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_individual</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+            <span class="s2">&quot;mate&quot;</span><span class="p">,</span> <span class="n">cxTwoPointAndFix</span><span class="p">,</span> <span class="n">num_selected_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+            <span class="s2">&quot;mutate&quot;</span><span class="p">,</span>
+            <span class="n">mutate_and_fix</span><span class="p">,</span>
+            <span class="n">indpb</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">num_selected_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="n">mixed_selection</span><span class="p">)</span>
+
+<div class="viewcode-block" id="GAFeatureSelector.evaluate_individual">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html#mlproject.training.feature_selection.GAFeatureSelector.evaluate_individual">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">individual</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate an individual using cross-validation.&quot;&quot;&quot;</span>
+        <span class="n">selected_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">individual</span><span class="p">)</span> <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">X_selected</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">selected_indices</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[:,</span> <span class="n">selected_indices</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">y_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+                <span class="n">index</span><span class="o">=</span><span class="n">X_selected</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sissopp_inputs</span><span class="p">[</span><span class="s2">&quot;property_key&quot;</span><span class="p">]],</span>
+                <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_selected</span><span class="p">,</span> <span class="n">y_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">18012019</span><span class="p">,</span> <span class="n">n_splits</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cv</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sissopp_binary_path</span><span class="p">:</span>
+            <span class="n">kf_splits</span> <span class="o">=</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_selected</span><span class="p">)</span>
+
+            <span class="n">base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+            <span class="n">cv_scores</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kf_splits</span><span class="p">):</span>
+                <span class="n">_</span> <span class="o">=</span> <span class="n">X_selected</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train</span><span class="p">,</span> <span class="p">:]</span>
+                <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">train</span><span class="p">]</span>
+                <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_selected</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test</span><span class="p">,</span> <span class="p">:]</span>
+                <span class="n">y_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
+
+                <span class="n">cv_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;cv_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">cv_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">cv_dir</span><span class="p">)</span>
+
+                <span class="n">inputs_cv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sissopp_inputs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">inputs_cv</span><span class="p">[</span><span class="s2">&quot;leave_out_inds&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">test</span><span class="p">]</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sisso.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">inputs_cv</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+                <span class="c1"># json.dumps(inputs, indent=4)</span>
+                <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>
+
+                <span class="n">cmd</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;OMP_NUM_THREADS=64 OMP_PLACES=cores mpirun -n </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mpi_tasks</span><span class="si">}</span><span class="s2"> &quot;</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sissopp_binary_path</span>
+                <span class="p">)</span>
+
+                <span class="n">_</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                    <span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+                <span class="p">)</span>
+                <span class="n">max_dim</span> <span class="o">=</span> <span class="n">inputs_cv</span><span class="p">[</span><span class="s2">&quot;desc_dim&quot;</span><span class="p">]</span>
+
+                <span class="c1"># Handle inf prediction models with nan scores</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s2">/models/train_dim_</span><span class="si">{</span><span class="n">max_dim</span><span class="si">}</span><span class="s2">_model_0.dat&quot;</span>
+                    <span class="p">)</span>
+
+                    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval_many</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">parse_postfix</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">selected_indices</span><span class="o">=</span><span class="n">selected_indices</span><span class="p">)</span>
+
+                    <span class="n">score</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scoring</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;neg_&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])(</span>
+                        <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+                <span class="n">cv_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="s2">&quot;neg_&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scoring</span> <span class="k">else</span> <span class="n">score</span><span class="p">)</span>
+
+                <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">model_clone</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+
+            <span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
+                <span class="n">model_clone</span><span class="p">,</span>
+                <span class="n">X_selected</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                <span class="n">cv</span><span class="o">=</span><span class="n">kf</span><span class="p">,</span>
+                <span class="n">scoring</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scoring</span><span class="p">,</span>
+                <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span>
+                <span class="n">error_score</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">error_score</span><span class="p">,</span>
+                <span class="n">return_train_score</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">return_train_score</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">base_path</span><span class="p">):</span>
+            <span class="n">item_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+            <span class="c1"># Remove all cv models</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;SISSO_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;cv&quot;</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+
+        <span class="n">val_scores</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">cv_scores</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">cv_scores</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">val_scores</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mf">1e10</span><span class="p">,)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">val_scores</span><span class="p">),)</span></div>
+
+
+<div class="viewcode-block" id="GAFeatureSelector.evaluate_on_test">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html#mlproject.training.feature_selection.GAFeatureSelector.evaluate_on_test">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_on_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">individual</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate the best individual on the test set.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_test</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">selected_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">individual</span><span class="p">)</span> <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">X_train_sel</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">selected_indices</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[:,</span> <span class="n">selected_indices</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">X_test_sel</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">selected_indices</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_test</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span><span class="p">[:,</span> <span class="n">selected_indices</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">model_clone</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+
+        <span class="n">base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">base_path</span><span class="p">):</span>
+            <span class="n">item_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+            <span class="c1"># Remove test set models</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;SISSO_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;cv&quot;</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+
+        <span class="n">model_clone</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_sel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model_clone</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_sel</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_scoring</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">scorer</span> <span class="o">=</span> <span class="n">get_scorer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_scoring</span><span class="p">)</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">model_clone</span><span class="p">,</span> <span class="n">X_test_sel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_test</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_scoring</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">score</span></div>
+
+
+<div class="viewcode-block" id="GAFeatureSelector.differential_evolution_ga">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html#mlproject.training.feature_selection.GAFeatureSelector.differential_evolution_ga">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">differential_evolution_ga</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">mutpb</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Differential Evolution GA offspring generation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pop : list of Individuals</span>
+<span class="sd">            Current population.</span>
+<span class="sd">        F : float, default=0.5</span>
+<span class="sd">            Differential weight.</span>
+<span class="sd">        mutpb : float, default=0.1</span>
+<span class="sd">            Mutation probability.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of np.ndarray</span>
+<span class="sd">            New list of population after DE operation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_pop</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">pop</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">pop</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">trial</span> <span class="o">=</span> <span class="n">creator</span><span class="o">.</span><span class="n">Individual</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">target</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">F</span><span class="p">:</span>
+                    <span class="n">trial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">trial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">trial</span><span class="p">,)</span> <span class="o">=</span> <span class="n">mutate_and_fix</span><span class="p">(</span>
+                <span class="n">trial</span><span class="p">,</span> <span class="n">indpb</span><span class="o">=</span><span class="n">mutpb</span><span class="p">,</span> <span class="n">num_selected_features</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">trial</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">target</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">valid</span><span class="p">:</span>
+                <span class="n">target</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+            <span class="n">new_pop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">trial</span> <span class="k">if</span> <span class="n">trial</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="n">target</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_pop</span></div>
+
+
+<div class="viewcode-block" id="GAFeatureSelector.parse_postfix">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html#mlproject.training.feature_selection.GAFeatureSelector.parse_postfix">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse_postfix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">selected_indices</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extracts features and operators from postfix expression string.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : SISSO model object</span>
+<span class="sd">            The SISSO model containing features.</span>
+<span class="sd">        selected_indices : list of int</span>
+<span class="sd">            Indices of selected features.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">feats</span><span class="p">:</span>
+            <span class="n">expression</span> <span class="o">=</span> <span class="n">feat</span><span class="o">.</span><span class="n">postfix_expr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="n">expression</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">feature_usage_counts</span><span class="p">[</span><span class="n">selected_indices</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">exp</span><span class="p">)]]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">operator_usage_counts</span><span class="p">[</span><span class="n">exp</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="GAFeatureSelector.run">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html#mlproject.training.feature_selection.GAFeatureSelector.run">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the Genetic Algorithm for feature selection.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        plot : bool, default=True</span>
+<span class="sd">            Whether to plot the fitness history.</span>
+<span class="sd">        strategy : str, default=&quot;standard&quot;</span>
+<span class="sd">            Offspring generation strategy: &quot;standard&quot; or &quot;de&quot; (differential evolution).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of str</span>
+<span class="sd">            Selected feature names.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">population</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">population_size</span><span class="p">)</span>
+        <span class="n">hall_of_fame</span> <span class="o">=</span> <span class="n">tools</span><span class="o">.</span><span class="n">HallOfFame</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">no_improvement_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">best_fitness</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+        <span class="k">for</span> <span class="n">gen</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generations</span><span class="p">):</span>
+            <span class="n">entropy</span> <span class="o">=</span> <span class="n">population_entropy</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">no_improvement_counter</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutation_boost_threshold</span>
+                <span class="ow">or</span> <span class="n">entropy</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">entropy_threshold</span>
+            <span class="p">):</span>
+                <span class="n">mutpb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_mutpb</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutation_boost_factor</span>
+                <span class="n">indpb</span> <span class="o">=</span> <span class="mf">0.05</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">mutpb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_mutpb</span>
+                <span class="n">indpb</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="s2">&quot;mutate&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+                <span class="s2">&quot;mutate&quot;</span><span class="p">,</span>
+                <span class="n">mutate_and_fix</span><span class="p">,</span>
+                <span class="n">indpb</span><span class="o">=</span><span class="n">indpb</span><span class="p">,</span>
+                <span class="n">num_selected_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Choose offspring generation strategy</span>
+            <span class="k">if</span> <span class="n">strategy</span> <span class="o">==</span> <span class="s2">&quot;standard&quot;</span><span class="p">:</span>
+                <span class="n">offspring</span> <span class="o">=</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">varAnd</span><span class="p">(</span><span class="n">pop</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxpb</span><span class="p">,</span> <span class="n">mutpb</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">strategy</span> <span class="o">==</span> <span class="s2">&quot;de&quot;</span><span class="p">:</span>
+                <span class="n">offspring</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">differential_evolution_ga</span><span class="p">(</span><span class="n">pop</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">mutpb</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown strategy&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">offspring</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Evaluating Gen </span><span class="si">{</span><span class="n">gen</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">):</span>
+                <span class="n">ind</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+
+            <span class="c1"># Keep only diverse individuals</span>
+            <span class="n">diverse_offspring</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">offspring</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">is_diverse</span><span class="p">(</span>
+                    <span class="n">ind</span><span class="p">,</span> <span class="n">diverse_offspring</span> <span class="o">+</span> <span class="n">pop</span><span class="p">,</span> <span class="n">min_distance</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">min_diversity</span>
+                <span class="p">):</span>
+                    <span class="n">diverse_offspring</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">diverse_offspring</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop</span><span class="p">):</span>
+                <span class="n">needed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">diverse_offspring</span><span class="p">)</span>
+                <span class="n">diverse_offspring</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toolbox</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">offspring</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">needed</span><span class="p">))</span>
+
+            <span class="n">pop</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">diverse_offspring</span>
+            <span class="n">hall_of_fame</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+
+            <span class="n">current_best</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ind</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">pop</span><span class="p">)</span>
+            <span class="n">current_avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">ind</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">pop</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fitness_history</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">current_best</span><span class="p">,</span> <span class="n">current_avg</span><span class="p">))</span>
+
+            <span class="n">test_score</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">test_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_on_test</span><span class="p">(</span><span class="n">hall_of_fame</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">test_score_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_score</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">current_best</span> <span class="o">&gt;</span> <span class="n">best_fitness</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">:</span>
+                <span class="n">best_fitness</span> <span class="o">=</span> <span class="n">current_best</span>
+                <span class="n">no_improvement_counter</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">no_improvement_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">no_improvement_counter</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">early_stop_patience</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converged at generation </span><span class="si">{</span><span class="n">gen</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Gen </span><span class="si">{</span><span class="n">gen</span><span class="si">}</span><span class="s2">: Best Fitness (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scoring</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">current_best</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, Entropy = </span><span class="si">{</span><span class="n">entropy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, Mutation = </span><span class="si">{</span><span class="n">mutpb</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;, Test Score = </span><span class="si">{</span><span class="n">test_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">test_score</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;All time best : </span><span class="si">{</span><span class="n">best_fitness</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">best_individual</span> <span class="o">=</span> <span class="n">hall_of_fame</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selected_features</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_individual</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_fitness</span><span class="p">(</span><span class="n">strategy</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_features</span></div>
+
+
+<div class="viewcode-block" id="GAFeatureSelector.plot_fitness">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html#mlproject.training.feature_selection.GAFeatureSelector.plot_fitness">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_fitness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot the fitness history of the GA.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        strategy : str</span>
+<span class="sd">            Offspring generation strategy used.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gens</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fitness_history</span><span class="p">))</span>
+        <span class="n">best_fitness_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitness_history</span><span class="p">]</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gens</span><span class="p">,</span> <span class="n">best_fitness_vals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Best Fitness (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scoring</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_score_history</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">gens</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">test_score_history</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Test </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">test_scoring</span><span class="si">}</span><span class="s2"> (diagnostic)&quot;</span><span class="p">,</span>
+                <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Generation&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scoring</span><span class="si">}</span><span class="s2"> Score&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GA Convergence Plot : </span><span class="si">{</span><span class="n">strategy</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GA_result_</span><span class="si">{</span><span class="n">strategy</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="GAFeatureSelector.get_selected_feature_indices">
+<a class="viewcode-back" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html#mlproject.training.feature_selection.GAFeatureSelector.get_selected_feature_indices">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_selected_feature_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get indices of selected features from the best individual.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of int</span>
+<span class="sd">            Indices of selected features.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_individual</span><span class="p">)</span> <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aakash Naik, Janine George
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, DigiMatChem.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

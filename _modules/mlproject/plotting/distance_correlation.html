@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mlproject.plotting.distance_correlation &#8212; mlproject</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=c5dae2d3"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mlproject/plotting/distance_correlation';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">mlproject</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../essentials/index.html">Essential Links &amp; Terms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Target Properties</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../results/index.html">Results</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/last_phdos_peak.html">Last phonon dos peak - cm-1 - last_phdos_peak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/max_pfc.html">Max projected force constant - eV/Å² - max_pfc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_g_vrh.html">Log10 (Shear modulus - GPa) - log_g_vrh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_k_vrh.html">Log10 (Bulk modulus - GPa) - log_k_vrh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_klat_300.html">Log10 (Lattice thermal conductivity @ 300K - W/m/K) - log_klat_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_kp_300.html">Log10 (Peierls lattice thermal conductivity ) @ 300K - W/m/K) - log_kp_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_all_300.html">Log10 (All unique sites mean squared displacements @ 300K - Å²) - log_msd_all_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_all_600.html">Log10 (All unique sites mean squared displacements @ 600K - Å²) - log_msd_all_600</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_mean_300.html">Log10 (Mean of mean squared displacements @ 300K - Å²) - log_msd_mean_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_mean_600.html">Log10 (Mean of mean squared displacements @ 600K - Å²) - log_msd_mean_600</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_max_300.html">Log10 (Max of mean squared displacements @ 300K - Å²) - log_msd_max_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/log_msd_max_600.html">Log10 (Max of mean Squared displacements @ 600K - Å²) - log_msd_max_600</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/Cv_25.html">Heat capacity @ 25K - meV/atom - Cv_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/Cv_305.html">Heat capacity @ 305K - meV/atom - Cv_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/Cv_705.html">Heat capacity @ 705K - meV/atom - Cv_705</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/H_25.html">Helmholtz energy @ 25K - meV/atom - H_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/H_305.html">Helmholtz energy @ 305K - meV/atom - H_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/H_705.html">Helmholtz energy @ 705K - meV/atom - H_705</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/S_25.html">Vibrational entropy @ 25K - meV/atom - S_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/S_305.html">Vibrational entropy @ 305K - meV/atom - S_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/S_705.html">Vibrational entropy @ 705K - meV/atom - S_705</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/U_25.html">Internal energy @ 25K - meV/atom - U_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/U_305.html">Internal energy @ 305K - meV/atom - U_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../results/U_705.html">Internal energy @ 705K - meV/atom - U_705</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Target data extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/index.html">Vibrational and thermodynamic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/convert_ddb_to_phonopy.html">Convert abinit ddb file to phonopy format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/msd_convergence.html">Mean squared displacement data extraction and convergence tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/extract_max_pfc.html">Extract maximum project force constant - max_pfc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/extract_converged_msd.html">Extract converged MSD values for all(mean of unique sites), max and mean  @ 300 and 600K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/extract_H_S_U_Cv.html">Read and extract H, S, U, Cv @ 25, 305 and 705 K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Vibrational_and_thermodynamic_properties/extract_last_ph_dos_peak.html">Read and extract last phonon dos peak frequency (<span class="math notranslate nohighlight">\(cm^{-1}\)</span>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../targets/Lattice_thermal_conductivity/index.html">Anharmonic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Lattice_thermal_conductivity/anharmonic_klat_kp.html">Lattice thermal conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../targets/Elasticity/index.html">Elasticity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../targets/Elasticity/query_elasticity_data_mp.html">Query elasticity data from Materials Project</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ML Scripts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../feature_selector/index.html">Feature selector</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature_selector/relevant_descriptors.html">ARFS Top Descriptors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature_selector/n_iter_arfs_convergence.html">ARFS convergence tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../correlation_analysis/index.html">Correlation analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../correlation_analysis/dcor_analysis.html">Distance correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../correlation_analysis/dependency_graphs.html">Dependency graphs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../training/index.html">Model Training</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../training/train_rf.html">Train RF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../training/train_modnet.html">Train MODNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../training/train_sisso.html">Train SISSO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../explainer/index.html">Model Explainer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../explainer/model_explainer.html">PFI + SHAP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../t_test/index.html">Model Comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../t_test/corrected_resampled_t_test.html">Corrected resampled t-test to compare model improvement significance</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Misc Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../misc/index.html">Save figures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../misc/misc.html">Correlation Plots</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../reference/index.html">mlproject package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.html">mlproject.corr_analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.html">mlproject.corr_analysis.dependency_graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.evaluate_feature_set_relationships.html">evaluate_feature_set_relationships</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.evaluate_feature_set_to_feature.html">evaluate_feature_set_to_feature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.evaluate_features_to_target.html">evaluate_features_to_target</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.dependency_graph.DEFAULT_REGRESSION_METRICS.html">DEFAULT_REGRESSION_METRICS</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.distance_correlation.html">mlproject.corr_analysis.distance_correlation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.corr_analysis.distance_correlation.evaluate_distance_correlation_matrix_bootstrap.html">evaluate_distance_correlation_matrix_bootstrap</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.data.html">mlproject.data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.html">mlproject.data.featurizer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.get_lobster_feats.html">get_lobster_feats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.get_lobster_site_feat.html">get_lobster_site_feat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.get_matminer_feats.html">get_matminer_feats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.featurizer.get_matminer_site_feats.html">get_matminer_site_feats</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.html">mlproject.data.preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.apply_unit_rule.html">apply_unit_rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.build_rename_dict.html">build_rename_dict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.get_dataset.html">get_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.data.preprocessing.UNIT_RULES.html">UNIT_RULES</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.html">mlproject.plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.dependency_graph.html">mlproject.plotting.dependency_graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.dependency_graph.plot_dependency_graph_from_df.html">plot_dependency_graph_from_df</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.dependency_graph.plot_feature_learnability.html">plot_feature_learnability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.distance_correlation.html">mlproject.plotting.distance_correlation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.distance_correlation.plot_distance_correlation_heatmap.html">plot_distance_correlation_heatmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.distance_correlation.summarize_pvalue_significance.html">summarize_pvalue_significance</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.importances.html">mlproject.plotting.importances</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.importances.plot_feature_importance.html">plot_feature_importance</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.plotting.model_comparison.html">mlproject.plotting.model_comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.plotting.model_comparison.plot_errors.html">plot_errors</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.postprocess.html">mlproject.postprocess</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.html">mlproject.postprocess.feature_importances</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.aggregate_importances.html">aggregate_importances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.get_arfs_mean_feature_importances.html">get_arfs_mean_feature_importances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.get_modnet_pfi_shap_summary.html">get_modnet_pfi_shap_summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.get_rf_pfi_shap_summary.html">get_rf_pfi_shap_summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.feature_importances.process_dataset.html">process_dataset</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.postprocess.t_test.html">mlproject.postprocess.t_test</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.t_test.corrected_resampled_ttest.html">corrected_resampled_ttest</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.html">mlproject.postprocess.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.caclulate_percent_folds_improved.html">caclulate_percent_folds_improved</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.calculate_cohens_d_av.html">calculate_cohens_d_av</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.calculate_relative_percentage_improvement.html">calculate_relative_percentage_improvement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.get_ttest_summary_df.html">get_ttest_summary_df</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.load_cv_results.html">load_cv_results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.mean_absolute_percentage_error.html">mean_absolute_percentage_error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.postprocess.utils.significance_stars.html">significance_stars</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.training.html">mlproject.training</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.training.f_test.html">mlproject.training.f_test</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.f_test.paired_ftest_5x2cv_feat_sets.html">paired_ftest_5x2cv_feat_sets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.html">mlproject.training.feature_selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.cxTwoPointAndFix.html">cxTwoPointAndFix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.get_relevant_features.html">get_relevant_features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.hamming_distance.html">hamming_distance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.init_valid_individual.html">init_valid_individual</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.is_diverse.html">is_diverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.mixed_selection.html">mixed_selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.mutate_and_fix.html">mutate_and_fix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.population_entropy.html">population_entropy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.feature_selection.GAFeatureSelector.html">GAFeatureSelector</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.html">mlproject.training.fold_trainer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.train_eval_fold.html">train_eval_fold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.train_modnet.html">train_modnet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.train_rf.html">train_rf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.training.fold_trainer.train_sisso_ga.html">train_sisso_ga</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/mlproject.utils.html">mlproject.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/mlproject.utils.misc.html">mlproject.utils.misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/mlproject.utils.misc.split_features.html">split_features</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../about/license.html">License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/issues/new?title=Issue%20on%20page%20%2F_modules/mlproject/plotting/distance_correlation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for mlproject.plotting.distance_correlation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions for plotting distance correlation heatmaps</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mlproject.postprocess.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">significance_stars</span>
+
+
+<div class="viewcode-block" id="summarize_pvalue_significance">
+<a class="viewcode-back" href="../../../reference/mlproject.plotting.distance_correlation.summarize_pvalue_significance.html#mlproject.plotting.distance_correlation.summarize_pvalue_significance">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">summarize_pvalue_significance</span><span class="p">(</span>
+    <span class="n">pvals</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">significance_func</span><span class="o">=</span><span class="n">significance_stars</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Summarize p-value significance across a matrix for plot title.</span>
+
+<span class="sd">    If all cells have the same significance level, returns a summary</span>
+<span class="sd">    like &#39;all cells: p &lt; 0.01&#39;. Otherwise, returns the legend mapping</span>
+<span class="sd">    for significance stars.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pvals : pd.DataFrame</span>
+<span class="sd">        Matrix of p-values.</span>
+<span class="sd">    significance_func : callable, optional</span>
+<span class="sd">        Function mapping a p-value to a significance start string.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        A summary of p-value significance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">star_matrix</span> <span class="o">=</span> <span class="n">pvals</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="n">significance_func</span><span class="p">)</span>
+    <span class="n">unique_stars</span> <span class="o">=</span> <span class="n">star_matrix</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_stars</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">uniform_star</span> <span class="o">=</span> <span class="n">unique_stars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">uniform_star</span> <span class="o">==</span> <span class="s2">&quot;***&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;all cells: p &lt; 0.001&quot;</span>
+        <span class="k">elif</span> <span class="n">uniform_star</span> <span class="o">==</span> <span class="s2">&quot;**&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;all cells: p &lt; 0.01&quot;</span>
+        <span class="k">elif</span> <span class="n">uniform_star</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;all cells: p &lt; 0.05&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;all cells: p ≥ 0.05 (not significant)&quot;</span>
+
+    <span class="k">return</span> <span class="s2">&quot;all cells: * p&lt;0.05, ** p&lt;0.01, *** p&lt;0.001&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="plot_distance_correlation_heatmap">
+<a class="viewcode-back" href="../../../reference/mlproject.plotting.distance_correlation.plot_distance_correlation_heatmap.html#mlproject.plotting.distance_correlation.plot_distance_correlation_heatmap">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_distance_correlation_heatmap</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">pvals</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">std_mat</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Distance Correlation Heatmap&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+    <span class="n">show_values</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">min_corr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot a heatmap of distance correlations with standard deviation and significance annotations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat : pd.DataFrame</span>
+<span class="sd">        Symmetric matrix of distance correlations.</span>
+<span class="sd">    pvals : pd.DataFrame</span>
+<span class="sd">        Symmetric matrix of permutation-test p-values (same shape as mat).</span>
+<span class="sd">    std_mat : pd.DataFrame, optional</span>
+<span class="sd">        Symmetric matrix of std of distance correlations (from CV).</span>
+<span class="sd">    title : str, optional</span>
+<span class="sd">        Title of the plot.</span>
+<span class="sd">    cmap : str, optional</span>
+<span class="sd">        Colormap for heatmap.</span>
+<span class="sd">    show_values : bool, optional</span>
+<span class="sd">        If True, annotates each cell with correlation + significance stars.</span>
+<span class="sd">    min_corr : float, optional</span>
+<span class="sd">        Minimum correlation value for color scale (if None, uses min of mat).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Build annotated matrix for display</span>
+    <span class="n">annot</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mat</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="c1"># get star strings for this row</span>
+        <span class="n">row_stars</span> <span class="o">=</span> <span class="n">pvals</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">significance_stars</span><span class="p">)</span>
+
+        <span class="c1"># check if all star strings are identical</span>
+        <span class="n">row_has_variation</span> <span class="o">=</span> <span class="n">row_stars</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">mat</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]):</span>
+                <span class="n">star</span> <span class="o">=</span> <span class="n">row_stars</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">if</span> <span class="n">row_has_variation</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">if</span> <span class="n">std_mat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">annot</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">std_mat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}{</span><span class="n">star</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">annot</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}{</span><span class="n">star</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Create mask for upper triangle</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>  <span class="c1"># k=1 excludes diagonal from mask</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+        <span class="n">mat</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+        <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+        <span class="n">annot</span><span class="o">=</span><span class="n">annot</span> <span class="k">if</span> <span class="n">show_values</span> <span class="k">else</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+        <span class="n">vmin</span><span class="o">=</span><span class="n">min_corr</span> <span class="k">if</span> <span class="n">min_corr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">round</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Distance correlation&quot;</span><span class="p">},</span>
+        <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Set axis tick label sizes</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+    <span class="c1"># Set colorbar font sizes</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">colorbar</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Distance correlation&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+    <span class="c1"># get p-value significance summary for title</span>
+    <span class="n">significance_summary</span> <span class="o">=</span> <span class="n">summarize_pvalue_significance</span><span class="p">(</span><span class="n">pvals</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">, ± = std across bootstrapped runs</span><span class="se">\n</span><span class="s2">(Distance covariance independence test for </span><span class="si">{</span><span class="n">significance_summary</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">fig</span></div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aakash Naik, Janine George
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, DigiMatChem.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
