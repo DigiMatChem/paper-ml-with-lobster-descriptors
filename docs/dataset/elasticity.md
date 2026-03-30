@@ -7,7 +7,7 @@ orphan: true
 
 ::::{tab-set}
 
-:::{tab-item} 1
+:::{tab-item} Periodic_table
 
 ```{figure} /_static/dataset/elasticity/elasticity_ptable.png
 :class: main-img
@@ -18,7 +18,7 @@ Periodic table heatmap showing element occurences
 
 :::
 
-:::{tab-item} 2
+:::{tab-item} Sunburst_comp
 
 ```{figure} /_static/dataset/elasticity/elasticity_comp_sunburst.png
 :class: main-img
@@ -29,7 +29,7 @@ Sunburst depicting proportion of different compound types
 
 :::
 
-:::{tab-item} 3
+:::{tab-item} Sunburst_spg
 
 ```{figure} /_static/dataset/elasticity/elasticity_spg.png
 :class: main-img
@@ -40,7 +40,7 @@ Sunburst depicting proportion of different compound types
 
 :::
 
-:::{tab-item} 4
+:::{tab-item} Num_atoms_hist
 
 ```{figure} /_static/dataset/elasticity/elasticity_num_atoms.png
 class: main-img
@@ -51,7 +51,7 @@ Histogram depicting distribution of number of atoms per unit cell and proportion
 
 :::
 
-:::{tab-item} 5
+:::{tab-item} Ionicity_hist
 
 ```{figure} /_static/dataset/elasticity/elasticity_ionicity_mull.png
 :class: main-img
