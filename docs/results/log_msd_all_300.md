@@ -131,9 +131,20 @@
 
 ## Misc
 
-### ARFS n-iter convergence checks
+### ARFS
+
+**n-iter convergence checks**
 
 ![Convergence](../_static/log_msd_all_300/log_msd_all_300_matminer_lob_n_iter_convergence.png)
+
+**LightGBM - MATMINER+LOBSTER**
+
+|      |   train_mae |   test_mae |   train_rmse |   test_rmse |   train_r2 |    test_r2 |
+|:-----|------------:|-----------:|-------------:|------------:|-----------:|-----------:|
+| mean |  0.0200521  | 0.0674667  |   0.0492531  |  0.09527    | 0.974932   | 0.906204   |
+| min  |  0.0185002  | 0.0644285  |   0.0460845  |  0.0902451  | 0.972429   | 0.894429   |
+| max  |  0.0219406  | 0.0698497  |   0.0514834  |  0.09999    | 0.978224   | 0.91346    |
+| std  |  0.00110364 | 0.00197118 |   0.00194885 |  0.00319317 | 0.00211228 | 0.00687722 |
 
 ### MAE/ fold from 10-fold CV
 
