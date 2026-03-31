@@ -14,7 +14,7 @@ Scripts to compute, extract and save vibrational and thermodynamic properties da
       - This script generates required phonopy FORCE_CONSTANTS, BORN, POSCAR and supercell_POSCAR file using input ddb file.
    2. :doc:`msd_convergence`
 
-      - This script will run phonopy and extract mean squared displacement data for different mesh sizes, temperatures and mesh sizes.
+      - This script will run phonopy and extract mean squared displacement data for different mesh sizes, temperatures and frequency cutoffs.
 
    All the following scripts should be executed in the ``ml_env`` environment used for ML model training. See the :ref:`README <readme-page>` to create this environment.
 

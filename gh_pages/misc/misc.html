@@ -30,9 +30,10 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b7897cde" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -53,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="mlproject package" href="../reference/index.html" />
-    <link rel="prev" title="Save figures" href="index.html" />
+    <link rel="prev" title="Database overview" href="dataset_overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -215,6 +216,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selector/index.html">Feature selector</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../feature_selector/relevant_descriptors.html">ARFS Top Descriptors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feature_selector/n_iter_arfs_convergence.html">ARFS convergence tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selector/extract_lightgbm_metrics.html">Get metrics of LightGBM model using selected features from ARFS GrootCV</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../correlation_analysis/index.html">Correlation analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -240,6 +242,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Misc Visualization</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Save figures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dataset_overview.html">Database overview</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Correlation Plots</a></li>
 </ul>
 </details></li>
@@ -563,9 +566,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-normalized-icohp-vs-log-klat-300-and-icobi-vs-log-klat-300">Plot normalized ICOHP vs <code class="docutils literal notranslate"><span class="pre">log_klat_300</span></code> and ICOBI vs <code class="docutils literal notranslate"><span class="pre">log_klat_300</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-sisso-identified-rung-1-and-rung-2-against-log-klat-300">Plot SISSO identified Rung 1 and Rung 2 against <code class="docutils literal notranslate"><span class="pre">log_klat_300</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rung-2-sisso-descriptor">Rung 2 SISSO descriptor:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-left-frac-text-pair-bwdf-skew-mean-text-densityfeatures-vpa-right-left-sqrt-3-text-ein-icohp-right-right-text-unicode-x212b-3"><span class="math notranslate nohighlight">\(\left(\left(\frac{\text{pair\_bwdf\_skew\_mean}}{\text{DensityFeatures\_vpa}}\right)\left(\sqrt[3]{\text{EIN\_ICOHP}}\right)\right) [\text{\unicode{x212B}}^{-3}]\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-left-frac-mathrm-pair-bwdf-skew-mean-mathrm-densityfeatures-vpa-right-left-sqrt-3-mathrm-ein-icohp-right-right"><span class="math notranslate nohighlight">\(\left(\left(\frac{\mathrm{pair\_bwdf\_skew\_mean}}{\mathrm{DensityFeatures\_vpa}}\right)\left(\sqrt[3]{\mathrm{EIN\_ICOHP}}\right)\right)\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rung-1-sisso-descriptor">Rung 1 SISSO descriptor:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-frac-text-pair-bwdf-skew-mean-text-densityfeatures-vpa-right-text-unicode-x212b-3"><span class="math notranslate nohighlight">\(\left(\frac{\text{pair\_bwdf\_skew\_mean}}{\text{DensityFeatures\_vpa}}\right)\,[\text{\unicode{x212B}}^{-3}]\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-frac-mathrm-pair-bwdf-skew-mean-mathrm-densityfeatures-vpa-right"><span class="math notranslate nohighlight">\(\left(\frac{\mathrm{pair\_bwdf\_skew\_mean}}{\mathrm{DensityFeatures\_vpa}}\right)\)</span></a></li>
 </ul>
 </li>
 </ul>
@@ -724,14 +727,14 @@ document.write(`
 <section id="rung-2-sisso-descriptor">
 <h3>Rung 2 SISSO descriptor:<a class="headerlink" href="#rung-2-sisso-descriptor" title="Link to this heading">#</a></h3>
 </section>
-<section id="left-left-frac-text-pair-bwdf-skew-mean-text-densityfeatures-vpa-right-left-sqrt-3-text-ein-icohp-right-right-text-unicode-x212b-3">
-<h3><span class="math notranslate nohighlight">\(\left(\left(\frac{\text{pair\_bwdf\_skew\_mean}}{\text{DensityFeatures\_vpa}}\right)\left(\sqrt[3]{\text{EIN\_ICOHP}}\right)\right) [\text{\unicode{x212B}}^{-3}]\)</span><a class="headerlink" href="#left-left-frac-text-pair-bwdf-skew-mean-text-densityfeatures-vpa-right-left-sqrt-3-text-ein-icohp-right-right-text-unicode-x212b-3" title="Link to this heading">#</a></h3>
+<section id="left-left-frac-mathrm-pair-bwdf-skew-mean-mathrm-densityfeatures-vpa-right-left-sqrt-3-mathrm-ein-icohp-right-right">
+<h3><span class="math notranslate nohighlight">\(\left(\left(\frac{\mathrm{pair\_bwdf\_skew\_mean}}{\mathrm{DensityFeatures\_vpa}}\right)\left(\sqrt[3]{\mathrm{EIN\_ICOHP}}\right)\right)\)</span><a class="headerlink" href="#left-left-frac-mathrm-pair-bwdf-skew-mean-mathrm-densityfeatures-vpa-right-left-sqrt-3-mathrm-ein-icohp-right-right" title="Link to this heading">#</a></h3>
 </section>
 <section id="rung-1-sisso-descriptor">
 <h3>Rung 1 SISSO descriptor:<a class="headerlink" href="#rung-1-sisso-descriptor" title="Link to this heading">#</a></h3>
 </section>
-<section id="left-frac-text-pair-bwdf-skew-mean-text-densityfeatures-vpa-right-text-unicode-x212b-3">
-<h3><span class="math notranslate nohighlight">\(\left(\frac{\text{pair\_bwdf\_skew\_mean}}{\text{DensityFeatures\_vpa}}\right)\,[\text{\unicode{x212B}}^{-3}]\)</span><a class="headerlink" href="#left-frac-text-pair-bwdf-skew-mean-text-densityfeatures-vpa-right-text-unicode-x212b-3" title="Link to this heading">#</a></h3>
+<section id="left-frac-mathrm-pair-bwdf-skew-mean-mathrm-densityfeatures-vpa-right">
+<h3><span class="math notranslate nohighlight">\(\left(\frac{\mathrm{pair\_bwdf\_skew\_mean}}{\mathrm{DensityFeatures\_vpa}}\right)\)</span><a class="headerlink" href="#left-frac-mathrm-pair-bwdf-skew-mean-mathrm-densityfeatures-vpa-right" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the descriptor values</span>
@@ -793,12 +796,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="dataset_overview.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Save figures</p>
+        <p class="prev-next-title">Database overview</p>
       </div>
     </a>
     <a class="right-next"
@@ -831,9 +834,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-normalized-icohp-vs-log-klat-300-and-icobi-vs-log-klat-300">Plot normalized ICOHP vs <code class="docutils literal notranslate"><span class="pre">log_klat_300</span></code> and ICOBI vs <code class="docutils literal notranslate"><span class="pre">log_klat_300</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-sisso-identified-rung-1-and-rung-2-against-log-klat-300">Plot SISSO identified Rung 1 and Rung 2 against <code class="docutils literal notranslate"><span class="pre">log_klat_300</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rung-2-sisso-descriptor">Rung 2 SISSO descriptor:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-left-frac-text-pair-bwdf-skew-mean-text-densityfeatures-vpa-right-left-sqrt-3-text-ein-icohp-right-right-text-unicode-x212b-3"><span class="math notranslate nohighlight">\(\left(\left(\frac{\text{pair\_bwdf\_skew\_mean}}{\text{DensityFeatures\_vpa}}\right)\left(\sqrt[3]{\text{EIN\_ICOHP}}\right)\right) [\text{\unicode{x212B}}^{-3}]\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-left-frac-mathrm-pair-bwdf-skew-mean-mathrm-densityfeatures-vpa-right-left-sqrt-3-mathrm-ein-icohp-right-right"><span class="math notranslate nohighlight">\(\left(\left(\frac{\mathrm{pair\_bwdf\_skew\_mean}}{\mathrm{DensityFeatures\_vpa}}\right)\left(\sqrt[3]{\mathrm{EIN\_ICOHP}}\right)\right)\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rung-1-sisso-descriptor">Rung 1 SISSO descriptor:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-frac-text-pair-bwdf-skew-mean-text-densityfeatures-vpa-right-text-unicode-x212b-3"><span class="math notranslate nohighlight">\(\left(\frac{\text{pair\_bwdf\_skew\_mean}}{\text{DensityFeatures\_vpa}}\right)\,[\text{\unicode{x212B}}^{-3}]\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-frac-mathrm-pair-bwdf-skew-mean-mathrm-densityfeatures-vpa-right"><span class="math notranslate nohighlight">\(\left(\frac{\mathrm{pair\_bwdf\_skew\_mean}}{\mathrm{DensityFeatures\_vpa}}\right)\)</span></a></li>
 </ul>
 </li>
 </ul>
