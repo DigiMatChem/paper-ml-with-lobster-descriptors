@@ -1,0 +1,1201 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Database overview &#8212; mlproject</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b7897cde" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=c851672d"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'misc/dataset_overview';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Correlation Plots" href="misc.html" />
+    <link rel="prev" title="Save figures" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">mlproject</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../essentials/index.html">Essential Links &amp; Terms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Target Properties</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../results/index.html">Results</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../results/last_phdos_peak.html">Last phonon dos peak - cm-1 - last_phdos_peak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/max_pfc.html">Max projected force constant - eV/Å² - max_pfc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_g_vrh.html">Log10 (Shear modulus - GPa) - log_g_vrh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_k_vrh.html">Log10 (Bulk modulus - GPa) - log_k_vrh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_klat_300.html">Log10 (Lattice thermal conductivity @ 300K - W/m/K) - log_klat_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_kp_300.html">Log10 (Peierls lattice thermal conductivity ) @ 300K - W/m/K) - log_kp_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_msd_all_300.html">Log10 (All unique sites mean squared displacements @ 300K - Å²) - log_msd_all_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_msd_all_600.html">Log10 (All unique sites mean squared displacements @ 600K - Å²) - log_msd_all_600</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_msd_mean_300.html">Log10 (Mean of mean squared displacements @ 300K - Å²) - log_msd_mean_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_msd_mean_600.html">Log10 (Mean of mean squared displacements @ 600K - Å²) - log_msd_mean_600</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_msd_max_300.html">Log10 (Max of mean squared displacements @ 300K - Å²) - log_msd_max_300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/log_msd_max_600.html">Log10 (Max of mean Squared displacements @ 600K - Å²) - log_msd_max_600</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/Cv_25.html">Heat capacity @ 25K - meV/atom - Cv_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/Cv_305.html">Heat capacity @ 305K - meV/atom - Cv_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/Cv_705.html">Heat capacity @ 705K - meV/atom - Cv_705</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/H_25.html">Helmholtz energy @ 25K - meV/atom - H_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/H_305.html">Helmholtz energy @ 305K - meV/atom - H_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/H_705.html">Helmholtz energy @ 705K - meV/atom - H_705</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/S_25.html">Vibrational entropy @ 25K - meV/atom - S_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/S_305.html">Vibrational entropy @ 305K - meV/atom - S_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/S_705.html">Vibrational entropy @ 705K - meV/atom - S_705</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/U_25.html">Internal energy @ 25K - meV/atom - U_25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/U_305.html">Internal energy @ 305K - meV/atom - U_305</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/U_705.html">Internal energy @ 705K - meV/atom - U_705</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Target data extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/index.html">Vibrational and thermodynamic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/convert_ddb_to_phonopy.html">Convert abinit ddb file to phonopy format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/msd_convergence.html">Mean squared displacement data extraction and convergence tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/extract_max_pfc.html">Extract maximum project force constant - max_pfc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/extract_converged_msd.html">Extract converged MSD values for all(mean of unique sites), max and mean  @ 300 and 600K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/extract_H_S_U_Cv.html">Read and extract H, S, U, Cv @ 25, 305 and 705 K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/extract_last_ph_dos_peak.html">Read and extract last phonon dos peak frequency (<span class="math notranslate nohighlight">\(cm^{-1}\)</span>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../targets/Lattice_thermal_conductivity/index.html">Anharmonic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Lattice_thermal_conductivity/anharmonic_klat_kp.html">Lattice thermal conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../targets/Elasticity/index.html">Elasticity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Elasticity/query_elasticity_data_mp.html">Query elasticity data from Materials Project</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ML Scripts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selector/index.html">Feature selector</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selector/relevant_descriptors.html">ARFS Top Descriptors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selector/n_iter_arfs_convergence.html">ARFS convergence tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selector/extract_lightgbm_metrics.html">Get metrics of LightGBM model using selected features from ARFS GrootCV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../correlation_analysis/index.html">Correlation analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../correlation_analysis/dcor_analysis.html">Distance correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../correlation_analysis/dependency_graphs.html">Dependency graphs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../training/index.html">Model Training</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../training/train_rf.html">Train RF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../training/train_modnet.html">Train MODNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../training/train_sisso.html">Train SISSO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../explainer/index.html">Model Explainer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../explainer/model_explainer.html">PFI + SHAP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../t_test/index.html">Model Comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../t_test/corrected_resampled_t_test.html">Corrected resampled t-test to compare model improvement significance</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Misc Visualization</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Save figures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Database overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Correlation Plots</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">mlproject package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/mlproject.corr_analysis.html">mlproject.corr_analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.corr_analysis.dependency_graph.html">mlproject.corr_analysis.dependency_graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.corr_analysis.dependency_graph.evaluate_feature_set_relationships.html">evaluate_feature_set_relationships</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.corr_analysis.dependency_graph.evaluate_feature_set_to_feature.html">evaluate_feature_set_to_feature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.corr_analysis.dependency_graph.evaluate_features_to_target.html">evaluate_features_to_target</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.corr_analysis.dependency_graph.DEFAULT_REGRESSION_METRICS.html">DEFAULT_REGRESSION_METRICS</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.corr_analysis.distance_correlation.html">mlproject.corr_analysis.distance_correlation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.corr_analysis.distance_correlation.evaluate_distance_correlation_matrix_bootstrap.html">evaluate_distance_correlation_matrix_bootstrap</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/mlproject.data.html">mlproject.data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.data.featurizer.html">mlproject.data.featurizer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.data.featurizer.get_lobster_feats.html">get_lobster_feats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.data.featurizer.get_lobster_site_feat.html">get_lobster_site_feat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.data.featurizer.get_matminer_feats.html">get_matminer_feats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.data.featurizer.get_matminer_site_feats.html">get_matminer_site_feats</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.data.preprocessing.html">mlproject.data.preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.data.preprocessing.apply_unit_rule.html">apply_unit_rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.data.preprocessing.build_rename_dict.html">build_rename_dict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.data.preprocessing.get_dataset.html">get_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.data.preprocessing.UNIT_RULES.html">UNIT_RULES</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/mlproject.plotting.html">mlproject.plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.plotting.dependency_graph.html">mlproject.plotting.dependency_graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.plotting.dependency_graph.plot_dependency_graph_from_df.html">plot_dependency_graph_from_df</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.plotting.dependency_graph.plot_feature_learnability.html">plot_feature_learnability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.plotting.distance_correlation.html">mlproject.plotting.distance_correlation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.plotting.distance_correlation.plot_distance_correlation_heatmap.html">plot_distance_correlation_heatmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.plotting.distance_correlation.summarize_pvalue_significance.html">summarize_pvalue_significance</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.plotting.importances.html">mlproject.plotting.importances</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.plotting.importances.plot_feature_importance.html">plot_feature_importance</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.plotting.model_comparison.html">mlproject.plotting.model_comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.plotting.model_comparison.plot_errors.html">plot_errors</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/mlproject.postprocess.html">mlproject.postprocess</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.postprocess.feature_importances.html">mlproject.postprocess.feature_importances</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.feature_importances.aggregate_importances.html">aggregate_importances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.feature_importances.get_arfs_mean_feature_importances.html">get_arfs_mean_feature_importances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.feature_importances.get_modnet_pfi_shap_summary.html">get_modnet_pfi_shap_summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.feature_importances.get_rf_pfi_shap_summary.html">get_rf_pfi_shap_summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.feature_importances.process_dataset.html">process_dataset</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.postprocess.t_test.html">mlproject.postprocess.t_test</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.t_test.corrected_resampled_ttest.html">corrected_resampled_ttest</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.postprocess.utils.html">mlproject.postprocess.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.utils.caclulate_percent_folds_improved.html">caclulate_percent_folds_improved</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.utils.calculate_cohens_d_av.html">calculate_cohens_d_av</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.utils.calculate_relative_percentage_improvement.html">calculate_relative_percentage_improvement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.utils.get_ttest_summary_df.html">get_ttest_summary_df</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.utils.load_cv_results.html">load_cv_results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.utils.mean_absolute_percentage_error.html">mean_absolute_percentage_error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.postprocess.utils.significance_stars.html">significance_stars</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/mlproject.training.html">mlproject.training</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.training.f_test.html">mlproject.training.f_test</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.f_test.paired_ftest_5x2cv_feat_sets.html">paired_ftest_5x2cv_feat_sets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.training.feature_selection.html">mlproject.training.feature_selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.feature_selection.cxTwoPointAndFix.html">cxTwoPointAndFix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.feature_selection.get_relevant_features.html">get_relevant_features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.feature_selection.hamming_distance.html">hamming_distance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.feature_selection.init_valid_individual.html">init_valid_individual</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.feature_selection.is_diverse.html">is_diverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.feature_selection.mixed_selection.html">mixed_selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.feature_selection.mutate_and_fix.html">mutate_and_fix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.feature_selection.population_entropy.html">population_entropy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.feature_selection.GAFeatureSelector.html">GAFeatureSelector</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.training.fold_trainer.html">mlproject.training.fold_trainer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.fold_trainer.train_eval_fold.html">train_eval_fold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.fold_trainer.train_modnet.html">train_modnet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.fold_trainer.train_rf.html">train_rf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.training.fold_trainer.train_sisso_ga.html">train_sisso_ga</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/mlproject.utils.html">mlproject.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/mlproject.utils.misc.html">mlproject.utils.misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/mlproject.utils.misc.split_features.html">split_features</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/license.html">License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/issues/new?title=Issue%20on%20page%20%2Fmisc/dataset_overview.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/misc/dataset_overview.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Database overview</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-plots">Save plots</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="database-overview">
+<h1>Database overview<a class="headerlink" href="#database-overview" title="Link to this heading">#</a></h1>
+<div style="
+    border-left: 5px solid #d9534f;
+    background-color: #fdf2f2;
+    color: #000000;
+    padding: 12px;
+    margin: 16px 0;
+">
+<strong>⚠️ Caution: Change environment</strong><br><br>
+The following code snippet needs to be run in a seperate environment due to minium python version requirements of pymatviz package, please use the provided <a href="https://github.com/DigiMatChem/paper-ml-with-lobster-descriptors/tree/update/notebooks/misc" target="_blank">pymatviz_env.yml</a> to create a new environment before executing the following code blocks<br><br>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">cpu_count</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">monty.serialization</span><span class="w"> </span><span class="kn">import</span> <span class="n">loadfn</span><span class="p">,</span> <span class="n">dumpfn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">monty.serialization</span><span class="w"> </span><span class="kn">import</span> <span class="n">MontyDecoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymatgen.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Composition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymatgen.core.periodic_table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Element</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pymatviz.enums</span><span class="w"> </span><span class="kn">import</span> <span class="n">ElemCountMode</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymatviz.sunburst</span><span class="w"> </span><span class="kn">import</span> <span class="n">spacegroup_sunburst</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymatviz.ptable</span><span class="w"> </span><span class="kn">import</span> <span class="n">ptable_heatmap_plotly</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;pdf.fonttype&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structures_dir</span> <span class="o">=</span> <span class="s2">&quot;absolute/path/to/paper-ml-with-lobster-descriptors/data/structures/structures.json.gz&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_parent_dir</span> <span class="o">=</span> <span class="s2">&quot;absolute/path/to/paper-ml-with-lobster-descriptors/data/targets/&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_structs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">structures_dir</span><span class="p">)</span>
+
+<span class="n">df_structs</span><span class="p">[</span><span class="s2">&quot;structure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_structs</span><span class="p">[</span><span class="s2">&quot;structure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="n">MontyDecoder</span><span class="p">()</span><span class="o">.</span><span class="n">process_decoded</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_structures</span><span class="p">(</span><span class="n">structures_dir</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">target_parent_dir</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get pymatgen structure objects based on data_name arg</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    structures_dir : str</span>
+<span class="sd">        Path to pymatgen structures dataframe json</span>
+<span class="sd">    target_parent_dir : pd.DataFrame</span>
+<span class="sd">        Path to targets dataframe jsons</span>
+<span class="sd">    dataset_name : str, optional</span>
+<span class="sd">        Name of target to filter structures</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        Dataframe with pymatgen structure objects</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df_structs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">structures_dir</span><span class="p">)</span>
+
+    <span class="c1"># restore pymatgen objects from dicts</span>
+    <span class="n">df_structs</span><span class="p">[</span><span class="s2">&quot;structure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_structs</span><span class="p">[</span><span class="s2">&quot;structure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">MontyDecoder</span><span class="p">()</span><span class="o">.</span><span class="n">process_decoded</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dataset_name</span><span class="p">:</span>
+        <span class="n">target_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">target_parent_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">.json&quot;</span>
+        <span class="k">if</span> <span class="n">target_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">target_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">target_dir</span><span class="p">)</span>
+    
+            <span class="k">return</span> <span class="n">df_structs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">target_df</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No data for </span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2"> found in </span><span class="si">{</span><span class="n">target_parent_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_structs</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">classify_composition_oxi</span><span class="p">(</span><span class="n">comp</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classifiy given composition using guessed oxidation states into oxides, halogenides etc.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    comp: pymatgen composition object</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    --------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        A tuple of form main_type, sub_type, composition and most probable identified oxidation state</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">elements</span> <span class="o">=</span> <span class="p">{</span><span class="n">el</span><span class="o">.</span><span class="n">symbol</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">comp</span><span class="o">.</span><span class="n">elements</span><span class="p">}</span>
+    <span class="n">metals</span> <span class="o">=</span> <span class="p">{</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">elements</span> <span class="k">if</span> <span class="n">Element</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="o">.</span><span class="n">is_metal</span><span class="p">}</span>
+    <span class="n">metalloids</span> <span class="o">=</span> <span class="p">{</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">elements</span> <span class="k">if</span> <span class="n">Element</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="o">.</span><span class="n">is_metalloid</span><span class="p">}</span>
+    <span class="n">non_metals</span> <span class="o">=</span> <span class="n">elements</span> <span class="o">-</span> <span class="n">metals</span> <span class="o">-</span> <span class="n">metalloids</span>
+    
+    <span class="n">guesses</span> <span class="o">=</span> <span class="n">comp</span><span class="o">.</span><span class="n">oxi_state_guesses</span><span class="p">()</span>  <span class="c1"># TODO max_sites to e.g. 200 if needed</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">guesses</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;zero oxidation states&quot;</span><span class="p">,</span> <span class="s2">&quot;element&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">guesses</span>
+        <span class="k">if</span> <span class="n">metals</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">non_metals</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;zero oxidation states&quot;</span><span class="p">,</span> <span class="s2">&quot;intermetallics&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">guesses</span>
+
+        <span class="k">return</span> <span class="s2">&quot;zero oxidation states&quot;</span><span class="p">,</span> <span class="s2">&quot;other&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">guesses</span>
+
+    <span class="n">oxi</span> <span class="o">=</span> <span class="n">guesses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">oxi</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">==</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span>
+        <span class="k">return</span> <span class="s2">&quot;zero oxidation states&quot;</span><span class="p">,</span> <span class="s2">&quot;element&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+    <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">oxi</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">==</span> <span class="p">{</span><span class="mi">0</span><span class="p">}:</span>
+        <span class="k">if</span> <span class="n">metals</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">non_metals</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;zero oxidation states&quot;</span><span class="p">,</span> <span class="s2">&quot;intermetallics&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+        <span class="k">return</span> <span class="s2">&quot;zero oxidation states&quot;</span><span class="p">,</span> <span class="s2">&quot;other&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+    <span class="k">if</span> <span class="n">metals</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">non_metals</span> <span class="ow">and</span> <span class="nb">set</span><span class="p">(</span><span class="n">oxi</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">!=</span> <span class="p">{</span><span class="mi">0</span><span class="p">}:</span>
+        <span class="k">return</span> <span class="s2">&quot;polar intermetallics&quot;</span><span class="p">,</span> <span class="s2">&quot;polar intermetallics&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+    
+    <span class="n">anions</span> <span class="o">=</span> <span class="p">{</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">oxi</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">anions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+
+        <span class="n">anion</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">anions</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">anion</span> <span class="o">==</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;hydride&quot;</span><span class="p">,</span> <span class="s2">&quot;hydride&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+        <span class="k">if</span> <span class="n">anion</span> <span class="ow">in</span> <span class="n">HALOGENS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;halogenides&quot;</span><span class="p">,</span> <span class="n">anion</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+        <span class="k">if</span> <span class="n">anion</span> <span class="o">==</span> <span class="s2">&quot;O&quot;</span><span class="p">:</span>
+            <span class="n">o_oxi</span> <span class="o">=</span> <span class="n">oxi</span><span class="p">[</span><span class="n">anion</span><span class="p">]</span>
+
+            <span class="n">oxygen_classes</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="o">-</span><span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;oxides&quot;</span><span class="p">,</span>
+                <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;peroxides&quot;</span><span class="p">,</span>
+                <span class="o">-</span><span class="mf">0.5</span><span class="p">:</span> <span class="s2">&quot;superoxides&quot;</span>
+            <span class="p">}</span>
+        
+            <span class="k">return</span> <span class="n">oxygen_classes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_oxi</span><span class="p">,</span> <span class="s2">&quot;other oxygen compounds&quot;</span><span class="p">),</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+            
+        <span class="k">if</span> <span class="n">anion</span> <span class="ow">in</span> <span class="n">CHALCOGENS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;other chalcogenides&quot;</span><span class="p">,</span> <span class="n">anion</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+        <span class="k">if</span> <span class="n">anion</span> <span class="ow">in</span> <span class="n">PNICTIDES</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;pnictides&quot;</span><span class="p">,</span> <span class="n">anion</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+        <span class="k">if</span> <span class="n">anion</span> <span class="ow">in</span> <span class="n">GROUP14ANIONS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;group 14 anions&quot;</span><span class="p">,</span> <span class="n">anion</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+        <span class="k">if</span> <span class="n">anion</span> <span class="ow">in</span> <span class="n">OTHER_ANIONS</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;H&quot;</span> <span class="ow">in</span> <span class="n">oxi</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">oxi</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;boron anion&quot;</span><span class="p">,</span> <span class="s2">&quot;borohydride&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+            <span class="k">if</span> <span class="s2">&quot;H&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">oxi</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">oxi</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;boron anion&quot;</span><span class="p">,</span> <span class="s2">&quot;borides&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+        <span class="k">return</span> <span class="s2">&quot;misc&quot;</span><span class="p">,</span> <span class="s2">&quot;misc&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+
+    <span class="c1"># last case: multiple anions</span>
+    <span class="k">return</span> <span class="s2">&quot;mixed anions&quot;</span><span class="p">,</span> <span class="s2">&quot;mixed anions&quot;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_dataframe</span><span class="p">(</span><span class="n">compositions</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">Composition</span><span class="p">],</span> <span class="n">processes</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classify compositions in parallel and return concatenated dataframe</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    compositions: list of pymatgen composition objects</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">processes</span> <span class="ow">or</span> <span class="n">cpu_count</span><span class="p">()</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">with</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">main</span><span class="p">,</span> <span class="n">sub</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">oxi</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">pool</span><span class="o">.</span><span class="n">imap_unordered</span><span class="p">(</span><span class="n">classify_composition_oxi</span><span class="p">,</span> <span class="n">compositions</span><span class="p">),</span>
+                               <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">compositions</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing compositions&quot;</span><span class="p">):</span>
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;main_type&quot;</span><span class="p">:</span> <span class="n">main</span><span class="p">,</span> <span class="s2">&quot;sub_type&quot;</span><span class="p">:</span> <span class="n">sub</span><span class="p">,</span> <span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;oxi&quot;</span><span class="p">:</span> <span class="n">oxi</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_sunburst</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">color_map</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get composition classification sunburst plot</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    df: pd.Dataframe</span>
+<span class="sd">        Pandas dataframe containing composition classification labels, output of `build_dataframe` method</span>
+<span class="sd">    color_map: dict</span>
+<span class="sd">        Dict with color mapping for various classification labels</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">sunburst</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">,</span>
+        <span class="n">path</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;main_type&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_type&quot;</span><span class="p">],</span>
+        <span class="c1">#title=&quot;Compound Classification&quot;,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+        <span class="n">color_discrete_map</span><span class="o">=</span><span class="n">color_map</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;main_type&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">textinfo</span><span class="o">=</span><span class="s2">&quot;label+percent root&quot;</span><span class="p">,</span> <span class="n">textfont_size</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">marker_line_width</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># only percentages</span>
+
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_structure_data</span><span class="p">(</span><span class="n">df_structures</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extract number of atoms and composition type from pymatgen structures.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    df_structures: pd.Dataframe</span>
+<span class="sd">        Dataframe with pymatgen structure objects</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict with keys:</span>
+<span class="sd">            - n_atoms (list[int])</span>
+<span class="sd">            - n_elements (list[int])</span>
+<span class="sd">            - type (list[str])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">label_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Unary&quot;</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Binary&quot;</span><span class="p">,</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Ternary&quot;</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;Quaternary&quot;</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;n_atoms&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;n_elements&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">df_structures</span><span class="o">.</span><span class="n">structure</span><span class="p">:</span>
+        <span class="n">n_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">n_elements</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">chemical_system_set</span><span class="p">)</span>
+
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;n_atoms&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_atoms</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;n_elements&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_elements</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">n_elements</span><span class="p">,</span> <span class="s2">&quot;Higher&quot;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_num_atoms_stacked_by_type_histogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot stacked histogram of number of atoms,</span>
+<span class="sd">    stacked by composition type.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    data: dict</span>
+<span class="sd">        Output of `extract_structure_data` function</span>
+<span class="sd">    figsize: tuple(int, int)</span>
+<span class="sd">        Figure size of matplotlib figure instance</span>
+<span class="sd">    fontsize: int</span>
+<span class="sd">        Fontsize for axis, ticks and legend</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Unary&quot;</span><span class="p">:</span> <span class="s2">&quot;#3B82F6&quot;</span><span class="p">,</span>       <span class="c1"># blue</span>
+        <span class="s2">&quot;Binary&quot;</span><span class="p">:</span> <span class="s2">&quot;#14B8A6&quot;</span><span class="p">,</span>      <span class="c1"># teal</span>
+        <span class="s2">&quot;Ternary&quot;</span><span class="p">:</span> <span class="s2">&quot;#F59E0B&quot;</span><span class="p">,</span>     <span class="c1"># orange</span>
+        <span class="s2">&quot;Quaternary&quot;</span><span class="p">:</span> <span class="s2">&quot;#EF4444&quot;</span><span class="p">,</span>  <span class="c1"># red</span>
+        <span class="s2">&quot;Higher&quot;</span><span class="p">:</span> <span class="s2">&quot;#8B5CF6&quot;</span>       <span class="c1"># purple</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Group data by type</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n_atoms</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;n_atoms&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]):</span>
+        <span class="n">groups</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_atoms</span><span class="p">)</span>
+
+    <span class="c1"># Sort types for consistent legend order</span>
+    <span class="n">type_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Unary&quot;</span><span class="p">,</span> <span class="s2">&quot;Binary&quot;</span><span class="p">,</span> <span class="s2">&quot;Ternary&quot;</span><span class="p">,</span> <span class="s2">&quot;Quaternary&quot;</span><span class="p">,</span> <span class="s2">&quot;Higher&quot;</span><span class="p">]</span>
+    <span class="n">ordered_types</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">type_order</span> <span class="k">if</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color_map</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ordered_types</span><span class="p">]</span>
+    
+    <span class="c1"># Plot</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">groups</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ordered_types</span><span class="p">],</span>
+        <span class="n">bins</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+        <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">ordered_types</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of atoms/unit cell&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Composition type&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">COLOR_MAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;oxides&quot;</span><span class="p">:</span> <span class="s2">&quot;#e76f51&quot;</span><span class="p">,</span>                 <span class="c1"># soft red </span>
+    <span class="s2">&quot;halogenides&quot;</span><span class="p">:</span> <span class="s2">&quot;#2a9d8f&quot;</span><span class="p">,</span>            <span class="c1"># teal-green </span>
+    <span class="s2">&quot;hydride&quot;</span><span class="p">:</span> <span class="s2">&quot;#e9ecef&quot;</span><span class="p">,</span>                <span class="c1"># very light gray </span>
+    <span class="s2">&quot;pnictides&quot;</span><span class="p">:</span> <span class="s2">&quot;#9d4edd&quot;</span><span class="p">,</span>              <span class="c1"># soft purple </span>
+    <span class="s2">&quot;other chalcogenides&quot;</span><span class="p">:</span> <span class="s2">&quot;#f4a261&quot;</span><span class="p">,</span>    <span class="c1"># soft orange</span>
+    <span class="s2">&quot;boron anion&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffcb53&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mixed anions&quot;</span><span class="p">:</span> <span class="s2">&quot;#48bfe3&quot;</span><span class="p">,</span>           <span class="c1"># light blue </span>
+    <span class="s2">&quot;group 14 anions&quot;</span><span class="p">:</span> <span class="s2">&quot;#bc6c25&quot;</span><span class="p">,</span>        <span class="c1"># muted brown </span>
+    <span class="s2">&quot;polar intermetallics&quot;</span><span class="p">:</span> <span class="s2">&quot;#577590&quot;</span><span class="p">,</span>   <span class="c1"># desaturated blue-gray </span>
+    <span class="s2">&quot;zero oxidation states&quot;</span><span class="p">:</span> <span class="s2">&quot;#277da1&quot;</span><span class="p">,</span>  <span class="c1"># calm blue</span>
+<span class="p">}</span>
+
+
+<span class="n">HALOGENS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;Cl&quot;</span><span class="p">,</span> <span class="s2">&quot;Br&quot;</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">}</span>
+<span class="n">CHALCOGENS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;Se&quot;</span><span class="p">,</span> <span class="s2">&quot;Te&quot;</span><span class="p">}</span>
+<span class="n">PNICTIDES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;As&quot;</span><span class="p">,</span> <span class="s2">&quot;Sb&quot;</span><span class="p">,</span> <span class="s2">&quot;Bi&quot;</span><span class="p">}</span>
+<span class="n">GROUP14ANIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;Si&quot;</span><span class="p">,</span> <span class="s2">&quot;Ge&quot;</span><span class="p">,</span> <span class="s2">&quot;Sn&quot;</span><span class="p">}</span>
+<span class="n">OTHER_ANIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;B&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="save-plots">
+<h2>Save plots<a class="headerlink" href="#save-plots" title="Link to this heading">#</a></h2>
+<p><strong>Save periodic table heatmap, compostion classification/space group sunburst plots and number of atoms per compostion type distribution plots</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;last_phdos_peak&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;log_g_vrh&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;log_klat_300&quot;</span><span class="p">,</span>
+               <span class="kc">None</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name_prefixes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;last_phdos_peak&quot;</span><span class="p">:</span> <span class="s2">&quot;vibrational&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;log_g_vrh&quot;</span><span class="p">:</span> <span class="s2">&quot;elasticity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;log_klat_300&quot;</span><span class="p">:</span> <span class="s2">&quot;anharmonic&quot;</span><span class="p">,</span>
+    <span class="kc">None</span> <span class="p">:</span> <span class="s2">&quot;total&quot;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="n">dataset_names</span><span class="p">:</span>
+    <span class="n">df_structs</span> <span class="o">=</span> <span class="n">get_structures</span><span class="p">(</span><span class="n">structures_dir</span><span class="o">=</span><span class="n">structures_dir</span><span class="p">,</span> <span class="n">target_parent_dir</span><span class="o">=</span><span class="n">target_parent_dir</span><span class="p">,</span><span class="n">dataset_name</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">)</span>
+    <span class="n">compositions</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">composition</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df_structs</span><span class="o">.</span><span class="n">structure</span><span class="p">]</span>
+
+    <span class="n">file_name_prefix</span> <span class="o">=</span> <span class="n">file_name_prefixes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">build_dataframe</span><span class="p">(</span><span class="n">compositions</span><span class="o">=</span><span class="n">compositions</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_comp_class.pkl&quot;</span><span class="p">)</span> <span class="c1"># save compound classification data</span>
+    
+    <span class="n">fig_sb</span> <span class="o">=</span> <span class="n">plot_sunburst</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">color_map</span><span class="o">=</span><span class="n">COLOR_MAP</span><span class="p">)</span>
+    <span class="n">fig_sb</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_sunburst.pdf&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># save sunburst plot for compound classification</span>
+    <span class="n">fig_sb</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_sunburst.png&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># save sunburst plot for compound classification png</span>
+
+    <span class="n">pt_fig</span> <span class="o">=</span> <span class="n">ptable_heatmap_plotly</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">composition</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df_structs</span><span class="o">.</span><span class="n">structure</span><span class="p">],</span><span class="n">heat_mode</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                      <span class="n">count_mode</span><span class="o">=</span><span class="n">ElemCountMode</span><span class="o">.</span><span class="n">occurrence</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">pt_fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">textfont_size</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">pt_fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">paper_bgcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="n">plot_bgcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+
+    <span class="n">pt_fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_ptable.pdf&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># save periodic table heatmap as per element occurrences</span>
+    <span class="n">pt_fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_ptable.png&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># save periodic table heatmap as per element occurrences</span>
+
+    <span class="n">spg_fig</span> <span class="o">=</span> <span class="n">spacegroup_sunburst</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">get_space_group_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df_structs</span><span class="o">.</span><span class="n">structure</span><span class="p">],</span> <span class="n">show_counts</span><span class="o">=</span><span class="s2">&quot;percent&quot;</span><span class="p">)</span>
+    <span class="n">spg_fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">textfont_size</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">marker_line_width</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">spg_fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">paper_bgcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="n">plot_bgcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+
+    <span class="n">spg_fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_spg.pdf&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># save space group distribution figure</span>
+    <span class="n">spg_fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_spg.png&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># save space group distribution figure png</span>
+
+    <span class="n">hist_data</span> <span class="o">=</span> <span class="n">extract_structure_data</span><span class="p">(</span><span class="n">df_structures</span><span class="o">=</span><span class="n">df_structs</span><span class="p">)</span>
+
+    <span class="n">fig_hist</span> <span class="o">=</span> <span class="n">plot_num_atoms_stacked_by_type_histogram</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">hist_data</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">fig_hist</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_num_atoms.pdf&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="c1"># save num_atoms</span>
+    <span class="n">fig_hist</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_num_atoms.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="c1"># save num_atoms png</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Save ionicity distrubtion plots</strong></p>
+<p>Ionicity is calculated using atomic charges obtained from LOBSTER calculations using the formulation</p>
+<div class="math notranslate nohighlight">
+\[I_{\text {Charges }}=\frac{1}{N_{\text {Atoms }}} \sum_i^{N_{\text {Atoms }}}\left(\frac{q_i}{v_{\text {eff }, i}}\right)\]</div>
+<p>introduced in <a class="reference external" href="https://www.sciencedirect.com/science/chapter/referencework/abs/pii/B9780128231449001205?via%3Dihub">R. Nelson, C. Ertural, P. C. Müller, R. Dronskowski, in Compr. Inorg. Chem. III, Elsevier, 2023, pp. 141–201</a>, where,  <span class="math notranslate nohighlight">\(q_i\)</span> and <span class="math notranslate nohighlight">\(v_{\mathrm{eff, i}}\)</span> denote the atomic charge and effective valence for
+atom <span class="math notranslate nohighlight">\(i\)</span> in a structure, respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ionicity_ref</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;ionicity_data.json&quot;</span><span class="p">)</span> <span class="c1"># read pre-computed ionicity data calculated from Lobster charges data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="n">dataset_names</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">dataset_name</span><span class="p">:</span>
+        <span class="n">target_df_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">target_parent_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">.json&quot;</span>
+
+        <span class="k">if</span> <span class="n">target_df_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">target_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">target_df_path</span><span class="p">)</span>
+    
+            <span class="n">df_ionicity</span> <span class="o">=</span> <span class="n">df_ionicity_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">target_df</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No data for </span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2"> found in </span><span class="si">{</span><span class="n">target_parent_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df_ionicity</span> <span class="o">=</span> <span class="n">df_ionicity_ref</span>
+
+    <span class="n">file_name_prefix</span> <span class="o">=</span> <span class="n">file_name_prefixes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)</span>
+
+
+    <span class="c1"># Mulliken</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_ionicity</span><span class="o">.</span><span class="n">Ionicity_Mull</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#a6cee3&quot;</span><span class="p">);</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span>
+        <span class="s2">&quot;Ionicity (Mulliken charges)&quot;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Counts&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_ionicity_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;mp-1784&quot;</span><span class="p">,</span> <span class="s2">&quot;Ionicity_Mull&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ionic (mp-1784: CsF)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_ionicity_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;mp-1487&quot;</span><span class="p">,</span> <span class="s2">&quot;Ionicity_Mull&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#f4a261&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Intermetallic (mp-1487: AlNi)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_ionicity_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;mp-10597&quot;</span><span class="p">,</span> <span class="s2">&quot;Ionicity_Mull&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkblue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Metal (mp-10597: Ag)&quot;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Compound type&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_ionicity_mull.pdf&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_ionicity_mull.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    
+    <span class="c1"># Loewdin</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_ionicity</span><span class="o">.</span><span class="n">Ionicity_Loew</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#a6cee3&quot;</span><span class="p">);</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span>
+        <span class="s2">&quot;Ionicity (Loewdin charges)&quot;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Counts&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_ionicity_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;mp-1784&quot;</span><span class="p">,</span> <span class="s2">&quot;Ionicity_Loew&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ionic (mp-1784: CsF)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_ionicity_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;mp-1487&quot;</span><span class="p">,</span> <span class="s2">&quot;Ionicity_Loew&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#f4a261&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Intermetallic (mp-1487: AlNi)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_ionicity_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;mp-10597&quot;</span><span class="p">,</span> <span class="s2">&quot;Ionicity_Loew&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkblue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Metal (mp-10597: Ag)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Compound type&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_ionicity_loew.pdf&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name_prefix</span><span class="si">}</span><span class="s2">_ionicity_loew.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Save figures</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="misc.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Correlation Plots</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-plots">Save plots</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aakash Naik, Janine George
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, DigiMatChem.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

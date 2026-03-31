@@ -30,9 +30,10 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b7897cde" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -212,6 +213,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selector/index.html">Feature selector</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../feature_selector/relevant_descriptors.html">ARFS Top Descriptors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feature_selector/n_iter_arfs_convergence.html">ARFS convergence tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selector/extract_lightgbm_metrics.html">Get metrics of LightGBM model using selected features from ARFS GrootCV</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../correlation_analysis/index.html">Correlation analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -237,6 +239,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Misc Visualization</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Save figures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/dataset_overview.html">Database overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc/misc.html">Correlation Plots</a></li>
 </ul>
 </details></li>
@@ -576,7 +579,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">Misc</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arfs-n-iter-convergence-checks">ARFS n-iter convergence checks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arfs">ARFS</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mae-fold-from-10-fold-cv">MAE/ fold from 10-fold CV</a></li>
 </ul>
 </li>
@@ -869,9 +872,58 @@ document.write(`
 <hr class="docutils" />
 <section id="misc">
 <h2>Misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
-<section id="arfs-n-iter-convergence-checks">
-<h3>ARFS n-iter convergence checks<a class="headerlink" href="#arfs-n-iter-convergence-checks" title="Link to this heading">#</a></h3>
+<section id="arfs">
+<h3>ARFS<a class="headerlink" href="#arfs" title="Link to this heading">#</a></h3>
+<p><strong>n-iter convergence checks</strong></p>
 <p><img alt="Convergence" src="../_images/H_25_matminer_lob_n_iter_convergence.png" /></p>
+<p><strong>LightGBM - MATMINER+LOBSTER</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-right"><p>train_rmse</p></th>
+<th class="head text-right"><p>test_rmse</p></th>
+<th class="head text-right"><p>train_errors</p></th>
+<th class="head text-right"><p>test_errors</p></th>
+<th class="head text-right"><p>train_r2</p></th>
+<th class="head text-right"><p>test_r2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>mean</p></td>
+<td class="text-right"><p>2.78726</p></td>
+<td class="text-right"><p>4.29739</p></td>
+<td class="text-right"><p>0.712261</p></td>
+<td class="text-right"><p>2.44112</p></td>
+<td class="text-right"><p>0.989874</p></td>
+<td class="text-right"><p>0.975502</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>min</p></td>
+<td class="text-right"><p>2.40886</p></td>
+<td class="text-right"><p>3.2487</p></td>
+<td class="text-right"><p>0.625013</p></td>
+<td class="text-right"><p>2.08038</p></td>
+<td class="text-right"><p>0.986182</p></td>
+<td class="text-right"><p>0.964229</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>max</p></td>
+<td class="text-right"><p>3.25883</p></td>
+<td class="text-right"><p>5.82314</p></td>
+<td class="text-right"><p>0.862154</p></td>
+<td class="text-right"><p>2.88151</p></td>
+<td class="text-right"><p>0.992655</p></td>
+<td class="text-right"><p>0.985092</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>std</p></td>
+<td class="text-right"><p>0.290933</p></td>
+<td class="text-right"><p>0.957553</p></td>
+<td class="text-right"><p>0.0796425</p></td>
+<td class="text-right"><p>0.271535</p></td>
+<td class="text-right"><p>0.00214704</p></td>
+<td class="text-right"><p>0.00874736</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="mae-fold-from-10-fold-cv">
 <h3>MAE/ fold from 10-fold CV<a class="headerlink" href="#mae-fold-from-10-fold-cv" title="Link to this heading">#</a></h3>
@@ -948,7 +1000,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">Misc</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arfs-n-iter-convergence-checks">ARFS n-iter convergence checks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arfs">ARFS</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mae-fold-from-10-fold-cv">MAE/ fold from 10-fold CV</a></li>
 </ul>
 </li>

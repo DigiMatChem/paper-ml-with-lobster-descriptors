@@ -8,3 +8,4 @@ Scripts related to All Relevant Feature selector (ARFS)
 
    relevant_descriptors
    n_iter_arfs_convergence
+   extract_lightgbm_metrics
