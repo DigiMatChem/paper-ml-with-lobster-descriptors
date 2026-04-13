@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b7897cde" />
@@ -190,37 +190,57 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Target data extraction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/index.html">Vibrational and thermodynamic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/index.html">Vibrational and thermodynamic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/convert_ddb_to_phonopy.html">Convert abinit ddb file to phonopy format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/msd_convergence.html">Mean squared displacement data extraction and convergence tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/extract_max_pfc.html">Extract maximum project force constant - max_pfc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/extract_converged_msd.html">Extract converged MSD values for all(mean of unique sites), max and mean  @ 300 and 600K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/extract_H_S_U_Cv.html">Read and extract H, S, U, Cv @ 25, 305 and 705 K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Vibrational_and_thermodynamic_properties/extract_last_ph_dos_peak.html">Read and extract last phonon dos peak frequency (<span class="math notranslate nohighlight">\(cm^{-1}\)</span>)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../targets/Lattice_thermal_conductivity/index.html">Anharmonic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../targets/Lattice_thermal_conductivity/index.html">Anharmonic properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Lattice_thermal_conductivity/anharmonic_klat_kp.html">Lattice thermal conductivity</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../targets/Elasticity/index.html">Elasticity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../targets/Elasticity/index.html">Elasticity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../targets/Elasticity/query_elasticity_data_mp.html">Query elasticity data from Materials Project</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML Scripts</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selector/index.html">Feature selector</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selector/index.html">Feature selector</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selector/relevant_descriptors.html">ARFS Top Descriptors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selector/n_iter_arfs_convergence.html">ARFS convergence tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selector/extract_lightgbm_metrics.html">Get metrics of LightGBM model using selected features from ARFS GrootCV</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../correlation_analysis/index.html">Correlation analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../correlation_analysis/index.html">Correlation analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../correlation_analysis/dcor_analysis.html">Distance correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../correlation_analysis/dependency_graphs.html">Dependency graphs</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../training/index.html">Model Training</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../training/index.html">Model Training</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../training/train_rf.html">Train RF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../training/train_modnet.html">Train MODNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../training/train_sisso.html">Train SISSO</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../explainer/index.html">Model Explainer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../explainer/index.html">Model Explainer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../explainer/model_explainer.html">PFI + SHAP</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../t_test/index.html">Model Comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../t_test/index.html">Model Comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../t_test/corrected_resampled_t_test.html">Corrected resampled t-test to compare model improvement significance</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Misc Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Save figures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Save figures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/dataset_overview.html">Database overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/misc.html">Correlation Plots</a></li>
 </ul>
 </details></li>
 </ul>

@@ -1,7 +1,7 @@
 ---
 orphan: true
 ---
-s
+
 # Vibrational and themodynamic properties dataset
 
 
